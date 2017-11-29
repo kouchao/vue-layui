@@ -10,6 +10,12 @@
         </layui-col>
       </layui-row>
     </layui-container>
+    <layui-button>123</layui-button>
+    <layui-button type="primary">123</layui-button>
+    <layui-button type="normal">123</layui-button>
+    <layui-button type="warm">123</layui-button>
+    <layui-button type="danger" icon="fa fa-bolt" right>123</layui-button>
+    <layui-button type="disabled" size="lg" radius>123</layui-button>
   </div>
 </template>
 

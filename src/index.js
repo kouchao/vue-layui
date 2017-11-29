@@ -1,9 +1,14 @@
 /**
  *  kouchao 创建于 2017/11/28
  */
-import row from './components/row'
-import col from './components/col'
-import container from './components/container'
+import '../static/css/layui.css'
+import 'font-awesome/css/font-awesome.css'
+
+import row from './components/layout/row'
+import col from './components/layout/col'
+import container from './components/layout/container'
+
+import button from './components/button/button'
 
 const layui = {
   config: {},
@@ -11,9 +16,15 @@ const layui = {
     Vue.prototype.testLayui = function () {
       console.log('ok')
     }
-    Vue.component(row.name, row)
-    Vue.component(col.name, col)
-    Vue.component(container.name, container)
+    let components = [
+      row,
+      col,
+      container,
+      button
+    ]
+    components.forEach(function (component) {
+      Vue.component(component.name, component)
+    })
     console.log('install layui ok')
   }
 }

@@ -3,7 +3,6 @@
 import Vue from 'vue'
 import App from './App'
 import layui from './index'
-import '../static/css/layui.css'
 console.log(layui)
 Vue.use(layui)
 Vue.config.productionTip = false
