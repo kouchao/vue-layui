@@ -16,6 +16,17 @@
     <layui-btn type="warm">123</layui-btn>
     <layui-btn type="danger" icon="fa fa-bolt" right>123</layui-btn>
     <layui-btn type="disabled" size="lg" radius>123</layui-btn>
+
+    <layui-btn-group>
+      <layui-btn type="danger" icon="fa fa-bolt">123</layui-btn>
+      <layui-btn type="warm">123</layui-btn>
+      <layui-btn type="danger" icon="fa fa-bolt" right>123</layui-btn>
+    </layui-btn-group>
+
+    <layui-btn-group>
+      <layui-btn type="danger" icon="fa fa-bolt"></layui-btn>
+      <layui-btn type="danger" icon="fa fa-bolt" right></layui-btn>
+    </layui-btn-group>
   </div>
 </template>
 

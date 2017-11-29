@@ -7,7 +7,8 @@ import row from './components/layout/row'
 import col from './components/layout/col'
 import container from './components/layout/container'
 
-import button from './components/button/btn'
+import btn from './components/button/btn'
+import btnGroup from './components/button/btn-group'
 
 const layui = {
   config: {},
@@ -19,7 +20,8 @@ const layui = {
       row,
       col,
       container,
-      button
+      btn,
+      btnGroup
     ]
     components.forEach(function (component) {
       Vue.component(component.name, component)
