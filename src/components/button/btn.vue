@@ -14,7 +14,7 @@
 
 <script>
   export default {
-    name: 'layui-button',
+    name: 'layui-btn',
     props: {
       type: {
         type: String,

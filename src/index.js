@@ -7,7 +7,7 @@ import row from './components/layout/row'
 import col from './components/layout/col'
 import container from './components/layout/container'
 
-import button from './components/button/button'
+import button from './components/button/btn'
 
 const layui = {
   config: {},
