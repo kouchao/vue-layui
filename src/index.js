@@ -2,7 +2,6 @@
  *  kouchao 创建于 2017/11/28
  */
 import '../static/css/layui.css'
-import 'font-awesome/css/font-awesome.css'
 
 import row from './components/layout/row'
 import col from './components/layout/col'

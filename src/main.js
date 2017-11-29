@@ -3,6 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import layui from './index'
+
+import 'font-awesome/css/font-awesome.css'
+
 console.log(layui)
 Vue.use(layui)
 Vue.config.productionTip = false
