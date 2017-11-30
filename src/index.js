@@ -10,6 +10,9 @@ import container from './components/layout/container'
 import btn from './components/button/btn'
 import btnGroup from './components/button/btn-group'
 
+import form from './components/form/form'
+import formItem from './components/form/form-item'
+
 const layui = {
   config: {},
   install: function (Vue) {
@@ -21,7 +24,9 @@ const layui = {
       col,
       container,
       btn,
-      btnGroup
+      btnGroup,
+      form,
+      formItem
     ]
     components.forEach(function (component) {
       Vue.component(component.name, component)
