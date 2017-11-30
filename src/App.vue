@@ -33,7 +33,7 @@
       <layui-form-item label="输入框" block>
         <layui-input v-model="input" placeholder="占位"></layui-input>
       </layui-form-item>
-      <layui-form-item type="" label="密码框" :word-aux="input">
+      <layui-form-item type="" label="密码框" border :word-aux="input">
         <layui-input disabled placeholder="禁用"></layui-input>
       </layui-form-item>
       <layui-form-item label="单选框">

@@ -1,5 +1,8 @@
 <template>
-  <div class="layui-form-item">
+  <div class="layui-form-item "
+       :class="{
+         'layui-form-pane': border
+       }">
     <label v-if="label" class="layui-form-label">{{label}}</label>
     <div :class="block ? 'layui-input-block' : 'layui-input-inline'">
       <slot></slot>
@@ -15,7 +18,8 @@
     props: {
       label: String,
       block: Boolean,
-      wordAux: String
+      wordAux: String,
+      border: Boolean
     }
   }
 </script>
