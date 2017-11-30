@@ -13,6 +13,7 @@ import btnGroup from './components/button/btn-group'
 import form from './components/form/form'
 import formItem from './components/form/form-item'
 import radio from './components/form/radio'
+import input from './components/form/input'
 
 const layui = {
   config: {},
@@ -28,7 +29,8 @@ const layui = {
       btnGroup,
       form,
       formItem,
-      radio
+      radio,
+      input
     ]
     components.forEach(function (component) {
       Vue.component(component.name, component)

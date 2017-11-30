@@ -31,12 +31,10 @@
 
     <layui-form>
       <layui-form-item label="输入框" block>
-          <input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off"
-                 class="layui-input">
+        <layui-input v-model="input" placeholder="占位"></layui-input>
       </layui-form-item>
-      <layui-form-item label="密码框" word-aux="辅助文字2">
-          <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off"
-                 class="layui-input">
+      <layui-form-item type="" label="密码框" :word-aux="input">
+        <layui-input disabled placeholder="禁用"></layui-input>
       </layui-form-item>
       <layui-form-item label="单选框">
         <layui-radio v-model="radio" label="1">备选项</layui-radio>
@@ -94,7 +92,8 @@
     name: 'app',
     data: function () {
       return {
-        radio: 1
+        radio: 1,
+        input: 'test'
       }
     },
     created: function () {

@@ -1,7 +1,6 @@
 <template>
   <span>
     <input type="radio"
-           ref="input"
            :value="label"
            :name="name">
     <div class="layui-unselect layui-form-radio"
