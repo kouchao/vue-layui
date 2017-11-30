@@ -29,18 +29,27 @@
     </layui-btn-group>
 
 
-    <layui-form >
+    <layui-form>
       <layui-form-item label="输入框">
         <div class="layui-input-block">
-          <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+          <input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off"
+                 class="layui-input">
         </div>
       </layui-form-item>
       <layui-form-item label="密码框">
         <div class="layui-input-inline">
-          <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+          <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off"
+                 class="layui-input">
         </div>
         <div class="layui-form-mid layui-word-aux">辅助文字</div>
       </layui-form-item>
+      <layui-form-item label="单选框">
+        <layui-radio v-model="radio" label="1">备选项</layui-radio>
+        <layui-radio v-model="radio" label="2">备选项</layui-radio>
+        <layui-radio v-model="radio" label="3">备选项</layui-radio>
+        <layui-radio v-model="radio" label="4" disabled>禁选</layui-radio>
+      </layui-form-item>
+
       <div class="layui-form-item">
         <label class="layui-form-label">选择框</label>
         <div class="layui-input-block">
@@ -68,13 +77,7 @@
           <input type="checkbox" name="switch" lay-skin="switch">
         </div>
       </div>
-      <div class="layui-form-item">
-        <label class="layui-form-label">单选框</label>
-        <div class="layui-input-block">
-          <input type="radio" name="sex" value="男" title="男">
-          <input type="radio" name="sex" value="女" title="女" checked>
-        </div>
-      </div>
+
       <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">文本域</label>
         <div class="layui-input-block">
@@ -92,21 +95,22 @@
 </template>
 
 <script>
-export default {
-  name: 'app',
-  created: function () {
-    this.testLayui()
+  export default {
+    name: 'app',
+    data: function () {
+      return {
+        radio: 1
+      }
+    },
+    created: function () {
+      this.testLayui()
+    }
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    padding: 50px 0 ;
+  }
 </style>
