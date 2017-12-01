@@ -10,6 +10,10 @@
         </layui-col>
       </layui-row>
     </layui-container>
+    <layui-hr color="red"></layui-hr>
+    <layui-hr color="orange"></layui-hr>
+    <layui-hr color="green"></layui-hr>
+    <layui-hr color="cyan"></layui-hr>
     <layui-btn>123</layui-btn>
     <layui-btn type="primary">123</layui-btn>
     <layui-btn type="normal">123</layui-btn>

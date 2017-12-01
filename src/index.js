@@ -15,6 +15,8 @@ import formItem from './components/form/form-item'
 import radio from './components/form/radio'
 import input from './components/form/input'
 
+import hr from './components/auxiliary/hr'
+
 const layui = {
   config: {},
   install: function (Vue) {
@@ -30,7 +32,8 @@ const layui = {
       form,
       formItem,
       radio,
-      input
+      input,
+      hr
     ]
     components.forEach(function (component) {
       Vue.component(component.name, component)
