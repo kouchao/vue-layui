@@ -10,7 +10,7 @@
         </layui-col>
       </layui-row>
     </layui-container>
-    <layui-hr color="red"></layui-hr>
+    <layui-hr color="red" title="标题"></layui-hr>
     <layui-hr color="orange"></layui-hr>
     <layui-hr color="green"></layui-hr>
     <layui-hr color="cyan"></layui-hr>
