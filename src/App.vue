@@ -47,6 +47,15 @@
         <layui-radio v-model="radio" label="4" disabled>禁选</layui-radio>
       </layui-form-item>
 
+      <layui-form-item  label="复选框" block>
+        <layui-checkbox v-model="checkbox" label="1" primary>原始复选框</layui-checkbox>
+        <layui-checkbox v-model="checkbox" label="2" primary>未选中</layui-checkbox>
+        <layui-checkbox v-model="checkbox" label="3" primary disabled>禁用</layui-checkbox>
+        <layui-checkbox v-model="checkbox" label="4">美化复选框</layui-checkbox>
+        <layui-checkbox v-model="checkbox" label="5">未选中</layui-checkbox>
+        <layui-checkbox v-model="checkbox" label="6">禁用</layui-checkbox>
+      </layui-form-item>
+
       <div class="layui-form-item">
         <label class="layui-form-label">选择框</label>
         <div class="layui-input-block">
@@ -60,14 +69,7 @@
           </select>
         </div>
       </div>
-      <div class="layui-form-item">
-        <label class="layui-form-label">复选框</label>
-        <div class="layui-input-block">
-          <input type="checkbox" name="like[write]" title="写作">
-          <input type="checkbox" name="like[read]" title="阅读" checked>
-          <input type="checkbox" name="like[dai]" title="发呆">
-        </div>
-      </div>
+
       <div class="layui-form-item">
         <label class="layui-form-label">开关</label>
         <div class="layui-input-block">
@@ -97,7 +99,8 @@
     data: function () {
       return {
         radio: 1,
-        input: 'test'
+        input: 'test',
+        checkbox: ['1', '3', '4', '6']
       }
     },
     created: function () {
