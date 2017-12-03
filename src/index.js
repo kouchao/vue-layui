@@ -15,6 +15,7 @@ import formItem from './components/form/form-item'
 import radio from './components/form/radio'
 import input from './components/form/input'
 import checkbox from './components/form/checkbox'
+import select from './components/form/select'
 
 import hr from './components/auxiliary/hr'
 
@@ -35,6 +36,7 @@ const layui = {
       radio,
       input,
       checkbox,
+      select,
       hr
     ]
     components.forEach(function (component) {

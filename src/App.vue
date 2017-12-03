@@ -62,6 +62,10 @@
         <layui-checkbox v-model="checkbox" label="9" skin="switch" open-text="禁用" close-text="禁用" disabled></layui-checkbox>
       </layui-form-item>
 
+      <layui-form-item  label="选择框">
+        <layui-select v-model="selectValue" :open="false" :label="select" value-tag="id" text-tag="text"></layui-select>
+      </layui-form-item>
+
       <div class="layui-form-item">
         <label class="layui-form-label">选择框</label>
         <div class="layui-input-block">
@@ -101,7 +105,24 @@
       return {
         radio: 1,
         input: 'test',
-        checkbox: ['1', '4', '7']
+        checkbox: ['1', '4', '7'],
+        select: [{
+          id: '00001',
+          text: '选项1'
+        },
+        {
+          id: '00002',
+          text: '选项2'
+        },
+        {
+          id: '00003',
+          text: '选项3'
+        },
+        {
+          id: '00004',
+          text: '选项4'
+        }],
+        selectValue: '00003'
       }
     },
     created: function () {
