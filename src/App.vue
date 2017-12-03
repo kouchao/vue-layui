@@ -48,12 +48,18 @@
       </layui-form-item>
 
       <layui-form-item  label="复选框" block>
-        <layui-checkbox v-model="checkbox" label="1" primary>原始复选框</layui-checkbox>
-        <layui-checkbox v-model="checkbox" label="2" primary>未选中</layui-checkbox>
-        <layui-checkbox v-model="checkbox" label="3" primary disabled>禁用</layui-checkbox>
+        <layui-checkbox v-model="checkbox" label="1" skin="primary">原始复选框</layui-checkbox>
+        <layui-checkbox v-model="checkbox" label="2" skin="primary">未选中</layui-checkbox>
+        <layui-checkbox v-model="checkbox" label="3" skin="primary" disabled>禁用</layui-checkbox>
         <layui-checkbox v-model="checkbox" label="4">美化复选框</layui-checkbox>
         <layui-checkbox v-model="checkbox" label="5">未选中</layui-checkbox>
-        <layui-checkbox v-model="checkbox" label="6">禁用</layui-checkbox>
+        <layui-checkbox v-model="checkbox" label="6" disabled>禁用</layui-checkbox>
+      </layui-form-item>
+
+      <layui-form-item  label="开关" block>
+        <layui-checkbox v-model="checkbox" label="7" skin="switch" open-text="开" close-text="关"></layui-checkbox>
+        <layui-checkbox v-model="checkbox" label="8" skin="switch" open-text="开" close-text="关"></layui-checkbox>
+        <layui-checkbox v-model="checkbox" label="9" skin="switch" open-text="禁用" close-text="禁用" disabled></layui-checkbox>
       </layui-form-item>
 
       <div class="layui-form-item">
@@ -70,12 +76,7 @@
         </div>
       </div>
 
-      <div class="layui-form-item">
-        <label class="layui-form-label">开关</label>
-        <div class="layui-input-block">
-          <input type="checkbox" name="switch" lay-skin="switch">
-        </div>
-      </div>
+
 
       <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">文本域</label>
@@ -100,7 +101,7 @@
       return {
         radio: 1,
         input: 'test',
-        checkbox: ['1', '3', '4', '6']
+        checkbox: ['1', '4', '7']
       }
     },
     created: function () {

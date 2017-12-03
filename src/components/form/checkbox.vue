@@ -1,15 +1,44 @@
 <template>
-  <span @click="handleClick">
-    <input type="checkbox" :name="name" title="写作" :value="label">
-    <div class="layui-unselect layui-form-checkbox " :class="{
-    'layui-form-checked': hasValue,
-    'layui-radio-disbaled layui-disabled': disabled
-    }" :lay-skin="primary ? 'primary' : ''">
-      <span><slot></slot></span>
-      <i v-if="primary" class="layui-icon"></i>
-      <i v-else class="layui-icon"></i>
-    </div>
+  <span>
+    <span @click="handleClick">
+      <input type="checkbox" :name="name" title="写作" :value="label">
+      <div class="layui-unselect" :class="[{
+      'layui-radio-disbaled layui-disabled': disabled
+      },
+      skin == 'switch' ? 'layui-form-switch' : 'layui-form-checkbox',
+      hasValue && skin == 'switch' ? 'layui-form-onswitch' : '',
+      hasValue && skin != 'switch' ? 'layui-form-checked' : '']" :lay-skin="skin">
+        <span v-if="skin != 'switch'"><slot></slot></span>
+
+        <em v-if="skin == 'switch'">{{text}}</em>
+        <i v-if="skin == 'switch'"></i>
+
+        <i v-if="skin == 'primary'" class="layui-icon"></i>
+        <i v-if="!skin" class="layui-icon"></i>
+      </div>
+    </span>
+
+    <!--<span v-if="skin && skin == 'switch'">-->
+      <!--<input type="checkbox" name="open" lay-text="ON|OFF">-->
+      <!--<div class="layui-unselect layui-form-switch layui-form-onswitch "-->
+           <!--:class="{-->
+              <!--'layui-form-checked': hasValue,-->
+              <!--'layui-radio-disbaled layui-disabled': disabled-->
+              <!--}"-->
+           <!--lay-skin="_switch">-->
+        <!--<em>ON</em>-->
+        <!--<i></i>-->
+      <!--</div>-->
+
+      <!--<input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">-->
+        <!--<div class="layui-unselect layui-form-switch" lay-skin="_switch">-->
+          <!--<em>OFF</em><i></i>-->
+        <!--</div>-->
+
+    <!--</span>-->
   </span>
+
+
 
 </template>
 
@@ -18,7 +47,8 @@
     name: 'layui-checkbox',
     data: function () {
       return {
-        hasValue: false
+        hasValue: false,
+        text: ''
       }
     },
     props: {
@@ -26,7 +56,9 @@
       label: [String, Number],
       disabled: Boolean,
       name: String,
-      primary: Boolean
+      skin: [String],
+      openText: [String],
+      closeText: [String]
     },
     methods: {
       handleClick: function () {
@@ -44,7 +76,13 @@
       }
     },
     created: function () {
-      this.value.includes(this.label) ? this.hasValue = true : this.hasValue = false
+      if (this.value.includes(this.label)) {
+        this.hasValue = true
+        this.text = this.openText
+      } else {
+        this.hasValue = false
+        this.text = this.closeText
+      }
     }
   }
 </script>
