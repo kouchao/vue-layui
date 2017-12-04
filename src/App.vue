@@ -61,9 +61,9 @@
         <layui-checkbox v-model="checkbox" label="8" skin="switch" open-text="开" close-text="关"></layui-checkbox>
         <layui-checkbox v-model="checkbox" label="9" skin="switch" open-text="禁用" close-text="禁用" disabled></layui-checkbox>
       </layui-form-item>
-
+{{selectValue}}
       <layui-form-item  label="选择框">
-        <layui-select v-model="selectValue" :open="false" :label="select" value-tag="id" text-tag="text"></layui-select>
+        <layui-select @change="selectChange" v-model="selectValue" :open.sync="selectOpen" :label="select" value-tag="id" text-tag="text" placeholder="请选择1"></layui-select>
       </layui-form-item>
 
       <div class="layui-form-item">
@@ -122,11 +122,17 @@
           id: '00004',
           text: '选项4'
         }],
-        selectValue: '00003'
+        selectValue: '00003',
+        selectOpen: false
       }
     },
     created: function () {
       this.testLayui()
+    },
+    methods: {
+      selectChange: function (val) {
+        console.log(`change: val=${val}`)
+      }
     }
   }
 </script>
