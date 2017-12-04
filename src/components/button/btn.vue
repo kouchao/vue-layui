@@ -1,7 +1,7 @@
 <template>
-  <div class="layui-btn"
-       :class="[
-      type ? 'layui-btn-' + type : '',
+    <button :type="type" class="layui-btn"
+         :class="[
+      item ? 'layui-btn-' + item : '',
       size ? 'layui-btn-' + size : '',
       {
         'layui-btn-radius': radius
@@ -9,21 +9,23 @@
     <i v-if="icon && !right" class="left" :class="icon"></i>
     <slot><span style="margin: -2px"></span></slot>
     <i v-if="icon && right"  class="right" :class="icon"></i>
-  </div>
+  </button>
+
 </template>
 
 <script>
   export default {
     name: 'layui-btn',
     props: {
-      type: {
-        type: String,
+      item: {
+        item: String,
         default: 'default'
       },
       size: String,
       radius: Boolean,
       icon: String,
-      right: Boolean
+      right: Boolean,
+      type: String
     }
   }
 </script>

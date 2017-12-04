@@ -15,21 +15,21 @@
     <layui-hr color="green"></layui-hr>
     <layui-hr color="cyan"></layui-hr>
     <layui-btn>123</layui-btn>
-    <layui-btn type="primary">123</layui-btn>
-    <layui-btn type="normal">123</layui-btn>
-    <layui-btn type="warm">123</layui-btn>
-    <layui-btn type="danger" icon="fa fa-bolt" right>123</layui-btn>
-    <layui-btn type="disabled" size="lg" radius>123</layui-btn>
+    <layui-btn item="primary">123</layui-btn>
+    <layui-btn item="normal">123</layui-btn>
+    <layui-btn item="warm">123</layui-btn>
+    <layui-btn item="danger" icon="fa fa-bolt" right>123</layui-btn>
+    <layui-btn item="disabled" size="lg" radius>123</layui-btn>
 
     <layui-btn-group>
-      <layui-btn type="danger" icon="fa fa-bolt">123</layui-btn>
-      <layui-btn type="warm">123</layui-btn>
-      <layui-btn type="danger" icon="fa fa-bolt" right>123</layui-btn>
+      <layui-btn item="danger" icon="fa fa-bolt">123</layui-btn>
+      <layui-btn item="warm">123</layui-btn>
+      <layui-btn item="danger" icon="fa fa-bolt" right>123</layui-btn>
     </layui-btn-group>
 
     <layui-btn-group>
-      <layui-btn type="danger" icon="fa fa-bolt"></layui-btn>
-      <layui-btn type="danger" icon="fa fa-bolt" right></layui-btn>
+      <layui-btn item="danger" icon="fa fa-bolt"></layui-btn>
+      <layui-btn item="danger" icon="fa fa-bolt" right></layui-btn>
     </layui-btn-group>
 
 
@@ -61,39 +61,18 @@
         <layui-checkbox v-model="checkbox" label="8" skin="switch" open-text="开" close-text="关"></layui-checkbox>
         <layui-checkbox v-model="checkbox" label="9" skin="switch" open-text="禁用" close-text="禁用" disabled></layui-checkbox>
       </layui-form-item>
-{{selectValue}}
-      <layui-form-item  label="选择框">
+
+      <layui-form-item  label="选择框" block>
         <layui-select @change="selectChange" v-model="selectValue" :open.sync="selectOpen" :label="select" value-tag="id" text-tag="text" placeholder="请选择1"></layui-select>
+        <layui-select @change="selectChange" v-model="selectValue" :open.sync="selectOpen" :label="select" value-tag="id" text-tag="text" placeholder="请选择1" disabled></layui-select>
       </layui-form-item>
 
-      <div class="layui-form-item">
-        <label class="layui-form-label">选择框</label>
-        <div class="layui-input-block">
-          <select name="city" lay-verify="required">
-            <option value=""></option>
-            <option value="0">北京</option>
-            <option value="1">上海</option>
-            <option value="2">广州</option>
-            <option value="3">深圳</option>
-            <option value="4">杭州</option>
-          </select>
-        </div>
-      </div>
-
-
-
-      <div class="layui-form-item layui-form-text">
-        <label class="layui-form-label">文本域</label>
-        <div class="layui-input-block">
-          <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
-        </div>
-      </div>
-      <div class="layui-form-item">
-        <div class="layui-input-block">
-          <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-        </div>
-      </div>
+      <layui-form-item  label="文本域" block>
+        <layui-textarea  placeholder="请输入内容" v-model="textarea"></layui-textarea>
+      </layui-form-item>
+      <layui-form-item block>
+        <layui-btn type="reset" item="primary">重置</layui-btn>
+      </layui-form-item>
     </layui-form>
   </div>
 </template>
@@ -123,7 +102,8 @@
           text: '选项4'
         }],
         selectValue: '00003',
-        selectOpen: false
+        selectOpen: false,
+        textarea: '1231223'
       }
     },
     created: function () {

@@ -16,6 +16,7 @@ import radio from './components/form/radio'
 import input from './components/form/input'
 import checkbox from './components/form/checkbox'
 import select from './components/form/select'
+import textarea from './components/form/textarea'
 
 import hr from './components/auxiliary/hr'
 
@@ -37,6 +38,7 @@ const layui = {
       input,
       checkbox,
       select,
+      textarea,
       hr
     ]
     components.forEach(function (component) {

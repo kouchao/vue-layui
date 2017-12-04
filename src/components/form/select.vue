@@ -1,10 +1,13 @@
 <template>
-  <span>
+  <div class="layui-input-inline">
     <div class="layui-unselect layui-form-select"
          :class="{'layui-form-selected layui-form-selectup': open}"
          @click="handleClick">
       <div class="layui-select-title">
-        <input type="text" :placeholder="placeholder" :value="selectText" readonly="" class="layui-input layui-unselect">
+        <input type="text" :placeholder="placeholder" :value="selectText" readonly="" class="layui-input layui-unselect"
+               :class="{
+                'layui-disabled': disabled
+               }">
         <i class="layui-edge"></i>
       </div>
       <dl class="layui-anim layui-anim-upbit" style="">
@@ -15,7 +18,7 @@
             :class="item[valueTag] == value ? 'layui-this' : ''">{{item[textTag]}}</dd>
       </dl>
     </div>
-  </span>
+  </div>
 </template>
 
 <script>
@@ -40,13 +43,17 @@
       handleClick: function () {
         if (!this.disabled) {
           this.$emit('update:open', !this.open)
+        } else {
+          this.$emit('update:open', false)
         }
       },
       selectOption: function (item) {
-        this.selectText = item[this.textTag]
+        if (!this.disabled) {
+          this.selectText = item[this.textTag]
+          this.$emit('input', item[this.valueTag])
+          this.$emit('change', this.value)
+        }
         this.handleClick()
-        this.$emit('input', item[this.valueTag])
-        this.$emit('change', this.value)
       }
     },
     created: function () {
