@@ -10,7 +10,6 @@
         </layui-col>
       </layui-row>
     </layui-container>
-    <layui-hr color="red" title="标题"></layui-hr>
     <layui-hr color="orange"></layui-hr>
     <layui-hr color="green"></layui-hr>
     <layui-hr color="cyan"></layui-hr>
@@ -74,6 +73,10 @@
         <layui-btn type="reset" item="primary">重置</layui-btn>
       </layui-form-item>
     </layui-form>
+
+    <layui-block color="red">引用区域的文字1</layui-block>
+    <layui-block color="red" title="标题">引用区域的文字2</layui-block>
+    <layui-block color="red" title="标题" border>引用区域的文字3</layui-block>
   </div>
 </template>
 

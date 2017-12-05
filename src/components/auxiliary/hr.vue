@@ -1,10 +1,6 @@
 <template>
   <div>
-    <hr v-if="!title" :class="className">
-
-    <fieldset v-if="title" class="layui-elem-field layui-field-title" :style="styleName">
-      <legend>{{title}}</legend>
-    </fieldset>
+    <hr :class="className">
   </div>
 
 </template>
@@ -13,15 +9,11 @@
   export default {
     name: 'layui-hr',
     props: {
-      color: String,
-      title: String
+      color: String
     },
     data: function () {
       return {
-        className: 'layui-bg-' + this.color,
-        styleName: {
-          'border-color': this.color
-        }
+        className: 'layui-bg-' + this.color
       }
     }
   }

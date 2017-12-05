@@ -18,7 +18,10 @@ import checkbox from './components/form/checkbox'
 import select from './components/form/select'
 import textarea from './components/form/textarea'
 
+import tab from './components/tabs/tab'
+
 import hr from './components/auxiliary/hr'
+import block from './components/auxiliary/block'
 
 const layui = {
   config: {},
@@ -39,7 +42,9 @@ const layui = {
       checkbox,
       select,
       textarea,
-      hr
+      tab,
+      hr,
+      block
     ]
     components.forEach(function (component) {
       Vue.component(component.name, component)
