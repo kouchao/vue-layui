@@ -77,6 +77,11 @@
     <layui-block color="red">引用区域的文字1</layui-block>
     <layui-block color="red" title="标题">引用区域的文字2</layui-block>
     <layui-block color="red" title="标题" border>引用区域的文字3</layui-block>
+    layui-tabs
+    <layui-tabs>
+      <layui-tab-pane name="tab1">tab1</layui-tab-pane>
+      <layui-tab-pane name="tab2">tab2</layui-tab-pane>
+    </layui-tabs>
   </div>
 </template>
 

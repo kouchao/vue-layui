@@ -18,39 +18,41 @@ import checkbox from './components/form/checkbox'
 import select from './components/form/select'
 import textarea from './components/form/textarea'
 
-import tab from './components/tabs/tab'
+import tabs from './components/tabs/tabs'
+import tabPane from './components/tabs/tab-pane'
 
 import hr from './components/auxiliary/hr'
 import block from './components/auxiliary/block'
 
 const layui = {
-  config: {},
-  install: function (Vue) {
-    Vue.prototype.testLayui = function () {
-      console.log('ok')
+    config: {},
+    install: function (Vue) {
+        Vue.prototype.testLayui = function () {
+            console.log('ok')
+        }
+        let components = [
+            row,
+            col,
+            container,
+            btn,
+            btnGroup,
+            form,
+            formItem,
+            radio,
+            input,
+            checkbox,
+            select,
+            textarea,
+            tabs,
+            tabPane,
+            hr,
+            block
+        ]
+        components.forEach(function (component) {
+            Vue.component(component.name, component)
+        })
+        console.log('install layui ok')
     }
-    let components = [
-      row,
-      col,
-      container,
-      btn,
-      btnGroup,
-      form,
-      formItem,
-      radio,
-      input,
-      checkbox,
-      select,
-      textarea,
-      tab,
-      hr,
-      block
-    ]
-    components.forEach(function (component) {
-      Vue.component(component.name, component)
-    })
-    console.log('install layui ok')
-  }
 }
 
 export default layui
