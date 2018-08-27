@@ -28,7 +28,11 @@ import LayMenu from '@/components/menu'
 import LayMenuItem from '@/components/menu-item'
 import LayMenuChildItem from '@/components/menu-child-item'
 import LayAdmin from '@/components/admin'
-
+import LayHeader from '@/components/header'
+import LayLogo from '@/components/logo'
+import LaySide from '@/components/side'
+import LayBody from '@/components/body'
+import LayFooter from '@/components/footer'
 
 
 const layui = {
@@ -58,7 +62,12 @@ const layui = {
 			LayMenu,
 			LayMenuItem,
 			LayMenuChildItem,
-			LayAdmin
+			LayAdmin,
+			LayHeader,
+			LayLogo,
+			LaySide,
+			LayBody,
+			LayFooter
 		]
 		components.forEach(function (component) {
 			Vue.component(component.name, component)

@@ -8,13 +8,14 @@
         @mouseenter="onMouseEnter">
         <a @click="handleClick"
            :class="{
-                'layui-nav-item-bar': isVertical
+                'layui-nav-item-bar-l': isVertical,
+                'layui-nav-item-bar-b': !isVertical,
            }"
            href="javascript:;">
             <slot name="title"></slot>
             <span class="layui-nav-more" v-if="this.$slots.default"></span>
         </a>
-        <dl class="layui-nav-child" v-if="this.$slots.default">
+        <dl class="layui-nav-child" :class="this.rootMenu.mode" v-if="this.$slots.default">
             <slot></slot>
         </dl>
     </li>
@@ -66,11 +67,21 @@
 </script>
 
 <style scoped>
-    .layui-nav .layui-nav-item a.layui-nav-item-bar {
+    .layui-nav .layui-nav-item a.layui-nav-item-bar-l,
+    .layui-nav .layui-nav-item a.layui-nav-item-bar-b{
         transition-duration: 0s;
     }
-    .layui-nav-item-bar:hover {
+    .layui-nav-item-bar-l:hover {
         border-left: 5px solid rgb(0, 150, 136);
         padding-left: 15px;
+    }
+    .layui-nav-item-bar-b:hover {
+        border-bottom: 5px solid rgb(0, 150, 136);
+        padding-top: 5px;
+        line-height: 50px;
+    }
+
+    .layui-nav-itemed > .layui-nav-child.horizontal {
+        background: #fff !important;
     }
 </style>

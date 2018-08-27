@@ -1,5 +1,5 @@
 <template>
-    <dd><a href="javascript:;" @click="handleClick">列表一</a></dd>
+    <dd><a href="javascript:;" @click="handleClick">{{title}}</a></dd>
 </template>
 
 <script>
@@ -19,7 +19,7 @@
         methods: {
 	        handleClick() {
 	        	if(this.$route && this.to){
-			        this.$route.push(this.to)
+			        this.$router.push(this.to)
                 }
             }
         }

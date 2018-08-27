@@ -1,28 +1,81 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+
+    <lay-admin>
+      <lay-header>
+        <lay-logo>vue-layui</lay-logo>
+        <lay-menu mode="horizontal" class="layui-layout-left">
+          <LayMenuItem :index="0">
+            <template slot="title">
+              <span>导航一</span>
+            </template>
+            <LayMenuChildItem title="test"></LayMenuChildItem>
+            <LayMenuChildItem title="test"></LayMenuChildItem>
+          </LayMenuItem>
+          <LayMenuItem :index="1">
+            <template slot="title">
+              <span>导航一</span>
+            </template>
+          </LayMenuItem>
+          <LayMenuItem :index="2">
+            <template slot="title">
+              <span>导航一</span>
+            </template>
+          </LayMenuItem>
+          <LayMenuItem :index="3">
+            <template slot="title">
+              <span>导航一</span>
+            </template>
+          </LayMenuItem>
+        </lay-menu>
+        <lay-menu mode="horizontal" class="layui-layout-right">
+          <LayMenuItem :index="0">
+            <template slot="title">
+              <img src="https://avatars1.githubusercontent.com/u/23720738?s=460&v=4" class="layui-nav-img"> admin
+            </template>
+            <LayMenuChildItem title="基本资料"></LayMenuChildItem>
+            <LayMenuChildItem title="安全设置"></LayMenuChildItem>
+          </LayMenuItem>
+          <LayMenuItem :index="0">
+            <template slot="title">
+              退出
+            </template>
+          </LayMenuItem>
+        </lay-menu>
+      </lay-header>
+      <lay-side>
+        <lay-menu :default-openeds="[0]">
+          <LayMenuItem :index="0">
+            <template slot="title">
+              <span>导航一</span>
+            </template>
+            <LayMenuChildItem title="home" :to="{name: 'home'}"></LayMenuChildItem>
+            <LayMenuChildItem title="about" :to="{name: 'about'}"></LayMenuChildItem>
+          </LayMenuItem>
+          <LayMenuItem :index="1">
+            <template slot="title">
+              <span>导航二</span>
+            </template>
+            <LayMenuChildItem title="test"></LayMenuChildItem>
+            <LayMenuChildItem title="test"></LayMenuChildItem>
+            <LayMenuChildItem title="test"></LayMenuChildItem>
+            <LayMenuChildItem title="test"></LayMenuChildItem>
+          </LayMenuItem>
+        </lay-menu>
+      </lay-side>
+      <lay-body>
+        <router-view/>
+      </lay-body>
+      <lay-footer>
+        this is footer
+      </lay-footer>
+
+    </lay-admin>
+
+
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+<style>
+
 </style>
