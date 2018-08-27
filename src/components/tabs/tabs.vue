@@ -32,7 +32,7 @@
       type: String
     },
     created: function () {
-      console.log(this.$slots.default)
+
     }
   }
 </script>

@@ -6,19 +6,17 @@
 
 <script>
   export default {
-    name: 'layui-row',
+    name: 'LayContainer',
     props: {
-      space: Number
+      fluid: Boolean
     },
     data: function () {
       return {
-        classList: 'layui-row '
+        classList: 'layui-container'
       }
     },
     mounted: function () {
-      if (this.space) {
-        this.classList += `layui-col-space${this.space} `
-      }
+      this.fluid ? this.classList = `layui-fluid` : this.classList = `layui-container`
     }
   }
 </script>

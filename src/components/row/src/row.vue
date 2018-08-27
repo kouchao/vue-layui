@@ -1,22 +1,24 @@
 <template>
   <div :class="classList">
-    <slot>123</slot>
+    <slot></slot>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'layui-container',
+    name: 'LayRow',
     props: {
-      fluid: Boolean
+      space: Number
     },
     data: function () {
       return {
-        classList: 'layui-container'
+        classList: 'layui-row '
       }
     },
     mounted: function () {
-      this.fluid ? this.classList = `layui-fluid` : this.classList = `layui-container`
+      if (this.space) {
+        this.classList += `layui-col-space${this.space} `
+      }
     }
   }
 </script>

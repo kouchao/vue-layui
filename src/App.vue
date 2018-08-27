@@ -47,8 +47,10 @@
         <lay-menu :default-openeds="[0]">
           <LayMenuItem :index="0">
             <template slot="title">
-              <span>导航一</span>
+              <span>布局</span>
             </template>
+            <LayMenuChildItem title="栅格" :to="{name: 'grid'}"></LayMenuChildItem>
+            <LayMenuChildItem title="后台布局"></LayMenuChildItem>
             <LayMenuChildItem title="home" :to="{name: 'home'}"></LayMenuChildItem>
             <LayMenuChildItem title="about" :to="{name: 'about'}"></LayMenuChildItem>
           </LayMenuItem>

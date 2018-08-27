@@ -1,15 +1,5 @@
 <template>
   <div>
-    <layui-container :fluid="true">
-      <layui-row>
-        <layui-col :xs="6" :md="5">
-          123123
-        </layui-col>
-        <layui-col :xs="6">
-          123132
-        </layui-col>
-      </layui-row>
-    </layui-container>
     <layui-hr color="orange"></layui-hr>
     <layui-hr color="green"></layui-hr>
     <layui-hr color="cyan"></layui-hr>
@@ -74,9 +64,7 @@
       </layui-form-item>
     </layui-form>
 
-    <layui-block color="red">引用区域的文字1</layui-block>
-    <layui-block color="red" title="标题">引用区域的文字2</layui-block>
-    <layui-block color="red" title="标题" border>引用区域的文字3</layui-block>
+
     layui-tabs
     <layui-tabs>
       <layui-tab-pane name="tab1">tab1</layui-tab-pane>

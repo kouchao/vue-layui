@@ -3,9 +3,9 @@
  */
 
 
-import row from '@/components/layout/row'
-import col from '@/components/layout/col'
-import container from '@/components/layout/container'
+import LayRow from '@/components/row'
+import LayCol from '@/components/col'
+import LayContainer from '@/components/container'
 
 import btn from '@/components/button/btn'
 import btnGroup from '@/components/button/btn-group'
@@ -22,7 +22,6 @@ import tabs from '@/components/tabs/tabs'
 import tabPane from '@/components/tabs/tab-pane'
 
 import hr from '@/components/auxiliary/hr'
-import block from '@/components/auxiliary/block'
 
 import LayMenu from '@/components/menu'
 import LayMenuItem from '@/components/menu-item'
@@ -33,6 +32,8 @@ import LayLogo from '@/components/logo'
 import LaySide from '@/components/side'
 import LayBody from '@/components/body'
 import LayFooter from '@/components/footer'
+import LayBlock from '@/components/block'
+
 
 
 const layui = {
@@ -42,9 +43,9 @@ const layui = {
 			console.log('ok')
 		}
 		let components = [
-			row,
-			col,
-			container,
+			LayRow,
+			LayCol,
+			LayContainer,
 			btn,
 			btnGroup,
 			form,
@@ -57,7 +58,6 @@ const layui = {
 			tabs,
 			tabPane,
 			hr,
-			block,
 
 			LayMenu,
 			LayMenuItem,
@@ -67,7 +67,8 @@ const layui = {
 			LayLogo,
 			LaySide,
 			LayBody,
-			LayFooter
+			LayFooter,
+			LayBlock,
 		]
 		components.forEach(function (component) {
 			Vue.component(component.name, component)
