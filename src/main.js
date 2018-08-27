@@ -1,18 +1,18 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import App from './App'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+
 import layui from './index'
 
-import 'font-awesome/css/font-awesome.css'
+import '@/assets/layui.css'
+import '@fortawesome/fontawesome-free/css/all.css'
 
-console.log(layui)
 Vue.use(layui)
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  template: '<App/>',
-  components: { App }
-})
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app')
