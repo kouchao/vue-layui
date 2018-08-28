@@ -1,12 +1,9 @@
 <template>
   <div>
+    <h1>当前展示的页面为开发中 可能存在严重bug 请点击其他模块预览</h1>
     <layui-hr color="orange"></layui-hr>
     <layui-hr color="green"></layui-hr>
     <layui-hr color="cyan"></layui-hr>
-
-
-
-
 
     <layui-form>
       <layui-form-item label="输入框" block>

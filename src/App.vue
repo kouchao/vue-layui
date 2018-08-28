@@ -47,21 +47,24 @@
         <lay-menu :default-openeds="[0]">
           <lay-menu-item :index="0">
             <template slot="title">
-              <span>布局</span>
+              <span>开发测试</span>
             </template>
-            <lay-menu-child-item title="栅格" :to="{name: 'grid'}"></lay-menu-child-item>
-            <lay-menu-child-item title="后台布局"></lay-menu-child-item>
-            <lay-menu-child-item title="home" :to="{name: 'home'}"></lay-menu-child-item>
+            <lay-menu-child-item title="dev" :to="{name: 'home'}"></lay-menu-child-item>
             <lay-menu-child-item title="about" :to="{name: 'about'}"></lay-menu-child-item>
           </lay-menu-item>
           <lay-menu-item :index="1">
             <template slot="title">
+              <span>布局</span>
+            </template>
+            <lay-menu-child-item title="栅格" :to="{name: 'grid'}"></lay-menu-child-item>
+            <lay-menu-child-item title="后台布局"></lay-menu-child-item>
+
+          </lay-menu-item>
+          <lay-menu-item :index="2">
+            <template slot="title">
               <span>基本元素</span>
             </template>
             <lay-menu-child-item title="按钮" :to="{name: 'button'}"></lay-menu-child-item>
-            <lay-menu-child-item title="test"></lay-menu-child-item>
-            <lay-menu-child-item title="test"></lay-menu-child-item>
-            <lay-menu-child-item title="test"></lay-menu-child-item>
           </lay-menu-item>
         </lay-menu>
       </lay-side>

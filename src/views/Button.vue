@@ -84,7 +84,7 @@
 
         <lay-block title="风格混搭的按钮" :border="true" class="site-demo-button">
             <lay-button item="primary" size="lg" :radius="true">大型加圆角按钮</lay-button>
-            <lay-button url="http://www.baidu.com">跳转的按钮</lay-button>
+            <lay-button url="https://www.jskou.com">跳转的按钮</lay-button>
             <lay-button item="normal" size="sm" icon="layui-icon layui-icon-delete">删除</lay-button>
 
             <lay-button :disabled="true" size="xs" icon="layui-icon layui-icon-share">分享</lay-button>
