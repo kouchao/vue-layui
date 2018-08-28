@@ -24,7 +24,8 @@
                         'layui-btn-radius': radius,
                         'layui-btn-fluid': fluid,
                     'layui-btn-disabled': disabled
-                    }]">
+                    }]"
+            @click="handleClick">
         <i v-if="icon && !right" class="left" :class="icon"></i>
         <slot><span style="margin: -2px"></span></slot>
         <i v-if="icon && right" class="right" :class="icon"></i>
@@ -54,6 +55,11 @@
 					return '_blank'
                 }
             }
+		},
+		methods: {
+			handleClick(evt) {
+				this.$emit('click', evt);
+			}
 		}
 	}
 </script>

@@ -5,7 +5,7 @@
 
 版本 开发中...
 
-基于 [layui](https://github.com/sentsin/layui/) 2.3.0版本
+基于 [layui](https://github.com/sentsin/layui/) 2.4.0版本
 
 
 

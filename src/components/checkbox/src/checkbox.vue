@@ -12,8 +12,8 @@
       <em v-if="skin == 'switch'">{{text}}</em>
       <i v-if="skin == 'switch'"></i>
 
-      <i v-if="skin == 'primary'" class="layui-icon"></i>
-      <i v-if="!skin" class="layui-icon"></i>
+      <i v-if="skin == 'primary'" class="layui-icon layui-icon-ok"></i>
+      <i v-if="!skin" class="layui-icon layui-icon-ok"></i>
     </div>
   </span>
 

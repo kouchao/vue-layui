@@ -8,7 +8,7 @@
 </template>
 
 <script>
-    import schema from 'async-validator'
+    import asyncValidator from 'async-validator'
 
 	export default {
 		name: 'LayForm',
@@ -23,24 +23,20 @@
 			};
 		},
         methods: {
-	        handlerChange(){
-		        let validator = new schema(this.rules);
+	        validate(cb){
+		        let validator = new asyncValidator(this.rules);
 		        validator.validate(this.model, (errors, fields) => {
 			        if(errors) {
-				        console.log(errors)
-			        }
+				        cb(false)
+			        } else {
+				        cb(true)
+                    }
+
+
 		        });
-            }
-        },
-		watch: {
-			model: {
-				deep: true,
-				handler(){
-					this.handlerChange()
-                }
 
             }
-		}
+        }
 	}
 </script>
 
