@@ -11,13 +11,13 @@ import LayButton from '@/components/button'
 import LayButtonGroup from '@/components/button-group'
 import LayButtonContainer from '@/components/button-container'
 
-import form from '@/components/form/form'
-import formItem from '@/components/form/form-item'
-import radio from '@/components/form/radio'
-import input from '@/components/form/input'
-import checkbox from '@/components/form/checkbox'
-import select from '@/components/form/select'
-import textarea from '@/components/form/textarea'
+import LayForm from '@/components/form'
+import LayFormItem from '@/components/form-item'
+import LayRadio from '@/components/radio'
+import LayInput from '@/components/input'
+import LayCheckbox from '@/components/checkbox'
+import LaySelect from '@/components/select'
+import LayTextarea from '@/components/textarea'
 
 import tabs from '@/components/tabs/tabs'
 import tabPane from '@/components/tabs/tab-pane'
@@ -50,13 +50,13 @@ const layui = {
 			LayButton,
 			LayButtonContainer,
 			LayButtonGroup,
-			form,
-			formItem,
-			radio,
-			input,
-			checkbox,
-			select,
-			textarea,
+			LayForm,
+			LayFormItem,
+			LayRadio,
+			LayInput,
+			LayCheckbox,
+			LaySelect,
+			LayTextarea,
 			tabs,
 			tabPane,
 			hr,

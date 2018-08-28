@@ -14,7 +14,7 @@
 
 <script>
   export default {
-    name: 'layui-form-item',
+    name: 'LayFormItem',
     props: {
       label: String,
       block: Boolean,

@@ -21,7 +21,7 @@
 
 <script>
   export default {
-    name: 'layui-radio',
+    name: 'LayRadio',
     props: {
       value: [String, Number],
       label: [String, Number],

@@ -3,7 +3,6 @@
 </template>
 
 <script>
-	import Menu from './menu-mixin';
 	import eventHub from '@/mixins/eventHub';
 	export default {
 		name: "LayMenuChildItem",
@@ -15,7 +14,8 @@
             	type: Object
             }
 		},
-        mixins: [Menu, eventHub],
+        mixins: [eventHub],
+		inject: ['rootMenu'],
         methods: {
 	        handleClick() {
 	        	if(this.$route && this.to){

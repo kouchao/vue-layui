@@ -1,19 +1,19 @@
 <template>
-  <textarea :type="type"
+  <input :type="type"
          :name="name"
          :placeholder="placeholder"
-         class="layui-textarea"
+         class="layui-input"
          @input="handleChange"
          :value="value"
          :disabled="disabled"
          :class="{
            'layui-radio-disbaled layui-disabled': disabled
-         }"></textarea>
+         }">
 </template>
 
 <script>
   export default {
-    name: 'layui-textarea',
+    name: 'LayInput',
     props: {
       value: [String, Number],
       placeholder: String,

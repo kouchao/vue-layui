@@ -22,7 +22,6 @@
 </template>
 
 <script>
-	import Menu from './menu-mixin';
 	import eventHub from '@/mixins/eventHub';
 	export default {
 		name: "LayMenuItem",
@@ -36,7 +35,8 @@
             }
 		},
 
-        mixins: [Menu, eventHub],
+        mixins: [eventHub],
+	    inject: ['rootMenu'],
         methods: {
 	        handleClick() {
 	        	if(this.$slots.default && this.rootMenu.mode == 'vertical'){

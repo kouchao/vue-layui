@@ -22,7 +22,7 @@
 
 <script>
   export default {
-    name: 'layui-checkbox',
+    name: 'LayCheckbox',
     data: function () {
       return {
         hasValue: false,

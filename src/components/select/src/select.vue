@@ -23,7 +23,7 @@
 
 <script>
   export default {
-    name: 'layui-select',
+    name: 'LaySelect',
     props: {
       disabled: Boolean,
       value: [String, Number],
