@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    name: 'layui-btn-group'
+    name: 'LayButtonGroup'
   }
 </script>
 

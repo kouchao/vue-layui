@@ -7,8 +7,9 @@ import LayRow from '@/components/row'
 import LayCol from '@/components/col'
 import LayContainer from '@/components/container'
 
-import btn from '@/components/button/btn'
-import btnGroup from '@/components/button/btn-group'
+import LayButton from '@/components/button'
+import LayButtonGroup from '@/components/button-group'
+import LayButtonContainer from '@/components/button-container'
 
 import form from '@/components/form/form'
 import formItem from '@/components/form/form-item'
@@ -46,8 +47,9 @@ const layui = {
 			LayRow,
 			LayCol,
 			LayContainer,
-			btn,
-			btnGroup,
+			LayButton,
+			LayButtonContainer,
+			LayButtonGroup,
 			form,
 			formItem,
 			radio,

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import About from './views/About.vue'
 import Grid from './views/Grid.vue'
+import Button from './views/Button.vue'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
 			path: '/grid',
 			name: 'grid',
 			component: Grid
+		},
+		{
+			path: '/button',
+			name: 'button',
+			component: Button
 		}
 
 

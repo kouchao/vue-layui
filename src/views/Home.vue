@@ -3,23 +3,9 @@
     <layui-hr color="orange"></layui-hr>
     <layui-hr color="green"></layui-hr>
     <layui-hr color="cyan"></layui-hr>
-    <layui-btn>123</layui-btn>
-    <layui-btn item="primary">123</layui-btn>
-    <layui-btn item="normal">123</layui-btn>
-    <layui-btn item="warm">123</layui-btn>
-    <layui-btn item="danger" icon="fa fa-bolt" right>123</layui-btn>
-    <layui-btn item="disabled" size="lg" radius>123</layui-btn>
 
-    <layui-btn-group>
-      <layui-btn item="danger" icon="fa fa-bolt">123</layui-btn>
-      <layui-btn item="warm">123</layui-btn>
-      <layui-btn item="danger" icon="fa fa-bolt" right>123</layui-btn>
-    </layui-btn-group>
 
-    <layui-btn-group>
-      <layui-btn item="danger" icon="fa fa-bolt"></layui-btn>
-      <layui-btn item="danger" icon="fa fa-bolt" right></layui-btn>
-    </layui-btn-group>
+
 
 
     <layui-form>
