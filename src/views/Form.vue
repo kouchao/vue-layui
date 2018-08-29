@@ -1,10 +1,34 @@
 <template>
     <div>
+
+        <lay-block>本模块与layui的验证方式完全不同。</lay-block>
+
         <lay-block title="表单集合演示"></lay-block>
         <lay-form :model="form" :rules="rules" ref="form">
-            <lay-form-item label="输入框" prop="name" block>
-                <lay-input v-model="form.name" placeholder="占位"></lay-input>
+            <lay-form-item label="单行输入框" prop="first" block>
+                <lay-input v-model="form.first" placeholder="请输入标题"></lay-input>
             </lay-form-item>
+            <lay-form-item label="验证必填项" prop="second" block>
+                <lay-input v-model="form.second" placeholder="请输入"></lay-input>
+            </lay-form-item>
+
+            <lay-row>
+                <lay-col :xs="4">
+                    <lay-form-item label="验证手机号" prop="mobile" block>
+                        <lay-input v-model="form.mobile" placeholder="请输入手机号"></lay-input>
+                    </lay-form-item>
+                </lay-col>
+
+                <lay-col :xs="4">
+                    <lay-form-item label="验证邮箱" prop="email" block>
+                        <lay-input v-model="form.email" placeholder="请输入邮箱"></lay-input>
+                    </lay-form-item>
+                </lay-col>
+
+            </lay-row>
+
+
+
             <lay-form-item type="" label="密码框" border :word-aux="input">
                 <lay-input disabled placeholder="禁用"></lay-input>
             </lay-form-item>
@@ -57,14 +81,25 @@
 		data() {
 			return {
 				form: {
-					name: 'lalal',
+					first: '',
+					second: '',
+					mobile: '',
+					email: '',
 					checkbox: ['1', '4', '7']
 				},
 				rules: {
-					name: [
-						{type: "string", required: true, message: '请填写姓名'},
-						{max: 10, message: '最多10个字符'}
+					first: [
+						{min: 5, message: '最少5个字符'}
 					],
+					second: [
+						{type: "string", required: true, message: '此为必填项'},
+					],
+					mobile: [
+						{pattern: /^[1][0-9]{10}$/,message: '手机号格式不正确'}
+					],
+					email: [
+						{type: "email", message: '邮箱格式不正确'},
+                    ],
 					checkbox: [
 						{type: "array", max: 2, message: '最多选2个'}
 					]

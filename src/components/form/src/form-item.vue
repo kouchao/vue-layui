@@ -1,13 +1,11 @@
 <template>
     <div class="layui-form-item "
          :class="{
-         'layui-form-pane': border
+         'layui-form-pane': border,
+         'is-error': isError,
+         'is-required': isRequired,
        }">
-        <label v-if="label"
-               class="layui-form-label"
-               :class="{
-                    'is-required': isRequired
-               }">{{label}}</label>
+        <label v-if="label" class="layui-form-label">{{label}}</label>
         <div :class="block ? 'layui-input-block' : 'layui-input-inline'">
             <slot>{{value}}</slot>
         </div>
@@ -68,7 +66,7 @@
 </script>
 
 <style scoped>
-    .is-required.layui-form-label:before {
+    .is-required .layui-form-label:before {
         content: "*";
         color: #f56c6c;
         margin-right: 4px;
@@ -87,6 +85,10 @@
     .layui-form-item {
         position: relative;
         margin-bottom: 22px;
+    }
+
+    .is-error .layui-input {
+        border-color: #FF5722!important;
     }
 
 </style>
