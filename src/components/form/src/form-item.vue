@@ -1,14 +1,16 @@
 <template>
-    <div class="layui-form-item "
+
+    <div class="layui-form-item"
          :class="{
          'layui-form-pane': border,
          'is-error': isError,
          'is-required': isRequired,
+         'is-textarea': isTextarea
        }">
         <label v-if="label" class="layui-form-label">{{label}}</label>
-        <div :class="block ? 'layui-input-block' : 'layui-input-inline'">
+
             <slot>{{value}}</slot>
-        </div>
+
         <div v-if="wordAux" class="layui-form-mid layui-word-aux">{{wordAux}}</div>
         <div v-if="isError" class="layui-form-item__error">{{message}}</div>
     </div>
@@ -29,7 +31,8 @@
 			return {
 				isRequired: false,
 				isError: false,
-				message: ''
+				message: '',
+				isTextarea: false
             }
 		},
 		inject: ['rootForm'],
@@ -45,6 +48,9 @@
 		        	return this.rootForm.model[this.prop]
 		        }
             }
+        },
+        mounted(){
+			this.isTextarea = this.$children.find(({mName}) => mName == 'LayTextarea') ? true : false
         },
 		methods: {
 			validate(){
@@ -89,6 +95,16 @@
 
     .is-error .layui-input {
         border-color: #FF5722!important;
+    }
+
+    .is-textarea .layui-form-label {
+        width: 100%;
+        text-align: left;
+    }
+
+    .is-textarea .layui-input-block {
+        margin-left: 1px;
+        top: -1px;
     }
 
 </style>

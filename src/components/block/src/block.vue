@@ -1,6 +1,4 @@
 <template>
-
-
     <fieldset v-if="title"
               class="layui-elem-field"
               :class="{
