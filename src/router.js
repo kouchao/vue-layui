@@ -5,6 +5,7 @@ import About from './views/About.vue'
 import Grid from './views/Grid.vue'
 import Button from './views/Button.vue'
 import Form from './views/Form.vue'
+import Nav from './views/Nav.vue'
 
 Vue.use(Router)
 
@@ -34,7 +35,14 @@ export default new Router({
 			path: '/form',
 			name: 'form',
 			component: Form
+		},
+		{
+			path: '/nav',
+			name: 'nav',
+			component: Nav
 		}
+
+
 
 
 	]

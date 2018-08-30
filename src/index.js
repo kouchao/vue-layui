@@ -2,7 +2,6 @@
  * kouchao 创建于 2018/8/27
  */
 
-
 import LayRow from '@/components/row'
 import LayCol from '@/components/col'
 import LayContainer from '@/components/container'
@@ -34,6 +33,9 @@ import LaySide from '@/components/side'
 import LayBody from '@/components/body'
 import LayFooter from '@/components/footer'
 import LayBlock from '@/components/block'
+import LayBadge from '@/components/badge'
+import LayBreadcrumb from '@/components/breadcrumb'
+import LayBreadcrumbItem from '@/components/breadcrumb-item'
 
 
 
@@ -71,6 +73,9 @@ const layui = {
 			LayBody,
 			LayFooter,
 			LayBlock,
+			LayBadge,
+			LayBreadcrumb,
+			LayBreadcrumbItem,
 		]
 		components.forEach(function (component) {
 			Vue.component(component.name, component)

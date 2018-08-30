@@ -65,7 +65,8 @@
               <span>基本元素</span>
             </template>
             <lay-menu-child-item title="按钮" :to="{name: 'button'}"></lay-menu-child-item>
-            <lay-menu-child-item title="表单" :to="{name: 'form'}"></lay-menu-child-item>
+              <lay-menu-child-item title="表单" :to="{name: 'form'}"></lay-menu-child-item>
+              <lay-menu-child-item title="导航/面包屑" :to="{name: 'nav'}"></lay-menu-child-item>
 
           </lay-menu-item>
         </lay-menu>
