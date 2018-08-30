@@ -6,6 +6,7 @@ import Grid from './views/Grid.vue'
 import Button from './views/Button.vue'
 import Form from './views/Form.vue'
 import Nav from './views/Nav.vue'
+import Badge from './views/Badge.vue'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
 			path: '/nav',
 			name: 'nav',
 			component: Nav
+		},
+		{
+			path: '/badge',
+			name: 'badge',
+			component: Badge
 		}
 
 

@@ -2,7 +2,7 @@
     <div>
 
         <lay-block>本模块与layui的验证方式完全不同。</lay-block>
-
+        <lay-block color="#FFB800">表单验证有一些小问题</lay-block>
         <lay-block title="表单集合演示"></lay-block>
         <lay-form :model="form" :rules="rules" ref="form">
             <lay-form-item label="单行输入框" prop="first" block>
