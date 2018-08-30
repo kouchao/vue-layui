@@ -7,6 +7,7 @@ import Button from './views/Button.vue'
 import Form from './views/Form.vue'
 import Nav from './views/Nav.vue'
 import Badge from './views/Badge.vue'
+import Auxiliar from './views/Auxiliar.vue'
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ export default new Router({
 			path: '/badge',
 			name: 'badge',
 			component: Badge
+		},
+		{
+			path: '/auxiliar',
+			name: 'auxiliar',
+			component: Auxiliar
 		}
 
 

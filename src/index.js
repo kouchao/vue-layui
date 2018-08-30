@@ -21,7 +21,7 @@ import LayTextarea from '@/components/textarea'
 import tabs from '@/components/tabs/tabs'
 import tabPane from '@/components/tabs/tab-pane'
 
-import hr from '@/components/auxiliary/hr'
+import LayLine from '@/components/line'
 
 import LayMenu from '@/components/menu'
 import LayMenuItem from '@/components/menu-item'
@@ -61,7 +61,7 @@ const layui = {
 			LayTextarea,
 			tabs,
 			tabPane,
-			hr,
+			LayLine,
 
 			LayMenu,
 			LayMenuItem,

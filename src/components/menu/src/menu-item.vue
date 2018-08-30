@@ -13,9 +13,9 @@
            }"
            href="javascript:;">
             <slot name="title"></slot>
-            <span class="layui-nav-more" v-if="this.$slots.default"></span>
+            <span class="layui-nav-more" v-if="$slots.default"></span>
         </a>
-        <dl class="layui-nav-child" :class="this.rootMenu.mode" v-if="this.$slots.default">
+        <dl class="layui-nav-child" :class="this.rootMenu.mode" v-if="$slots.default">
             <slot></slot>
         </dl>
     </li>

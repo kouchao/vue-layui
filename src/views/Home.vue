@@ -1,18 +1,16 @@
 <template>
   <div>
     <h1>当前展示的页面为开发中 可能存在严重bug 请点击其他模块预览</h1>
-    <layui-hr color="orange"></layui-hr>
-    <layui-hr color="green"></layui-hr>
-    <layui-hr color="cyan"></layui-hr>
 
 
 
 
-    layui-tabs
-    <layui-tabs>
-      <layui-tab-pane name="tab1">tab1</layui-tab-pane>
-      <layui-tab-pane name="tab2">tab2</layui-tab-pane>
-    </layui-tabs>
+
+    <!--layui-tabs-->
+    <!--<layui-tabs>-->
+      <!--<layui-tab-pane name="tab1">tab1</layui-tab-pane>-->
+      <!--<layui-tab-pane name="tab2">tab2</layui-tab-pane>-->
+    <!--</layui-tabs>-->
   </div>
 </template>
 

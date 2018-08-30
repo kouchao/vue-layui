@@ -7,13 +7,13 @@
 
 <script>
   export default {
-    name: 'layui-hr',
+    name: 'LayLine',
     props: {
-      color: String
+	    theme: String
     },
     data: function () {
       return {
-        className: 'layui-bg-' + this.color
+        className: 'layui-bg-' + this.theme
       }
     }
   }
