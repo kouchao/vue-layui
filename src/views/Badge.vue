@@ -2,34 +2,38 @@
     <div class="demo">
         <lay-block title="小徽章、大家族"></lay-block>
 
-        <div style="margin: 10px 30px">
-            小圆点：
-            <lay-badge type="dot"></lay-badge>
-            <lay-badge type="dot" theme="orange"></lay-badge>
-            <lay-badge type="dot" theme="green"></lay-badge>
-            <lay-badge type="dot" theme="cyan"></lay-badge>
-            <lay-badge type="dot" theme="blue"></lay-badge>
-            <lay-badge type="dot" theme="black"></lay-badge>
-            <lay-badge type="dot" theme="gray"></lay-badge>
-        </div>
-        <div style="margin: 15px 30px">
-            常规弧形徽章：
-            <lay-badge>6</lay-badge>
-            <lay-badge>99</lay-badge>
-            <lay-badge>61728</lay-badge>
-            <lay-badge>赤</lay-badge>
-            <lay-badge theme="orange">橙</lay-badge>
-            <lay-badge theme="green">绿</lay-badge>
-            <lay-badge theme="cyan">青</lay-badge>
-            <lay-badge theme="blue">蓝</lay-badge>
-            <lay-badge theme="black">黑</lay-badge>
-            <lay-badge theme="gray">灰</lay-badge>
-        </div>
-        <div style="margin: 15px 30px">
-            边框徽章：
-            <lay-badge type="rim">6</lay-badge>
-            <lay-badge type="rim">Hot</lay-badge>
-        </div>
+        <lay-block theme="nm">
+            <div style="margin: 10px 0">
+                小圆点：
+                <lay-badge type="dot"></lay-badge>
+                <lay-badge type="dot" theme="orange"></lay-badge>
+                <lay-badge type="dot" theme="green"></lay-badge>
+                <lay-badge type="dot" theme="cyan"></lay-badge>
+                <lay-badge type="dot" theme="blue"></lay-badge>
+                <lay-badge type="dot" theme="black"></lay-badge>
+                <lay-badge type="dot" theme="gray"></lay-badge>
+            </div>
+            <div style="margin: 10px 0">
+                常规弧形徽章：
+                <lay-badge>6</lay-badge>
+                <lay-badge>99</lay-badge>
+                <lay-badge>61728</lay-badge>
+                <lay-badge>赤</lay-badge>
+                <lay-badge theme="orange">橙</lay-badge>
+                <lay-badge theme="green">绿</lay-badge>
+                <lay-badge theme="cyan">青</lay-badge>
+                <lay-badge theme="blue">蓝</lay-badge>
+                <lay-badge theme="black">黑</lay-badge>
+                <lay-badge theme="gray">灰</lay-badge>
+            </div>
+            <div style="margin: 10px 0">
+                边框徽章：
+                <lay-badge type="rim">6</lay-badge>
+                <lay-badge type="rim">Hot</lay-badge>
+            </div>
+        </lay-block>
+
+
 
         <lay-block title="与其它元素的搭配"></lay-block>
 
