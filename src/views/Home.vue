@@ -3,7 +3,7 @@
 
         <img width="300" src="http://cos.jskou.com/vue-layui-logo.png" alt=""/>
         <h1 style="font-size: 50px; margin: 10px">vue-layui</h1>
-        <h2 style="font-size: 30px; margin: 10px 10px 30px; color: #666">一个基于layui样式的vue组件库</h2>
+        <h2 style="font-size: 30px; margin: 20px 10px 30px; color: #666">一个基于layui样式的vue组件库</h2>
         <div style="display: flex; align-items: center;justify-content: center">
             <a href="https://github.com/kouchao/vue-layui" class="demo-github" target="_blank">
                 <i class="fab fa-github"></i>
