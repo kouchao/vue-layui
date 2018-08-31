@@ -48,10 +48,10 @@
                 <lay-menu :default-openeds="[0]">
                     <lay-menu-item :index="0">
                         <template slot="title">
-                            <span>开发测试</span>
+                            <span>快速开始</span>
                         </template>
-                        <lay-menu-child-item title="dev" :to="{name: 'home'}"></lay-menu-child-item>
-                        <lay-menu-child-item title="about" :to="{name: 'about'}"></lay-menu-child-item>
+                        <lay-menu-child-item title="首页" :to="{name: 'home'}"></lay-menu-child-item>
+                        <!--<lay-menu-child-item title="about" :to="{name: 'about'}"></lay-menu-child-item>-->
                     </lay-menu-item>
                     <lay-menu-item :index="1">
                         <template slot="title">
