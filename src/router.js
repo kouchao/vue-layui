@@ -9,6 +9,7 @@ import Nav from './views/Nav.vue'
 import Badge from './views/Badge.vue'
 import Auxiliar from './views/Auxiliar.vue'
 import Progress from './views/Progress.vue'
+import Panel from './views/Panel.vue'
 
 Vue.use(Router)
 
@@ -58,6 +59,11 @@ export default new Router({
 			path: '/progress',
 			name: 'progress',
 			component: Progress
+		},
+		{
+			path: '/panel',
+			name: 'panel',
+			component: Panel
 		}
 
 

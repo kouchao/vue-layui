@@ -37,6 +37,9 @@ import LayBadge from '@/components/badge'
 import LayBreadcrumb from '@/components/breadcrumb'
 import LayBreadcrumbItem from '@/components/breadcrumb-item'
 import LayProgress from '@/components/progress'
+import LayCard from '@/components/card'
+import LayCollapse from '@/components/collapse'
+import LayCollapseItem from '@/components/collapse-item'
 
 
 
@@ -78,6 +81,9 @@ const layui = {
 			LayBreadcrumb,
 			LayBreadcrumbItem,
 			LayProgress,
+			LayCard,
+			LayCollapse,
+			LayCollapseItem
 		]
 		components.forEach(function (component) {
 			Vue.component(component.name, component)
