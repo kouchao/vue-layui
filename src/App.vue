@@ -83,8 +83,14 @@
                 </div>
 
             </lay-body>
-            <lay-footer>
-                this is footer
+            <lay-footer style="text-align: center">
+                <span>© 2018</span>
+                <a class="deom-pl10" href="http://jskou.com" target="_blank">jskou.com</a>
+                <span class="deom-pl10">MIT license</span>
+                <a class="deom-pl10" href="https://github.com/kouchao/vue-layui" target="_blank">GitHub</a>
+                <a class="deom-pl10" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37078202000111" target="_blank">鲁公网安备 37078202000111号</a>
+                <span class="deom-pl10">|</span>
+                <a class="deom-pl10" href="http://www.miibeian.gov.cn/" target="_blank">鲁ICP备17028069号-2</a>
             </lay-footer>
 
         </lay-admin>
@@ -97,5 +103,9 @@
 
     .layui-layout-admin .site-demo-body {
         top: 30px;
+    }
+
+    .deom-pl10 {
+        margin-left: 10px;
     }
 </style>
