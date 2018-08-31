@@ -8,6 +8,7 @@ import Form from './views/Form.vue'
 import Nav from './views/Nav.vue'
 import Badge from './views/Badge.vue'
 import Auxiliar from './views/Auxiliar.vue'
+import Progress from './views/Progress.vue'
 
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ export default new Router({
 			path: '/auxiliar',
 			name: 'auxiliar',
 			component: Auxiliar
+		},
+		{
+			path: '/progress',
+			name: 'progress',
+			component: Progress
 		}
 
 

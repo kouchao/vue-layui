@@ -36,6 +36,7 @@ import LayBlock from '@/components/block'
 import LayBadge from '@/components/badge'
 import LayBreadcrumb from '@/components/breadcrumb'
 import LayBreadcrumbItem from '@/components/breadcrumb-item'
+import LayProgress from '@/components/progress'
 
 
 
@@ -76,6 +77,7 @@ const layui = {
 			LayBadge,
 			LayBreadcrumb,
 			LayBreadcrumbItem,
+			LayProgress,
 		]
 		components.forEach(function (component) {
 			Vue.component(component.name, component)
