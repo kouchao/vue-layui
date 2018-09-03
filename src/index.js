@@ -42,6 +42,8 @@ import LayCollapse from '@/components/collapse'
 import LayCollapseItem from '@/components/collapse-item'
 import LayTimeline from '@/components/timeline'
 import LayTimelineItem from '@/components/timeline-item'
+import LayTable from '@/components/table'
+import LayTableColumn from '@/components/table-column'
 
 
 
@@ -87,7 +89,9 @@ const layui = {
 			LayCollapse,
 			LayCollapseItem,
 			LayTimeline,
-			LayTimelineItem
+			LayTimelineItem,
+			LayTable,
+			LayTableColumn
 		]
 		components.forEach(function (component) {
 			Vue.component(component.name, component)

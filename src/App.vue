@@ -72,8 +72,8 @@
                         <lay-menu-child-item title="面板" :to="{name: 'panel'}"></lay-menu-child-item>
                         <lay-menu-child-item title="徽章" :to="{name: 'badge'}"></lay-menu-child-item>
                         <lay-menu-child-item title="时间线" :to="{name: 'timeline'}"></lay-menu-child-item>
-
                         <lay-menu-child-item title="辅助元素" :to="{name: 'auxiliar'}"></lay-menu-child-item>
+                        <lay-menu-child-item title="静态表格" :to="{name: 'table'}"></lay-menu-child-item>
 
                     </lay-menu-item>
                 </lay-menu>

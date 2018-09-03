@@ -11,6 +11,7 @@ import Auxiliar from './views/Auxiliar.vue'
 import Progress from './views/Progress.vue'
 import Panel from './views/Panel.vue'
 import Timeline from './views/Timeline.vue'
+import Table from './views/Table.vue'
 
 Vue.use(Router)
 
@@ -70,7 +71,14 @@ export default new Router({
 			path: '/timeline',
 			name: 'timeline',
 			component: Timeline
+		},
+		{
+			path: '/table',
+			name: 'table',
+			component: Table
 		}
+
+
 
 
 

@@ -1,6 +1,9 @@
 <template>
     <div class="layui-side layui-bg-black">
-        <slot></slot>
+        <div class="layui-side-scroll">
+            <slot></slot>
+        </div>
+
     </div>
 </template>
 <script>
