@@ -1,42 +1,54 @@
 <template>
-    <form class="layui-collapse"
-          :class="{
-             'layui-form-pane': border
-           }">
+    <div class="layui-collapse">
+
         <slot></slot>
-    </form>
+    </div>
 </template>
 
 <script>
-    import asyncValidator from 'async-validator'
-
+	import eventHub from '@/mixins/eventHub';
 	export default {
 		name: 'LayCollapse',
 		props: {
-			border: Boolean,
-			model: Object,
-			rules: Object
+			defaultOpeneds: {
+				type: Array,
+                default() {
+					return []
+                }
+            },
+			accordion: {
+				type: Boolean,
+				default(){
+					return false
+				}
+			}
 		},
-		provide() {
+        data(){
 			return {
-				rootForm: this
+				openeds: this.defaultOpeneds
+            }
+        },
+        provide() {
+			return {
+				rootCollapse: this
 			};
 		},
-        methods: {
-	        validate(cb){
-		        let validator = new asyncValidator(this.rules);
-		        validator.validate(this.model, (errors, fields) => {
-			        if(errors) {
-				        cb(false)
-			        } else {
-				        cb(true)
-                    }
+		mixins: [eventHub],
+		methods: {
+			handleItemClick(item) {
+				const {index} = item
+				const activeIndex = this.openeds.findIndex(o => o == index)
+				if (activeIndex == -1) {
+					this.accordion ? this.openeds = [index] : this.openeds.push(index)
+				} else {
+					this.openeds.splice(activeIndex, 1)
+				}
 
-
-		        });
-
-            }
-        }
+			}
+		},
+		mounted() {
+			this.eventOn('collapse-item-click', this.handleItemClick);
+		}
 	}
 </script>
 
