@@ -40,6 +40,8 @@ import LayProgress from '@/components/progress'
 import LayCard from '@/components/card'
 import LayCollapse from '@/components/collapse'
 import LayCollapseItem from '@/components/collapse-item'
+import LayTimeline from '@/components/timeline'
+import LayTimelineItem from '@/components/timeline-item'
 
 
 
@@ -83,7 +85,9 @@ const layui = {
 			LayProgress,
 			LayCard,
 			LayCollapse,
-			LayCollapseItem
+			LayCollapseItem,
+			LayTimeline,
+			LayTimelineItem
 		]
 		components.forEach(function (component) {
 			Vue.component(component.name, component)

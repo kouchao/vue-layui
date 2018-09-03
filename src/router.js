@@ -10,6 +10,7 @@ import Badge from './views/Badge.vue'
 import Auxiliar from './views/Auxiliar.vue'
 import Progress from './views/Progress.vue'
 import Panel from './views/Panel.vue'
+import Timeline from './views/Timeline.vue'
 
 Vue.use(Router)
 
@@ -64,6 +65,11 @@ export default new Router({
 			path: '/panel',
 			name: 'panel',
 			component: Panel
+		},
+		{
+			path: '/timeline',
+			name: 'timeline',
+			component: Timeline
 		}
 
 
