@@ -5,11 +5,9 @@
 import LayRow from '@/components/row'
 import LayCol from '@/components/col'
 import LayContainer from '@/components/container'
-
 import LayButton from '@/components/button'
 import LayButtonGroup from '@/components/button-group'
 import LayButtonContainer from '@/components/button-container'
-
 import LayForm from '@/components/form'
 import LayFormItem from '@/components/form-item'
 import LayRadio from '@/components/radio'
@@ -17,12 +15,9 @@ import LayInput from '@/components/input'
 import LayCheckbox from '@/components/checkbox'
 import LaySelect from '@/components/select'
 import LayTextarea from '@/components/textarea'
-
-import tabs from '@/components/tabs/tabs'
-import tabPane from '@/components/tabs/tab-pane'
-
+import LayTabs from '@/components/tabs'
+import LayTabPane from '@/components/tab-pane'
 import LayLine from '@/components/line'
-
 import LayMenu from '@/components/menu'
 import LayMenuItem from '@/components/menu-item'
 import LayMenuChildItem from '@/components/menu-child-item'
@@ -67,10 +62,9 @@ const layui = {
 			LayCheckbox,
 			LaySelect,
 			LayTextarea,
-			tabs,
-			tabPane,
+			LayTabs,
+			LayTabPane,
 			LayLine,
-
 			LayMenu,
 			LayMenuItem,
 			LayMenuChildItem,

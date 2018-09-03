@@ -12,6 +12,7 @@ import Progress from './views/Progress.vue'
 import Panel from './views/Panel.vue'
 import Timeline from './views/Timeline.vue'
 import Table from './views/Table.vue'
+import Tabs from './views/Tabs.vue'
 
 Vue.use(Router)
 
@@ -76,6 +77,11 @@ export default new Router({
 			path: '/table',
 			name: 'table',
 			component: Table
+		},
+		{
+			path: '/tabs',
+			name: 'tabs',
+			component: Tabs
 		}
 
 
