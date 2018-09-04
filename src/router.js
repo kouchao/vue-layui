@@ -16,6 +16,7 @@ import Tabs from './views/Tabs.vue'
 import Animation from './views/Animation.vue'
 import Admin from './views/Admin.vue'
 import Layer from './views/Layer.vue'
+import Laypage from './views/Laypage.vue'
 
 Vue.use(Router)
 
@@ -100,6 +101,11 @@ export default new Router({
 			path: '/layer',
 			name: 'layer',
 			component: Layer
+		},
+		{
+			path: '/laypage',
+			name: 'laypage',
+			component: Laypage
 		}
 
 
