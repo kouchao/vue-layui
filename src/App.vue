@@ -77,6 +77,13 @@
                         <lay-menu-child-item title="动画" :to="{name: 'animation'}"></lay-menu-child-item>
                         <lay-menu-child-item title="辅助元素" :to="{name: 'auxiliar'}"></lay-menu-child-item>
                     </lay-menu-item>
+                    <lay-menu-item :index="3">
+                        <template slot="title">
+                            <span>组件示例</span>
+                        </template>
+                        <lay-menu-child-item title="弹出层" :to="{name: 'layer'}"></lay-menu-child-item>
+                    </lay-menu-item>
+
                 </lay-menu>
             </lay-side>
             <lay-body>

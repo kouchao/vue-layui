@@ -39,6 +39,8 @@ import LayTimeline from '@/components/timeline'
 import LayTimelineItem from '@/components/timeline-item'
 import LayTable from '@/components/table'
 import LayTableColumn from '@/components/table-column'
+import LayAlert from '@/components/alert'
+import LaySwitch from '@/components/switch'
 
 
 
@@ -85,7 +87,9 @@ const layui = {
 			LayTimeline,
 			LayTimelineItem,
 			LayTable,
-			LayTableColumn
+			LayTableColumn,
+			LayAlert,
+			LaySwitch
 		]
 		components.forEach(function (component) {
 			Vue.component(component.name, component)

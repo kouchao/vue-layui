@@ -15,6 +15,7 @@ import Table from './views/Table.vue'
 import Tabs from './views/Tabs.vue'
 import Animation from './views/Animation.vue'
 import Admin from './views/Admin.vue'
+import Layer from './views/Layer.vue'
 
 Vue.use(Router)
 
@@ -94,6 +95,11 @@ export default new Router({
 			path: '/admin',
 			name: 'admin',
 			component: Admin
+		},
+		{
+			path: '/layer',
+			name: 'layer',
+			component: Layer
 		}
 
 

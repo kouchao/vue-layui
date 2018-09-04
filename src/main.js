@@ -6,6 +6,7 @@ import store from './store'
 import layui from './index'
 
 import '@/assets/layui.css'
+import '@/assets/layer.css'
 import '@fortawesome/fontawesome-free/css/all.css'
 
 Vue.use(layui)

@@ -820,7 +820,7 @@ a cite {
     right: 0;
     top: 0;
     bottom: 0;
-    z-index: 998;
+    z-index: 1000;
     width: auto;
     overflow: hidden;
     overflow-y: auto;

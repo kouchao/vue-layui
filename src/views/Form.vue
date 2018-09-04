@@ -113,14 +113,17 @@
             </lay-form-item>
 
             <lay-form-item label="开关-默认关">
-                <lay-checkbox v-model="form.checkbox" label="7" skin="switch" open-text="开"
-                              close-text="关"></lay-checkbox>
-
+                <lay-switch v-model="form.open"
+                            active-value="100"
+                            inactive-value="0">
+                </lay-switch>
             </lay-form-item>
 
             <lay-form-item label="开关-默认开">
-                <lay-checkbox v-model="form.checkbox" label="8" skin="switch" open-text="开"
-                              close-text="关"></lay-checkbox>
+                <lay-switch v-model="form.close"
+                           active-value="100"
+                           inactive-value="0">
+                </lay-switch>
             </lay-form-item>
 
             <lay-form-item label="单选框">
@@ -251,14 +254,18 @@
             </lay-form-item>
 
             <lay-form-item label="开关-默认关" border>
-                <lay-checkbox v-model="form.checkbox" label="7" skin="switch" open-text="开"
-                              close-text="关"></lay-checkbox>
+                <lay-switch v-model="form.close"
+                            active-value="100"
+                            inactive-value="0">
+                </lay-switch>
 
             </lay-form-item>
 
             <lay-form-item label="开关-默认开" border>
-                <lay-checkbox v-model="form.checkbox" label="8" skin="switch" open-text="开"
-                              close-text="关"></lay-checkbox>
+                <lay-switch v-model="form.open"
+                            active-value="100"
+                            inactive-value="0">
+                </lay-switch>
             </lay-form-item>
 
             <lay-form-item label="单选框" border>
@@ -297,6 +304,8 @@
 					provinceId: '',
 					cityId: '',
 					areaId: '',
+                    open: '100',
+                    close: '0',
 					checkbox: ['1', '4', '8']
 				},
 				rules: {
