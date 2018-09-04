@@ -1,7 +1,17 @@
 <template>
-    <div class="layui-tab">
-        <ul class="layui-tab-title">
-            <li v-for="item in titles"
+    <div class="layui-tab"
+         :class="{
+            'layui-tab-brief': skin == 'simple',
+            'layui-tab-card': skin == 'card'
+         }"
+         :style="width ? 'width: ' + width + 'px' : ''"
+         :overflow="overflow">
+        <ul class="layui-tab-title"
+            :class="{
+                'layui-tab-more': isOpen
+            }"
+            v-if="$slots.default">
+            <li v-for="item in $slots.default.map(o => o.componentOptions.propsData)"
                 :class="{
                     'layui-this': value == item.name
                 }"
@@ -9,11 +19,15 @@
                 {{item.title}}
                 <i v-if="closable"
                    class="layui-icon layui-unselect layui-tab-close layui-icon-close"
-                    @click.stop="handleClose(item.name)"></i>
+                   @click.stop="handleClose(item.name)"></i>
             </li>
-
+            <span v-if="overflow" class="layui-unselect layui-tab-bar" lay-stope="tabmore" @click="handleOpen">
+                <i v-if="isOpen" lay-stope="tabmore" class="layui-icon layui-icon-up"></i>
+                <i v-else lay-stope="tabmore" class="layui-icon layui-icon-down"></i>
+            </span>
         </ul>
-        <div class="layui-tab-content">
+        <div class="layui-tab-content"
+             :style="height ? 'height: ' + height + 'px' : ''">
             <slot></slot>
         </div>
 
@@ -29,42 +43,38 @@
 			value: String,
 			closable: {
 				type: Boolean,
-                default() {
+				default() {
 					return false
-                }
-            }
-        },
-        data(){
-			return {
-				titles: []
-            }
-
-        },
-        methods: {
-	        handleClick(value){
-		        this.$emit('input', value)
-            },
-	        handleClose(value){
-		        this.titles = this.titles.filter(o => o.name != value)
-                this.value = this.titles.length ? this.titles[0].name : ''
-		        this.$emit('close', value)
-            }
-        },
-		mounted() {
-			this.slots = this.$slots
-			this.titles = this.$slots.default.map(o => {
-				return {
-					title: o.child.title,
-                    name: o.child.name
-                }
-            })
+				}
+			},
+			skin: String,
+			overflow: Boolean,
+			height: Number,
+			width: Number
 		},
-        watch: {
-	        value(){
-		        this.$emit('input', this.value)
+		data() {
+			return {
+				isOpen: false
+			}
+		},
+		methods: {
+			handleClick(value) {
+				this.$emit('input', value)
+			},
+			handleClose(value) {
+				this.$emit('close', value)
+			},
+            handleOpen(){
+				this.isOpen = !this.isOpen
             }
 
-        }
+		},
+		watch: {
+			value() {
+				this.$emit('input', this.value)
+			}
+
+		}
 	}
 </script>
 
