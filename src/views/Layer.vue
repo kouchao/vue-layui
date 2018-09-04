@@ -1,20 +1,36 @@
 <template>
     <div>
+
+        <lay-block>体验一下Layer。</lay-block>
+        <lay-form>
+            <lay-form-item label="遮罩">
+                <lay-switch v-model="modal"></lay-switch>
+            </lay-form-item>
+            <lay-form-item label="皮肤">
+                <lay-radio v-model="skin" label="page">默认</lay-radio>
+                <lay-radio v-model="skin" label="molv">墨绿</lay-radio>
+                <lay-radio v-model="skin" label="lan">深蓝</lay-radio>
+            </lay-form-item>
+            <lay-form-item label="按钮对齐">
+                <lay-radio v-model="btnDirection" label="left">居左</lay-radio>
+                <lay-radio v-model="btnDirection" label="center">居中</lay-radio>
+                <lay-radio v-model="btnDirection" label="right">居右</lay-radio>
+            </lay-form-item>
+            <lay-form-item label=" ">
+                <lay-button @click="dialogVisible = true">点击弹窗</lay-button>
+            </lay-form-item>
+
+        </lay-form>
+
         <lay-alert :visible.sync="dialogVisible"
                    :buttons="buttons"
                    title="弹窗"
-                   modal
-                   skin="lan">
+                   :skin="skin"
+                   :modal="modal"
+                   :btn-direction="btnDirection">
             普通弹窗
         </lay-alert>
 
-        <lay-button @click="dialogVisible = true">弹出</lay-button>
-
-        <LaySwitch v-model="value"
-                   active-value="100"
-                   inactive-value="0"
-                   disabled>
-        </LaySwitch>
     </div>
 </template>
 
@@ -32,7 +48,9 @@
 					title: '关闭',
 					handler: this.close
 				}],
-				value: '100'
+				modal: true,
+				skin: 'page',
+				btnDirection: 'right'
 			}
 		},
 		methods: {
