@@ -45,7 +45,7 @@
                 </lay-menu>
             </lay-header>
             <lay-side>
-                <lay-menu :default-openeds="[0]">
+                <lay-menu :default-openeds="[0, 1, 2]">
                     <lay-menu-item :index="0">
                         <template slot="title">
                             <span>快速开始</span>
@@ -58,7 +58,7 @@
                             <span>布局</span>
                         </template>
                         <lay-menu-child-item title="栅格" :to="{name: 'grid'}"></lay-menu-child-item>
-                        <lay-menu-child-item title="后台布局"></lay-menu-child-item>
+                        <lay-menu-child-item title="后台布局" :to="{name: 'admin'}"></lay-menu-child-item>
 
                     </lay-menu-item>
                     <lay-menu-item :index="2">
@@ -73,9 +73,9 @@
                         <lay-menu-child-item title="面板" :to="{name: 'panel'}"></lay-menu-child-item>
                         <lay-menu-child-item title="徽章" :to="{name: 'badge'}"></lay-menu-child-item>
                         <lay-menu-child-item title="时间线" :to="{name: 'timeline'}"></lay-menu-child-item>
-                        <lay-menu-child-item title="辅助元素" :to="{name: 'auxiliar'}"></lay-menu-child-item>
                         <lay-menu-child-item title="静态表格" :to="{name: 'table'}"></lay-menu-child-item>
-
+                        <lay-menu-child-item title="动画" :to="{name: 'animation'}"></lay-menu-child-item>
+                        <lay-menu-child-item title="辅助元素" :to="{name: 'auxiliar'}"></lay-menu-child-item>
                     </lay-menu-item>
                 </lay-menu>
             </lay-side>

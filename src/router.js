@@ -13,6 +13,8 @@ import Panel from './views/Panel.vue'
 import Timeline from './views/Timeline.vue'
 import Table from './views/Table.vue'
 import Tabs from './views/Tabs.vue'
+import Animation from './views/Animation.vue'
+import Admin from './views/Admin.vue'
 
 Vue.use(Router)
 
@@ -82,6 +84,16 @@ export default new Router({
 			path: '/tabs',
 			name: 'tabs',
 			component: Tabs
+		},
+		{
+			path: '/animation',
+			name: 'animation',
+			component: Animation
+		},
+		{
+			path: '/admin',
+			name: 'admin',
+			component: Admin
 		}
 
 
