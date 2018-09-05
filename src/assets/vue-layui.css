@@ -1,0 +1,44 @@
+.layui-co-red {
+    color: #FF5722 !important
+}
+
+.layui-co-orange {
+    color: #FFB800 !important
+}
+
+.layui-co-green {
+    color: #009688 !important
+}
+
+.layui-co-cyan {
+    color: #2F4056 !important
+}
+
+.layui-co-blue {
+    color: #1E9FFF !important
+}
+
+.layui-co-black {
+    color: #393D49 !important
+}
+
+.layui-co-gray {
+    color: #eee !important;
+}
+
+.layui-body {
+    position: absolute;
+    left: 200px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1000;
+    width: auto;
+    overflow: hidden;
+    overflow-y: auto;
+    box-sizing: border-box
+}
+
+li {
+    list-style: none
+}

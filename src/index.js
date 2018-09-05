@@ -43,6 +43,7 @@ import LayAlert from '@/components/alert'
 import LaySwitch from '@/components/switch'
 import LayPagination from '@/components/pagination'
 import LayRate from '@/components/rate'
+import LaySlider from '@/components/slider'
 
 const layui = {
 	config: {},
@@ -91,7 +92,8 @@ const layui = {
 			LayAlert,
 			LaySwitch,
 			LayPagination,
-			LayRate
+			LayRate,
+			LaySlider
 		]
 		components.forEach(function (component) {
 			Vue.component(component.name, component)
