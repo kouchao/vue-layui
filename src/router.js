@@ -17,6 +17,7 @@ import Animation from './views/Animation.vue'
 import Admin from './views/Admin.vue'
 import Layer from './views/Layer.vue'
 import Laypage from './views/Laypage.vue'
+import Rate from './views/Rate.vue'
 
 Vue.use(Router)
 
@@ -106,6 +107,11 @@ export default new Router({
 			path: '/laypage',
 			name: 'laypage',
 			component: Laypage
+		},
+		{
+			path: '/rate',
+			name: 'rate',
+			component: Rate
 		}
 
 

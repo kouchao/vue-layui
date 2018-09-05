@@ -42,8 +42,7 @@ import LayTableColumn from '@/components/table-column'
 import LayAlert from '@/components/alert'
 import LaySwitch from '@/components/switch'
 import LayPagination from '@/components/pagination'
-
-
+import LayRate from '@/components/rate'
 
 const layui = {
 	config: {},
@@ -91,7 +90,8 @@ const layui = {
 			LayTableColumn,
 			LayAlert,
 			LaySwitch,
-			LayPagination
+			LayPagination,
+			LayRate
 		]
 		components.forEach(function (component) {
 			Vue.component(component.name, component)

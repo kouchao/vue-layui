@@ -1727,6 +1727,34 @@ a cite {
     color: #666 !important
 }
 
+.layui-co-red {
+    color: #FF5722 !important
+}
+
+.layui-co-orange {
+    color: #FFB800 !important
+}
+
+.layui-co-green {
+    color: #009688 !important
+}
+
+.layui-co-cyan {
+    color: #2F4056 !important
+}
+
+.layui-co-blue {
+    color: #1E9FFF !important
+}
+
+.layui-co-black {
+    color: #393D49 !important
+}
+
+.layui-co-gray {
+    color: #eee !important;
+}
+
 .layui-badge-rim, .layui-colla-content, .layui-colla-item, .layui-collapse, .layui-elem-field, .layui-form-pane .layui-form-item[pane], .layui-form-pane .layui-form-label, .layui-input, .layui-layedit, .layui-layedit-tool, .layui-quote-nm, .layui-select, .layui-tab-bar, .layui-tab-card, .layui-tab-title, .layui-tab-title .layui-this:after, .layui-textarea {
     border-color: #e6e6e6
 }

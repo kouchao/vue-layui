@@ -83,6 +83,8 @@
                         </template>
                         <lay-menu-child-item title="弹出层" :to="{name: 'layer'}"></lay-menu-child-item>
                         <lay-menu-child-item title="分页" :to="{name: 'laypage'}"></lay-menu-child-item>
+                        <lay-menu-child-item title="评分" :to="{name: 'rate'}"></lay-menu-child-item>
+
                     </lay-menu-item>
 
                 </lay-menu>
