@@ -54,19 +54,6 @@
     border-color: #eee !important;
 }
 
-.layui-body {
-    position: absolute;
-    left: 200px;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 1000;
-    width: auto;
-    overflow: hidden;
-    overflow-y: auto;
-    box-sizing: border-box
-}
-
 li {
     list-style: none
 }
