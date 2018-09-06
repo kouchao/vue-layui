@@ -1,6 +1,5 @@
 <template>
     <div>
-        <lay-block color="#FF5722">该组件正在开发中，存在严重bug</lay-block>
 
         <lay-block title="基本滑块"></lay-block>
         <lay-slider class="demo-slider"

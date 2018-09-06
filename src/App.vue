@@ -51,7 +51,7 @@
                             <span>快速开始</span>
                         </template>
                         <lay-menu-child-item title="首页" :to="{name: 'home'}"></lay-menu-child-item>
-                        <!--<lay-menu-child-item title="about" :to="{name: 'about'}"></lay-menu-child-item>-->
+                        <lay-menu-child-item title="关于vue-layui" :to="{name: 'about'}"></lay-menu-child-item>
                     </lay-menu-item>
                     <lay-menu-item :index="1">
                         <template slot="title">

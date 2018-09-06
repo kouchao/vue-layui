@@ -1,7 +1,7 @@
 <template>
     <div class="site-anim" style="text-align: center;padding-top: 50px;">
 
-        <img width="300" src="http://cos.jskou.com/vue-layui-logo.png" alt=""/>
+        <img width="300" src="https://cos.jskou.com/vue-layui-logo.png" alt=""/>
         <div style="font-size: 50px; line-height: 50px">vue-layui</div>
         <div style="font-size: 30px; line-height: 30px; padding: 10px 10px 30px; color: #666">一个基于layui样式的vue组件库</div>
         <div style="display: flex; align-items: center;justify-content: center">
