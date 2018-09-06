@@ -26,6 +26,34 @@
     color: #eee !important;
 }
 
+.layui-bd-red {
+    border-color: #FF5722 !important
+}
+
+.layui-bd-orange {
+    border-color: #FFB800 !important
+}
+
+.layui-bd-green {
+    border-color: #009688 !important
+}
+
+.layui-bd-cyan {
+    border-color: #2F4056 !important
+}
+
+.layui-bd-blue {
+    border-color: #1E9FFF !important
+}
+
+.layui-bd-black {
+    border-color: #393D49 !important
+}
+
+.layui-bd-gray {
+    border-color: #eee !important;
+}
+
 .layui-body {
     position: absolute;
     left: 200px;
