@@ -44,6 +44,8 @@ import LaySwitch from '@/components/switch'
 import LayPagination from '@/components/pagination'
 import LayRate from '@/components/rate'
 import LaySlider from '@/components/slider'
+import LayCarousel from '@/components/carousel'
+import LayCarouselItem from '@/components/carousel-item'
 
 const layui = {
 	config: {},
@@ -93,7 +95,9 @@ const layui = {
 			LaySwitch,
 			LayPagination,
 			LayRate,
-			LaySlider
+			LaySlider,
+			LayCarousel,
+			LayCarouselItem,
 		]
 		components.forEach(function (component) {
 			Vue.component(component.name, component)

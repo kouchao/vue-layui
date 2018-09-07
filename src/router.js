@@ -19,6 +19,7 @@ import Layer from './views/Layer.vue'
 import Laypage from './views/Laypage.vue'
 import Rate from './views/Rate.vue'
 import Slider from './views/Slider.vue'
+import Carousel from './views/Carousel.vue'
 
 Vue.use(Router)
 
@@ -118,6 +119,12 @@ export default new Router({
 			path: '/slider',
 			name: 'slider',
 			component: Slider
+		},
+		{
+			path: '/carousel',
+			name: 'carousel',
+			component: Carousel
 		}
+
 	]
 })
