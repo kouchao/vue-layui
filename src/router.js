@@ -20,6 +20,9 @@ import Laypage from './views/Laypage.vue'
 import Rate from './views/Rate.vue'
 import Slider from './views/Slider.vue'
 
+// 朱大常
+import Timedate from './views/Timedate.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -118,6 +121,11 @@ export default new Router({
 			path: '/slider',
 			name: 'slider',
 			component: Slider
+		},
+		{
+			path: '/timedate',
+			name: 'timedate',
+			component: Timedate
 		}
 	]
 })
