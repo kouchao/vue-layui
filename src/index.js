@@ -45,6 +45,8 @@ import LayPagination from '@/components/pagination'
 import LayRate from '@/components/rate'
 import LaySlider from '@/components/slider'
 
+import layDatePicker from '@/components/datePicker'
+
 const layui = {
 	config: {},
 	install: function (Vue) {
@@ -93,7 +95,8 @@ const layui = {
 			LaySwitch,
 			LayPagination,
 			LayRate,
-			LaySlider
+			LaySlider,
+			layDatePicker
 		]
 		components.forEach(function (component) {
 			Vue.component(component.name, component)

@@ -81,6 +81,9 @@
                         <template slot="title">
                             <span>组件示例</span>
                         </template>
+                        <!-- 朱大常 -->
+                        <lay-menu-child-item title="时间与日期的选择" :to="{name: 'timedate'}"></lay-menu-child-item>
+                        
                         <lay-menu-child-item title="弹出层" :to="{name: 'layer'}"></lay-menu-child-item>
                         <lay-menu-child-item title="分页" :to="{name: 'laypage'}"></lay-menu-child-item>
                         <lay-menu-child-item title="滑块" :to="{name: 'slider'}"></lay-menu-child-item>
