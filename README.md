@@ -47,5 +47,12 @@ LayCollapseItem,
 LayTimeline,
 LayTimelineItem,
 LayTable,
-LayTableColumn
+LayTableColumn,
+LayAlert,
+LaySwitch,
+LayPagination,
+LayRate,
+LaySlider,
+LayCarousel,
+LayCarouselItem,
 ```
