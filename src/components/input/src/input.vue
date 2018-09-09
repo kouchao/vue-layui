@@ -26,12 +26,15 @@
 			},
 			name: String,
 			required: Boolean,
-			width: Number
+			width: Number,
+            number: Boolean
 		},
 		methods: {
 			handleChange: function () {
 				if (!this.disabled) {
-					this.$emit('input', event.target.value)
+					const value = event.target.value
+
+					this.$emit('input', this.number ? (parseInt(value) || 0) : value)
 				}
 			}
 		}

@@ -1,18 +1,30 @@
 <template>
-    <div class="layui-carousel" lay-anim="" lay-indicator="inside" :lay-arrow="arrow"
-         style="width: 600px;" :style="{
-            height: height + 'px'
-         }">
+    <div class="layui-carousel"
+         :lay-anim="anim"
+         :lay-indicator="indicator"
+         :lay-arrow="arrow"
+         :style="{
+            height: height + 'px',
+            width: width + 'px'
+         }"
+         @mouseenter="handleEnter"
+         @mouseleave="handleLeave">
         <div carousel-item="">
             <slot></slot>
         </div>
-        <div class="layui-carousel-ind">
+        <div class="layui-carousel-ind" :style="anim == 'updown' ? 'margin-top: -46px;': ''">
             <ul>
                 <li v-for="item in items" :class="{'layui-this': item.isActive}"></li>
             </ul>
         </div>
-        <button class="layui-icon layui-carousel-arrow" @click="handleSub" lay-type="sub"></button>
-        <button class="layui-icon layui-carousel-arrow" @click="handleAdd" lay-type="add"></button>
+        <button class="layui-icon layui-carousel-arrow" @click="handleSub" lay-type="sub">
+            <i v-if="anim == 'updown'" class="layui-icon layui-icon-up"></i>
+            <i v-else class="layui-icon layui-icon-left"></i>
+        </button>
+        <button class="layui-icon layui-carousel-arrow" @click="handleAdd" lay-type="add">
+            <i v-if="anim == 'updown'" class="layui-icon layui-icon-down"></i>
+            <i v-else class="layui-icon layui-icon-right"></i>
+        </button>
     </div>
 </template>
 
@@ -26,23 +38,50 @@
 				prevItem: '',
 				items: [],
 				righting: false,
-				lefting: false
+				lefting: false,
+				timer: ''
 			}
 		},
 		props: {
 			arrow: {
 				type: String,
-				default: 'always'
+				default: () => 'always'
 			},
 			height: {
 				type: Number,
-				default: 280
-			}
+				default: () => 280
+			},
+			width: {
+				type: Number,
+				default: () => 600
+			},
+			anim: {
+				type: String,
+				default: () => 'default'
+			},
+			indicator: {
+				type: String,
+				default: () => 'inside'
+			},
+			autoplay: {
+				type: Boolean,
+				default: () => true
+			},
+			interval: {
+				type: Number,
+				default: () => 1500
+            }
 		},
-		mounted() {
-
-		},
+        mounted() {
+	        this.play()
+        },
 		methods: {
+			handleEnter(){
+                this.stop()
+            },
+			handleLeave() {
+				this.play()
+            },
 			handleSub() {
 				if (this.lefting) {
 					return false
@@ -99,8 +138,33 @@
 				this.prevItem = activeIndex == 0 ? this.items[this.items.length - 1] : this.items[activeIndex - 1]
 
 				this.updateItem()
+			},
+			play() {
+				if (this.autoplay) {
+					if (this.timer) clearInterval(this.timer)
+					this.timer = setInterval(() => {
+						this.handleAdd()
+					}, this.interval)
+				} else {
+					this.stop()
+                }
+            },
+			stop() {
+				if (this.autoplay) {
+					if (this.timer) clearInterval(this.timer)
+				}
 			}
-		}
+		},
+        watch: {
+	        autoplay() {
+		        if (this.timer) clearInterval(this.timer)
+		        this.play()
+            },
+	        interval(){
+		        if (this.timer) clearInterval(this.timer)
+		        this.play()
+            }
+        }
 	}
 </script>
 
