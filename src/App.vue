@@ -1,6 +1,5 @@
 <template>
     <div id="app">
-
         <lay-admin>
             <lay-header>
                 <lay-logo>vue-layui</lay-logo>
@@ -83,6 +82,7 @@
                         </template>
                         <lay-menu-child-item title="弹出层" :to="{name: 'layer'}"></lay-menu-child-item>
                         <lay-menu-child-item title="分页" :to="{name: 'laypage'}"></lay-menu-child-item>
+                        <lay-menu-child-item title="颜色选择器" :to="{name: 'colorPicker'}"></lay-menu-child-item>
                         <lay-menu-child-item title="滑块" :to="{name: 'slider'}"></lay-menu-child-item>
                         <lay-menu-child-item title="评分" :to="{name: 'rate'}"></lay-menu-child-item>
                         <lay-menu-child-item title="轮播" :to="{name: 'carousel'}"></lay-menu-child-item>

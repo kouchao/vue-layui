@@ -46,6 +46,7 @@ import LayRate from '@/components/rate'
 import LaySlider from '@/components/slider'
 import LayCarousel from '@/components/carousel'
 import LayCarouselItem from '@/components/carousel-item'
+import LayColorPicker from '@/components/color-picker'
 
 const layui = {
 	config: {},
@@ -98,6 +99,7 @@ const layui = {
 			LaySlider,
 			LayCarousel,
 			LayCarouselItem,
+			LayColorPicker,
 		]
 		components.forEach(function (component) {
 			Vue.component(component.name, component)

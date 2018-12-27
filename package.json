@@ -1,11 +1,25 @@
 {
-  "name": "vue-layui",
-  "version": "0.1.0",
-  "private": true,
+  "name": "vue-lay",
+  "version": "0.1.1",
+  "author": "kouchao",
+  "private": false,
+  "main": "src/index.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kouchao/vue-layui.git"
+  },
+  "keywords": [
+    "vue",
+    "layui",
+    "vue-layui",
+    "vue layui"
+  ],
+  "license": "MIT",
+  "homepage": "http://vue-layui.jskou.com",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.2.0",
     "async-validator": "^1.8.5",
