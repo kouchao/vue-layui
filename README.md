@@ -6,7 +6,7 @@
 基于 [layui](https://github.com/sentsin/layui/) 2.4.0版本
 
 ### 安装
-    npm i vue-lay@0.1.2-alpha.9 -S
+    npm i vue-lay -S
 
 ### 引用
     import layui from 'vue-lay'
