@@ -1,12 +1,12 @@
 {
   "name": "vue-lay",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "kouchao",
   "private": false,
-  "main": "src/index.js",
+  "main": "lib/vue-lay.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build --target lib --name vue-lay src/index.js"
   },
   "repository": {
     "type": "git",
@@ -21,18 +21,15 @@
   "license": "MIT",
   "homepage": "http://vue-layui.jskou.com",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.2.0",
     "async-validator": "^1.8.5",
-    "axios": "^0.18.0",
     "vue": "^2.5.17",
-    "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "@fortawesome/fontawesome-free": "^5.2.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0",
     "@vue/cli-service": "^3.0.0",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.1",
+    "axios": "^0.18.0",
+    "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.17"
   },
   "browserslist": [

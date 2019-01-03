@@ -1,12 +1,19 @@
 # vue-layui
-    去年没有时间进行开发，加上自己水平过低，暂缓了一阵，从今天开始继续。
-    208/8/27
-点击预览: [demo演示](http://vue-layui.jskou.com)
+    这是一个基于vue的ui框架，引用了layui的样式（逻辑重新编写，非jquery）
 
-版本 开发中...
+点击预览: [demo演示](http://vue-layui.jskou.com)
 
 基于 [layui](https://github.com/sentsin/layui/) 2.4.0版本
 
+### 安装
+    npm i vue-lay@0.1.2-alpha.9 -S
+
+### 引用
+    import layui from 'vue-lay'
+    import 'vue-lay/lib/vue-lay.css'
+    import '@fortawesome/fontawesome-free/css/all.css'
+
+    Vue.use(layui)
 
 
 ### 已完成的组件
@@ -55,4 +62,5 @@ LayRate,
 LaySlider,
 LayCarousel,
 LayCarouselItem,
+LayColorPicker
 ```

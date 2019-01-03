@@ -1,1 +1,6 @@
-module.exports = {}
+module.exports = {
+  outputDir: 'lib',
+  css: {
+    extract: true
+  }
+}
