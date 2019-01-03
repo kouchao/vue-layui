@@ -6,7 +6,8 @@
   "main": "lib/vue-lay.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name vue-lay src/index.js"
+    "build": "vue-cli-service build",
+    "build:lib": "vue-cli-service build --target lib --name vue-lay src/index.js"
   },
   "repository": {
     "type": "git",

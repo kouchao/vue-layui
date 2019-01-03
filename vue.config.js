@@ -1,5 +1,5 @@
 module.exports = {
-  outputDir: 'lib',
+  outputDir: 'dist',
   css: {
     extract: true
   }
