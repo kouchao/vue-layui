@@ -1,7 +1,7 @@
 <template>
     <ul class="layui-nav"
         :class="classList"
-    :style="styleList">
+    		:style="styleList">
         <slot></slot>
     </ul>
 </template>
