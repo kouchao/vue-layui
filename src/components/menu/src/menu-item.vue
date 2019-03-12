@@ -3,26 +3,30 @@
     :key="index"
     class="layui-nav-item"
     :class="{
-            'layui-nav-itemed': isActive && !isCollapse
-        }"
+      'layui-nav-itemed': isActive && !isCollapse
+    }"
     @mouseleave="onMouseLeave"
     @mouseenter="onMouseEnter"
   >
     <a
       @click="handleClick"
       :class="{
-                'layui-nav-item-bar-l': isVertical,
-                'layui-nav-item-bar-b': !isVertical,
-           }"
+        'layui-nav-item-bar-l': isVertical,
+        'layui-nav-item-bar-b': !isVertical
+      }"
       href="javascript:;"
     >
       <i v-if="icon" :class="'layui-icon layui-icon-' + icon"></i>
-      {{!isCollapse ? title : ''}}
-      
+      {{ !isCollapse ? title : "" }}
+
       <slot v-if="!title && !isCollapse" name="title"></slot>
       <span class="layui-nav-more" v-if="$slots.default"></span>
     </a>
-    <dl class="layui-nav-child" :class="this.rootMenu.mode" v-if="$slots.default">
+    <dl
+      class="layui-nav-child"
+      :class="this.rootMenu.mode"
+      v-if="$slots.default"
+    >
       <slot></slot>
     </dl>
   </li>
@@ -45,12 +49,12 @@ export default {
     }
   },
   mixins: [eventHub],
-  inject: ['rootMenu', 'admin'],
+  inject: ["rootMenu", "admin"],
   methods: {
     handleClick() {
       if (this.$slots.default && this.rootMenu.mode == "vertical") {
         this.eventEmit("menu-item-click", this);
-        this.eventEmitGlobal('change-collapse', false);
+        this.eventEmitGlobal("change-collapse", false);
       }
     },
     onMouseEnter() {
@@ -66,14 +70,15 @@ export default {
   },
   computed: {
     isActive() {
-      const isActive = this.rootMenu.openeds.findIndex(o => o == this.index) != -1;
+      const isActive =
+        this.rootMenu.openeds.findIndex(o => o == this.index) != -1;
       return isActive;
     },
     isVertical() {
       return this.rootMenu.mode == "vertical";
     },
     isCollapse() {
-      const admin = this.admin || {}
+      const admin = this.admin || {};
       return !this.isVertical ? false : admin.collapse;
     }
   }

@@ -5,22 +5,22 @@
 </template>
 
 <script>
-  export default {
-    name: 'LayContainer',
-    props: {
-      fluid: Boolean
-    },
-    data: function () {
-      return {
-        classList: 'layui-container'
-      }
-    },
-    mounted: function () {
-      this.fluid ? this.classList = `layui-fluid` : this.classList = `layui-container`
-    }
+export default {
+  name: "LayContainer",
+  props: {
+    fluid: Boolean
+  },
+  data: function() {
+    return {
+      classList: "layui-container"
+    };
+  },
+  mounted: function() {
+    this.fluid
+      ? (this.classList = `layui-fluid`)
+      : (this.classList = `layui-container`);
   }
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

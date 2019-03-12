@@ -1,18 +1,17 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
 
-import layui from './index'
+import layui from "./index";
 
-import '@/assets/layui.css'
-import '@/assets/layer.css'
-import '@/assets/vue-layui.css'
-import '@fortawesome/fontawesome-free/css/all.css'
+import "@/assets/layui.css";
+import "@/assets/layer.css";
+import "@/assets/vue-layui.css";
 
-Vue.use(layui)
-Vue.config.productionTip = false
+Vue.use(layui);
+Vue.config.productionTip = false;
 
 new Vue({
   router,
   render: h => h(App)
-}).$mount('#app')
+}).$mount("#app");

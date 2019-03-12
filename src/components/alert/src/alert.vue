@@ -3,7 +3,7 @@
     v-if="visible"
     style="position: fixed; top: 0;right: 0;bottom: 0;left: 0;z-index: 1000"
     :class="{
-        'modal': modal
+      modal: modal
     }"
   >
     <div
@@ -11,7 +11,7 @@
       :class="'layui-layer-' + skin"
       style="width: 300px; position: relative; margin: 15vh auto auto"
     >
-      <div class="layui-layer-title">{{title}}</div>
+      <div class="layui-layer-title">{{ title }}</div>
       <div class="layui-layer-content">
         <slot></slot>
       </div>
@@ -26,17 +26,18 @@
         v-if="buttons.length"
         class="layui-layer-btn"
         :class="{
-                    'layui-layer-btn-c': btnDirection == 'center',
-                    'layui-layer-btn-l': btnDirection == 'left',
-                    'layui-layer-btn-r': btnDirection == 'right',
-                 }"
+          'layui-layer-btn-c': btnDirection == 'center',
+          'layui-layer-btn-l': btnDirection == 'left',
+          'layui-layer-btn-r': btnDirection == 'right'
+        }"
       >
         <a
           v-for="item in buttons"
           :key="item.title"
           @click="item.handler"
           :class="item.isImportant ? 'layui-layer-btn0' : 'layui-layer-btn1'"
-        >{{item.title}}</a>
+          >{{ item.title }}</a
+        >
       </div>
     </div>
   </div>

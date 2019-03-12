@@ -1,12 +1,17 @@
 <template>
   <div class="layui-colorpicker-side">
-    <canvas ref="side" @mousedown="handleCanvasMouseDown" width="12" height="180"/>
+    <canvas
+      ref="side"
+      @mousedown="handleCanvasMouseDown"
+      width="12"
+      height="180"
+    />
     <div
       @mousedown="handleMouseDown"
       class="layui-colorpicker-side-slider"
       :style="{
-                top: top + 'px'
-            }"
+        top: top + 'px'
+      }"
     ></div>
   </div>
 </template>
@@ -24,7 +29,6 @@ export default {
   mounted() {
     const ctx = this.$refs.side.getContext("2d");
     const height = 180;
-    const color = "#f00";
     const side = ctx.createLinearGradient(0, 0, 0, height);
     side.addColorStop(0, "#f00");
     side.addColorStop(1 / 6, "#f0f");
@@ -41,7 +45,7 @@ export default {
     handleCanvasMouseDown(e) {
       this.top = e.offsetY - 3;
       this.handleMouseDown(e);
-      this.change()
+      this.change();
     },
     handleMouseDown(e) {
       this.clientY = e.clientY;
@@ -66,7 +70,7 @@ export default {
     change() {
       const ctx = this.$refs.side.getContext("2d");
       const imgData = ctx.getImageData(0, this.top + 2, 1, 1);
-      const [r, g, b, a] = imgData.data;
+      const [r, g, b] = imgData.data;
       this.$emit("change", `rgb(${r}, ${g}, ${b})`);
     }
   }

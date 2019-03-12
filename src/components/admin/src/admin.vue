@@ -18,7 +18,7 @@ export default {
   },
   mixins: [eventHub],
   mounted() {
-      this.eventOnGlobal('change-collapse', this.collapseChange);
+    this.eventOnGlobal("change-collapse", this.collapseChange);
   },
   methods: {
     collapseChange(collapse) {

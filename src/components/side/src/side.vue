@@ -1,17 +1,19 @@
 <template>
-  <div class="layui-side layui-bg-black" :class="{
-        'is-collapse': admin.collapse
-    }">
+  <div
+    class="layui-side layui-bg-black"
+    :class="{
+      'is-collapse': admin.collapse
+    }"
+  >
     <div class="layui-side-scroll">
       <slot></slot>
     </div>
   </div>
 </template>
 <script>
-
 export default {
   name: "LaySide",
-  inject: ['admin']
+  inject: ["admin"]
 };
 </script>
 <style scoped>

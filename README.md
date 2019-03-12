@@ -11,7 +11,6 @@
 ### 引用
     import layui from 'vue-lay'
     import 'vue-lay/lib/vue-lay.css'
-    import '@fortawesome/fontawesome-free/css/all.css'
 
     Vue.use(layui)
 

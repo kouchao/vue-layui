@@ -1,6 +1,6 @@
 module.exports = {
-  outputDir: 'dist',
+  outputDir: "dist",
   css: {
     extract: true
   }
-}
+};

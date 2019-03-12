@@ -1,35 +1,27 @@
 {
   "name": "vue-lay",
   "version": "0.1.2",
-  "author": "kouchao",
   "private": false,
-  "main": "lib/vue-lay.common.js",
+  "author": "kouchao",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
     "build:lib": "vue-cli-service build --target lib --name vue-lay src/index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kouchao/vue-layui.git"
-  },
-  "keywords": [
-    "vue",
-    "layui",
-    "vue-layui",
-    "vue layui"
-  ],
-  "license": "MIT",
-  "homepage": "http://vue-layui.jskou.com",
   "dependencies": {
     "async-validator": "^1.8.5",
-    "vue": "^2.5.17",
-    "@fortawesome/fontawesome-free": "^5.2.0"
+    "vue": "^2.5.17"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.0",
-    "@vue/cli-service": "^3.0.0",
+    "@vue/cli-plugin-babel": "^3.5.1",
+    "@vue/cli-plugin-eslint": "^3.5.1",
+    "@vue/cli-service": "^3.5.1",
+    "@vue/eslint-config-prettier": "^4.0.1",
     "axios": "^0.18.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0",
     "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.17"
   },
@@ -37,5 +29,18 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "homepage": "http://vue-layui.jskou.com",
+  "keywords": [
+    "vue",
+    "layui",
+    "vue-layui",
+    "vue layui"
+  ],
+  "license": "MIT",
+  "main": "lib/vue-lay.common.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kouchao/vue-layui.git"
+  }
 }

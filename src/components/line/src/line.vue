@@ -1,24 +1,21 @@
 <template>
   <div>
-    <hr :class="className">
+    <hr :class="className" />
   </div>
-
 </template>
 
 <script>
-  export default {
-    name: 'LayLine',
-    props: {
-	    theme: String
-    },
-    data: function () {
-      return {
-        className: 'layui-bg-' + this.theme
-      }
-    }
+export default {
+  name: "LayLine",
+  props: {
+    theme: String
+  },
+  data: function() {
+    return {
+      className: "layui-bg-" + this.theme
+    };
   }
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

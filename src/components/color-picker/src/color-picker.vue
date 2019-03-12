@@ -1,34 +1,53 @@
 <template>
   <div class="layui-color-picker" :class="uid">
-    <ColorBox :color="color" @click="handleToggle" :size="size"/>
-    <div :hidden="isHidden" class="layui-anim layui-anim-upbit layui-colorpicker-main">
+    <ColorBox :color="color" @click="handleToggle" :size="size" />
+    <div
+      :hidden="isHidden"
+      class="layui-anim layui-anim-upbit layui-colorpicker-main"
+    >
       <div class="layui-colorpicker-main-wrapper">
         <div ref="basis" class="layui-colorpicker-basis">
-          <canvas ref="canvas" @mousedown="handleCanvasMouseDown" width="260" height="180"/>
+          <canvas
+            ref="canvas"
+            @mousedown="handleCanvasMouseDown"
+            width="260"
+            height="180"
+          />
           <div
             @mousedown="handleMouseDown"
             ref="choose"
             class="layui-colorpicker-basis-cursor"
             :style="{
-                left: left + 'px',
-                top: top + 'px'
+              left: left + 'px',
+              top: top + 'px'
             }"
           ></div>
         </div>
-        <color-side @change="sideChange"/>
+        <color-side @change="sideChange" />
       </div>
       <div class="layui-colorpicker-main-alpha">
         <div class="layui-colorpicker-alpha-bgcolor">
-          <div ref="alphaslider" class="layui-colorpicker-alpha-slider" style="left: 280px;"></div>
+          <div
+            ref="alphaslider"
+            class="layui-colorpicker-alpha-slider"
+            style="left: 280px;"
+          ></div>
         </div>
       </div>
       <div class="layui-colorpicker-main-input">
         <div class="layui-inline">
-          <input :value="color" type="text" class="layui-input">
+          <input :value="color" type="text" class="layui-input" />
         </div>
         <div class="layui-btn-container">
-          <button class="layui-btn layui-btn-primary layui-btn-sm" @click="handleClear">清空</button>
-          <button class="layui-btn layui-btn-sm" @click="handleConfirm">确定</button>
+          <button
+            class="layui-btn layui-btn-primary layui-btn-sm"
+            @click="handleClear"
+          >
+            清空
+          </button>
+          <button class="layui-btn layui-btn-sm" @click="handleConfirm">
+            确定
+          </button>
         </div>
       </div>
     </div>
@@ -45,7 +64,7 @@
 import ColorBox from "./color-box";
 import ColorSide from "./color-side";
 
-import { rgb2hex, hex2rgb } from "./color";
+import { rgb2hex } from "./color";
 export default {
   name: "LayColorPicker",
   components: {
@@ -54,8 +73,8 @@ export default {
   },
   props: {
     value: String,
-	size: String,
-	type: String
+    size: String,
+    type: String
   },
   data() {
     return {
@@ -120,31 +139,30 @@ export default {
       this.change();
       e.preventDefault();
     },
-    onDragEnd(e) {
+    onDragEnd() {
       window.removeEventListener("mousemove", this.onDragging);
       window.removeEventListener("mouseup", this.onDragEnd);
     },
     change() {
       const ctx = this.$refs.canvas.getContext("2d");
       var imgData = ctx.getImageData(this.left + 5, this.top + 6, 1, 1);
-	  const [r, g, b, a] = imgData.data;
-	  if(this.type == 'rgb'){
-		this.color = `rgb(${r}, ${g}, ${b})`
-	  } else {
-		this.color = "#" + rgb2hex([r, g, b, a]);
-	  }
-      
+      const [r, g, b, a] = imgData.data;
+      if (this.type == "rgb") {
+        this.color = `rgb(${r}, ${g}, ${b})`;
+      } else {
+        this.color = "#" + rgb2hex([r, g, b, a]);
+      }
     },
     handleConfirm() {
       this.isHidden = true;
-	  window.removeEventListener("click", this.hidden);
-	  this.$emit("input", this.color);
+      window.removeEventListener("click", this.hidden);
+      this.$emit("input", this.color);
       this.$emit("change", this.color);
     },
     handleClear() {
       this.color = "";
     },
-    handleToggle(e) {
+    handleToggle() {
       this.isHidden = !this.isHidden;
       if (!this.isHidden) {
         window.addEventListener("click", this.hidden);
@@ -165,10 +183,10 @@ export default {
       this.handleToggle();
     }
   },
-  watch:{
-    value(){
-      this.color = this.value
-      console.log(this.value)
+  watch: {
+    value() {
+      this.color = this.value;
+      console.log(this.value);
     }
   }
 };

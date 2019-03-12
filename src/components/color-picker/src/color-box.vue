@@ -1,6 +1,10 @@
 <template>
   <div
-    :class="['layui-unselect', 'layui-colorpicker', (size ? 'layui-colorpicker-' + size : '')]"
+    :class="[
+      'layui-unselect',
+      'layui-colorpicker',
+      size ? 'layui-colorpicker-' + size : ''
+    ]"
     @click="handleClick"
   >
     <span>
@@ -12,9 +16,9 @@
         <i
           class="layui-icon layui-colorpicker-trigger-i"
           :class="{
-              'layui-icon-close': !color,
-              'layui-icon-down': color
-            }"
+            'layui-icon-close': !color,
+            'layui-icon-down': color
+          }"
         ></i>
       </span>
     </span>
@@ -44,5 +48,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

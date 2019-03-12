@@ -1,22 +1,22 @@
 <template>
-    <div class="layui-tab-item"
-         :class="{
-            'layui-show': name == $parent.value
-         }">
-        <slot></slot>
-    </div>
+  <div
+    class="layui-tab-item"
+    :class="{
+      'layui-show': name == $parent.value
+    }"
+  >
+    <slot></slot>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: 'LayTabPane',
-        props: {
-	        title: String,
-	        name: String
-        }
-    }
+export default {
+  name: "LayTabPane",
+  props: {
+    title: String,
+    name: String
+  }
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

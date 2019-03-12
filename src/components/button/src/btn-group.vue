@@ -5,16 +5,16 @@
 </template>
 
 <script>
-  export default {
-    name: 'LayButtonGroup'
-  }
+export default {
+  name: "LayButtonGroup"
+};
 </script>
 
 <style scoped>
-  i.left{
-    padding-right: 5px;
-  }
-  i.right{
-    padding-left: 5px;
-  }
+i.left {
+  padding-right: 5px;
+}
+i.right {
+  padding-left: 5px;
+}
 </style>

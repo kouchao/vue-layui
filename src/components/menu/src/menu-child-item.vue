@@ -2,7 +2,7 @@
   <dd>
     <a href="javascript:;" @click="handleClick">
       <i v-if="icon" :class="'layui-icon layui-icon-' + icon"></i>
-      {{title}}
+      {{ title }}
       <slot v-if="!title"></slot>
     </a>
   </dd>
