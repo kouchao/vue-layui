@@ -10,20 +10,20 @@
     "build:lib": "vue-cli-service build --target lib --name vue-lay src/index.js"
   },
   "dependencies": {
-    "async-validator": "^1.8.5",
-    "vue": "^2.5.17"
+    "async-validator": "^1.11.0",
+    "vue": "^2.6.10"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.5.1",
+    "@vue/cli-plugin-babel": "^3.5.5",
     "@vue/cli-plugin-eslint": "^3.5.1",
-    "@vue/cli-service": "^3.5.1",
+    "@vue/cli-service": "^3.5.3",
     "@vue/eslint-config-prettier": "^4.0.1",
     "axios": "^0.18.0",
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.8.0",
+    "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
-    "vue-router": "^3.0.1",
-    "vue-template-compiler": "^2.5.17"
+    "vue-router": "^3.0.3",
+    "vue-template-compiler": "^2.6.10"
   },
   "browserslist": [
     "> 1%",
