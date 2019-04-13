@@ -447,9 +447,9 @@
   <lay-col :md="1">
     <div class="grid-demo">不偏移</div>
   </lay-col>
-  </lay-row>
+</lay-row>
 
-  <lay-row>
+<lay-row>
   <lay-col :md="3" :offset="3">
     <div class="grid-demo grid-demo-bg1">偏移3列</div>
   </lay-col>
@@ -576,6 +576,20 @@
 | 参数           | 说明             | 类型      | 可选值                             | 默认值     |
 | ------------- | ---------------- | -------- | --------------------------------- | --------- |
 | space         | 列间隔            | `Number` | --                                | `0`       |
+
+
+<lay-block title="col 属性"></lay-block>
+<!-- {.md} -->
+
+| 参数        | 说明             | 类型      | 可选值                             | 默认值     |
+| -----------| ---------------- | -------- | --------------------------------- | --------- |
+| xs         | 布局占比(见layui说明) | `Number` | --                                | --       |
+| sm         | 布局占比          | `Number` | --                                | --       |
+| md         | 布局占比          | `Number` | --                                | --       |
+| lg         | 布局占比          | `Number` | --                                | --       |
+| xl         | 布局占比          | `Number` | --                                | --       |
+| offset     | 列偏移          | `Number` | --                                | `0`       |
+
 
 
 <script>
