@@ -3,23 +3,16 @@
     :key="index"
     class="layui-nav-item"
     :class="{
-      'layui-nav-itemed': isActive && !isCollapse
+      'layui-nav-itemed': isActive
     }"
     @mouseleave="onMouseLeave"
     @mouseenter="onMouseEnter"
   >
-    <a
-      @click="handleClick"
-      :class="{
-        'layui-nav-item-bar-l': isVertical,
-        'layui-nav-item-bar-b': !isVertical
-      }"
-      href="javascript:;"
-    >
+    <a @click="handleClick" href="javascript:;">
       <i v-if="icon" :class="'layui-icon layui-icon-' + icon"></i>
-      {{ !isCollapse ? title : "" }}
+      {{ title }}
 
-      <slot v-if="!title && !isCollapse" name="title"></slot>
+      <slot v-if="!title" name="title"></slot>
       <span class="layui-nav-more" v-if="$slots.default"></span>
     </a>
     <dl
@@ -49,12 +42,11 @@ export default {
     }
   },
   mixins: [eventHub],
-  inject: ["rootMenu", "admin"],
+  inject: ["rootMenu"],
   methods: {
     handleClick() {
       if (this.$slots.default && this.rootMenu.mode == "vertical") {
         this.eventEmit("menu-item-click", this);
-        this.eventEmitGlobal("change-collapse", false);
       }
     },
     onMouseEnter() {
@@ -76,10 +68,6 @@ export default {
     },
     isVertical() {
       return this.rootMenu.mode == "vertical";
-    },
-    isCollapse() {
-      const admin = this.admin || {};
-      return !this.isVertical ? false : admin.collapse;
     }
   }
 };

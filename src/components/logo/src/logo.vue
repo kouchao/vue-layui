@@ -1,22 +1,11 @@
 <template>
-  <div
-    class="layui-logo"
-    :class="{
-      'is-collapse': admin.collapse
-    }"
-  >
+  <div class="layui-logo">
     <slot></slot>
   </div>
 </template>
 <script>
 export default {
-  name: "LayLogo",
-  inject: ["admin"]
+  name: "LayLogo"
 };
 </script>
-<style scoped>
-.layui-layout-admin .layui-logo.is-collapse {
-  width: 60px;
-  overflow: hidden;
-}
-</style>
+<style scoped></style>

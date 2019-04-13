@@ -2,7 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 import About from "./views/About.vue";
-import Grid from "./views/Grid.vue";
+import Grid from "./views/Grid.md";
 import Button from "./views/Button.vue";
 import Form from "./views/Form.vue";
 import Nav from "./views/Nav.vue";

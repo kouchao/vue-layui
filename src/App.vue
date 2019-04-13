@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <lay-admin :collapse.sync="collapse">
+    <lay-admin>
       <lay-side>
         <lay-menu :default-openeds="[0, 1, 2]">
           <lay-menu-item :index="0" icon="component" title="快速开始">
@@ -109,33 +109,10 @@
       <div>
         <lay-header>
           <lay-logo>
-            <span v-if="!collapse">vue-layui</span>
-            <img
-              v-else
-              width="30"
-              src="https://cos.jskou.com/vue-layui-logo.png"
-              alt
-            />
+            <img width="30" src="https://cos.jskou.com/vue-layui-logo.png" />
+            <span style="margin-left: 5px">vue-layui</span>
           </lay-logo>
-          <lay-menu
-            mode="horizontal"
-            class="layui-layout-left"
-            :class="{
-              'is-collapse': collapse
-            }"
-          >
-            <lay-menu-item :index="0">
-              <template slot="title">
-                <i
-                  @click="collapse = !collapse"
-                  class="layui-icon"
-                  :class="{
-                    'layui-icon-spread-left': collapse,
-                    'layui-icon-shrink-right': !collapse
-                  }"
-                />
-              </template>
-            </lay-menu-item>
+          <lay-menu mode="horizontal" class="layui-layout-left">
             <lay-menu-item :index="1">
               <template slot="title">
                 <span>导航一</span>
@@ -232,7 +209,29 @@ export default {
   transition: 0.5s;
 }
 
-.layui-layout-left.is-collapse {
-  left: 60px;
+table.table {
+  display: block;
+  width: 100%;
+  background-color: #fff;
+  color: #5e6d82;
+  font-size: 14px;
+  border-collapse: collapse;
+  overflow: auto;
+  margin-bottom: 50px;
+}
+
+table.table td,
+table.table th {
+  border-top: 1px solid #f3f7fa;
+  border-bottom: 1px solid #f3f7fa;
+  padding: 10px 8px;
+}
+code.code_inline {
+  padding: 0.3em 0.5em;
+  font-size: 0.9em;
+  vertical-align: middle;
+  border: 1px solid #ececec;
+  border-radius: 2px;
+  background-color: #f7f7f7;
 }
 </style>

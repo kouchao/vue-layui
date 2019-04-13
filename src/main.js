@@ -7,9 +7,12 @@ import layui from "./index";
 import "@/assets/layui.css";
 import "@/assets/layer.css";
 import "@/assets/vue-layui.css";
-
+import "highlight.js/styles/atom-one-dark.css";
 Vue.use(layui);
 Vue.config.productionTip = false;
+
+import demoBlock from "./components/demo-block.vue";
+Vue.component("demo-block", demoBlock);
 
 new Vue({
   router,
