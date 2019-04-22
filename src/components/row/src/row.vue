@@ -1,26 +1,26 @@
 <template>
-  <div :class="classList">
-    <slot></slot>
+  <div
+    :class="[
+      'layui-row',
+      `layui-col-space${space}`
+    ]"
+  >
+    <slot />
   </div>
 </template>
 
 <script>
+import { oneOf } from '@/utils/validatorProps';
 export default {
-  name: "LayRow",
+  name: 'LayRow',
   props: {
-    space: Number
-  },
-  data: function() {
-    return {
-      classList: "layui-row "
-    };
-  },
-  mounted: function() {
-    if (this.space) {
-      this.classList += `layui-col-space${this.space} `;
+    space: {
+      type: Number,
+      default: 0,
+      validator (value) {
+        return oneOf('space', [0, 1, 3, 5, 8, 10, 12, 15, 18, 20, 22, 28, 30], value);
+      }
     }
   }
 };
 </script>
-
-<style></style>

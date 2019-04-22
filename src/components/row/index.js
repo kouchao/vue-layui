@@ -1,11 +1,7 @@
-/**
- * kouchao 创建于 2018/8/27
- */
-
-import LayRow from "./src/row";
+import Row from './src/row';
 /* istanbul ignore next */
-LayRow.install = function(Vue) {
-  Vue.component(LayRow.name, LayRow);
+Row.install = function (Vue) {
+  Vue.component(Row.name, Row);
 };
 
-export default LayRow;
+export default Row;
