@@ -2,14 +2,16 @@
   <div class="layui-inline">
     <ul
       class="layui-rate"
-      @mouseleave="handleMouseLeave()"
       :readonly="disabled"
+      @mouseleave="handleMouseLeave()"
     >
-      <li class="layui-inline" :key="item" v-for="(item, index) in rates">
+      <li
+        v-for="(item, index) in rates"
+        :key="item"
+        class="layui-inline"
+      >
         <i
           class="layui-icon"
-          @mousemove="handleMouseMove(index, $event)"
-          @click="handleClick()"
           :class="[
             {
               'layui-icon-rate-solid': item == 1,
@@ -19,12 +21,17 @@
             'layui-co-' + theme
           ]"
           :style="color ? 'color: ' + color : ''"
-        ></i>
+          @mousemove="handleMouseMove(index, $event)"
+          @click="handleClick()"
+        />
       </li>
     </ul>
-    <span class="layui-inline" v-if="showText || showScore">
+    <span
+      v-if="showText || showScore"
+      class="layui-inline"
+    >
       <span v-if="showScore">
-        <slot :rate="value"></slot>
+        <slot :rate="value" />
       </span>
       <span v-if="showText && !showScore && texts">{{
         texts[value] || ""
@@ -35,7 +42,7 @@
 
 <script>
 export default {
-  name: "LayRate",
+  name: 'LayRate',
   props: {
     max: {
       type: Number,
@@ -63,22 +70,37 @@ export default {
       type: Boolean,
       default: () => false
     },
-    texts: Object,
-    theme: String,
-    color: String
+    texts: {
+      type: Object,
+      default: () => []
+    },
+    theme: {
+      type: String,
+      default: ''
+    },
+    color: {
+      type: String,
+      default: ''
+    }
   },
-  data() {
+  data () {
     return {
       rates: [],
       rate: 0
     };
   },
-  mounted() {
+  watch: {
+    value () {
+      this.rate = this.value;
+      this.setRates();
+    }
+  },
+  mounted () {
     this.rate = this.value;
     this.setRates();
   },
   methods: {
-    setRates() {
+    setRates () {
       const { rate, max, allowHalf } = this;
       const rates = [];
       for (let i = 0; i < max; i++) {
@@ -90,7 +112,7 @@ export default {
       }
       this.rates = rates;
     },
-    handleMouseMove(key, e) {
+    handleMouseMove (key, e) {
       if (this.disabled) {
         return false;
       }
@@ -98,25 +120,19 @@ export default {
       this.rate = key + offset;
       this.setRates();
     },
-    handleMouseLeave() {
+    handleMouseLeave () {
       if (this.disabled) {
         return false;
       }
       this.rate = this.value;
       this.setRates();
     },
-    handleClick() {
+    handleClick () {
       if (this.disabled) {
         return false;
       }
-      this.$emit("input", this.rate);
-      this.$emit("change", this.rate);
-    }
-  },
-  watch: {
-    value() {
-      this.rate = this.value;
-      this.setRates();
+      this.$emit('input', this.rate);
+      this.$emit('change', this.rate);
     }
   }
 };

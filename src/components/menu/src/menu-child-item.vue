@@ -1,32 +1,42 @@
 <template>
   <dd>
-    <a href="javascript:;" @click="handleClick">
-      <i v-if="icon" :class="'layui-icon layui-icon-' + icon"></i>
+    <a
+      href="javascript:;"
+      @click="handleClick"
+    >
+      <i
+        v-if="icon"
+        :class="'layui-icon layui-icon-' + icon"
+      />
       {{ title }}
-      <slot v-if="!title"></slot>
+      <slot v-if="!title" />
     </a>
   </dd>
 </template>
 
 <script>
-import eventHub from "@/mixins/eventHub";
+import eventHub from '@/mixins/eventHub';
 export default {
-  name: "LayMenuChildItem",
+  name: 'LayMenuChildItem',
+  mixins: [eventHub],
   props: {
     title: {
-      type: String
+      type: String,
+      default: ''
     },
     to: {
-      type: Object
+      type: Object,
+      default: () => {}
+
     },
     icon: {
-      type: String
+      type: String,
+      default: ''
     }
   },
-  mixins: [eventHub],
-  inject: ["rootMenu"],
+  inject: ['rootMenu'],
   methods: {
-    handleClick() {
+    handleClick () {
       if (this.$route && this.to) {
         this.$router.push(this.to);
       }

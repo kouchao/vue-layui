@@ -6,16 +6,16 @@
 
 <script>
 export default {
-  name: "LayContainer",
+  name: 'LayContainer',
   props: {
     fluid: Boolean
   },
-  data: function() {
+  data: function () {
     return {
-      classList: "layui-container"
+      classList: 'layui-container'
     };
   },
-  mounted: function() {
+  mounted: function () {
     this.fluid
       ? (this.classList = `layui-fluid`)
       : (this.classList = `layui-container`);

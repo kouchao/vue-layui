@@ -8,52 +8,59 @@
       'is-textarea': isTextarea
     }"
   >
-    <label v-if="label" class="layui-form-label">{{ label }}</label>
+    <label
+      v-if="label"
+      class="layui-form-label"
+    >{{ label }}</label>
 
     <slot>{{ value }}</slot>
 
-    <div v-if="wordAux" class="layui-form-mid layui-word-aux">
+    <div
+      v-if="wordAux"
+      class="layui-form-mid layui-word-aux"
+    >
       {{ wordAux }}
     </div>
-    <div v-if="isError" class="layui-form-item__error">{{ message }}</div>
+    <div
+      v-if="isError"
+      class="layui-form-item__error"
+    >
+      {{ message }}
+    </div>
   </div>
 </template>
 
 <script>
-import asyncValidator from "async-validator";
+// import asyncValidator from 'async-validator';
 export default {
-  name: "LayFormItem",
+  name: 'LayFormItem',
   props: {
-    label: String,
+    label: {
+      type: String,
+      default: ''
+    },
     block: Boolean,
-    wordAux: String,
+    wordAux: {
+      type: String,
+      default: ''
+    },
     border: Boolean,
-    prop: String
+    prop: {
+      type: String,
+      default: ''
+    }
   },
-  data() {
+  data () {
     return {
       isRequired: false,
       isError: false,
-      message: "",
+      message: '',
       isTextarea: false
     };
   },
-  inject: ["rootForm"],
-  created() {
-    if (
-      this.rootForm &&
-      this.rootForm.rules &&
-      this.rootForm.model &&
-      this.prop &&
-      this.rootForm.rules[this.prop]
-    ) {
-      this.isRequired = this.rootForm.rules[this.prop].find(o => o.required)
-        ? true
-        : false;
-    }
-  },
+  inject: ['rootForm'],
   computed: {
-    value() {
+    value () {
       if (
         this.rootForm &&
         this.rootForm.rules &&
@@ -63,26 +70,36 @@ export default {
         this.validate();
         return this.rootForm.model[this.prop];
       }
+      return '';
     }
   },
-  mounted() {
-    this.isTextarea = this.$children.find(({ mName }) => mName == "LayTextarea")
-      ? true
-      : false;
+  created () {
+    if (
+      this.rootForm &&
+      this.rootForm.rules &&
+      this.rootForm.model &&
+      this.prop &&
+      this.rootForm.rules[this.prop]
+    ) {
+      this.isRequired = !!this.rootForm.rules[this.prop].find(o => o.required);
+    }
+  },
+  mounted () {
+    this.isTextarea = !!this.$children.find(({ mName }) => mName == 'LayTextarea');
   },
   methods: {
-    validate() {
+    validate () {
       const descriptor = {};
       descriptor[this.prop] = this.rootForm.rules[this.prop];
-      let validator = new asyncValidator(descriptor);
-      validator.validate(this.rootForm.model, errors => {
-        if (errors) {
-          this.isError = true;
-          this.message = errors[0].message;
-        } else {
-          this.isError = false;
-        }
-      });
+      // let validator = new asyncValidator(descriptor);
+      // validator.validate(this.rootForm.model, errors => {
+      //   if (errors) {
+      //     this.isError = true;
+      //     this.message = errors[0].message;
+      //   } else {
+      //     this.isError = false;
+      //   }
+      // });
     }
   }
 };

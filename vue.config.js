@@ -1,23 +1,23 @@
-const MarkdownItContainer = require("markdown-it-container");
-const MarkdownItCheckBox = require("markdown-it-task-checkbox");
-const MarkdownItDec = require("markdown-it-decorate");
+const MarkdownItContainer = require('markdown-it-container');
+const MarkdownItCheckBox = require('markdown-it-task-checkbox');
+const MarkdownItDec = require('markdown-it-decorate');
 /**
  * 增加 hljs 的 classname
  */
-const wrapCustomClass = function(render) {
-  return function(...args) {
+const wrapCustomClass = function (render) {
+  return function (...args) {
     return render(...args)
       .replace('<code class="', '<code class="hljs ')
-      .replace("<code>", '<code class="hljs">');
+      .replace('<code>', '<code class="hljs">');
   };
 };
 
 const vueMarkdown = {
   raw: true,
   // 定义处理规则
-  preprocess: function(MarkdownIt, source) {
+  preprocess: function (MarkdownIt, source) {
     // 表格
-    MarkdownIt.renderer.rules.table_open = function() {
+    MarkdownIt.renderer.rules.table_open = function () {
       return '<table class="table">';
     };
 
@@ -27,8 +27,8 @@ const vueMarkdown = {
     );
     // ```code``` 给这种样式加个class code_inline
     const codeInline = MarkdownIt.renderer.rules.code_inline;
-    MarkdownIt.renderer.rules.code_inline = function(...args) {
-      args[0][args[1]].attrJoin("class", "code_inline");
+    MarkdownIt.renderer.rules.code_inline = function (...args) {
+      args[0][args[1]].attrJoin('class', 'code_inline');
       return codeInline(...args);
     };
     return source;
@@ -37,20 +37,20 @@ const vueMarkdown = {
     // 'markdown-it-container'的作用是自定义代码块
     [
       MarkdownItContainer,
-      "demo",
+      'demo',
       {
         validate: params => params.trim().match(/^demo\s*(.*)$/),
-        render: function(tokens, idx) {
+        render: function (tokens, idx) {
           if (tokens[idx].nesting === 1) {
             return `<demo-block>
                         <div slot="highlight">`;
           }
-          return "</div></demo-block>\n";
+          return '</div></demo-block>\n';
         }
       }
     ],
-    [require("markdown-it-container"), "tip"],
-    [require("markdown-it-container"), "warning"],
+    [require('markdown-it-container'), 'tip'],
+    [require('markdown-it-container'), 'warning'],
     [
       MarkdownItCheckBox,
       {
@@ -62,20 +62,20 @@ const vueMarkdown = {
 };
 
 module.exports = {
-  outputDir: "dist",
+  outputDir: 'dist',
   css: {
     extract: true
   },
   // 扩展 webpack 配置，使 packages 加入编译
   chainWebpack: config => {
     config.module
-      .rule("md")
+      .rule('md')
       .test(/\.md/)
-      .use("vue-loader")
-      .loader("vue-loader")
+      .use('vue-loader')
+      .loader('vue-loader')
       .end()
-      .use("vue-markdown-loader")
-      .loader("vue-markdown-loader/lib/markdown-compiler")
+      .use('vue-markdown-loader')
+      .loader('vue-markdown-loader/lib/markdown-compiler')
       .options(vueMarkdown);
   }
 };

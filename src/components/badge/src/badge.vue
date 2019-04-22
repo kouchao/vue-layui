@@ -1,27 +1,39 @@
 <template>
-  <span :class="classList" :style="styleList">
-    <slot v-if="type != 'dot'"></slot>
+  <span
+    :class="classList"
+    :style="styleList"
+  >
+    <slot v-if="type != 'dot'" />
   </span>
 </template>
 <script>
 export default {
-  name: "LayBadge",
+  name: 'LayBadge',
   props: {
-    type: String,
-    theme: String,
-    color: String
+    type: {
+      type: String,
+      default: ''
+    },
+    theme: {
+      type: String,
+      default: ''
+    },
+    color: {
+      type: String,
+      default: ''
+    }
   },
-  data() {
+  data () {
     return {
       classList: [
         {
-          "layui-badge": !this.type,
-          "layui-badge-dot": this.type == "dot",
-          "layui-badge-rim": this.type == "rim"
+          'layui-badge': !this.type,
+          'layui-badge-dot': this.type == 'dot',
+          'layui-badge-rim': this.type == 'rim'
         },
-        "layui-bg-" + this.theme
+        'layui-bg-' + this.theme
       ],
-      styleList: this.color ? "background-color: " + this.color : ""
+      styleList: this.color ? 'background-color: ' + this.color : ''
     };
   }
 };

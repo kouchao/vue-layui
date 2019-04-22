@@ -2,10 +2,10 @@
  * kouchao 创建于
  */
 
-import LayMenuChildItem from "../menu/src/menu-child-item";
+import LayMenuChildItem from '../menu/src/menu-child-item';
 
 /* istanbul ignore next */
-LayMenuChildItem.install = function(Vue) {
+LayMenuChildItem.install = function (Vue) {
   Vue.component(LayMenuChildItem.name, LayMenuChildItem);
 };
 

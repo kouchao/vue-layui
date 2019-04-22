@@ -1,30 +1,33 @@
 <template>
-  <span class="layui-breadcrumb" style="visibility: visible;">
-    <slot></slot>
+  <span
+    class="layui-breadcrumb"
+    style="visibility: visible;"
+  >
+    <slot />
   </span>
 </template>
 <script>
 export default {
-  name: "LayBreadcrumb",
+  name: 'LayBreadcrumb',
   props: {
     separator: {
       type: String,
-      default() {
-        return "/";
+      default () {
+        return '/';
       }
     }
   },
-  provide() {
+  provide () {
     return {
       layBreadcrumb: this
     };
   },
-  mounted() {
+  mounted () {
     const items = this.$el.querySelectorAll(
-      ".layui-breadcrumb-item .separator"
+      '.layui-breadcrumb-item .separator'
     );
     if (items.length) {
-      items[items.length - 1].style.display = "none";
+      items[items.length - 1].style.display = 'none';
     }
   }
 };

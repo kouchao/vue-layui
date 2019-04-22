@@ -5,16 +5,22 @@
       'layui-show': name == $parent.value
     }"
   >
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script>
 export default {
-  name: "LayTabPane",
+  name: 'LayTabPane',
   props: {
-    title: String,
-    name: String
+    title: {
+      type: String,
+      default: ''
+    },
+    name: {
+      type: String,
+      default: ''
+    }
   }
 };
 </script>

@@ -1,12 +1,12 @@
 <template>
   <div class="layui-btn-group">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script>
 export default {
-  name: "LayButtonGroup"
+  name: 'LayButtonGroup'
 };
 </script>
 

@@ -1,16 +1,24 @@
 <template>
   <thead>
     <tr>
-      <th v-for="item in children" :key="item">{{ item }}</th>
+      <th
+        v-for="item in children"
+        :key="item"
+      >
+        {{ item }}
+      </th>
     </tr>
   </thead>
 </template>
 
 <script>
 export default {
-  name: "LayTableHeader",
+  name: 'LayTableHeader',
   props: {
-    children: Array
+    children: {
+      type: Array,
+      default: () => []
+    }
   }
 };
 </script>

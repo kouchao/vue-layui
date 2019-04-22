@@ -1,12 +1,12 @@
 <template>
   <div class="btn-container">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script>
 export default {
-  name: "LayButtonContainer"
+  name: 'LayButtonContainer'
 };
 </script>
 

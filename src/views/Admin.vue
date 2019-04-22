@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: "Admin"
+  name: 'Admin'
 };
 </script>
 

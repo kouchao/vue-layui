@@ -8,66 +8,80 @@
     @mouseleave="onMouseLeave"
     @mouseenter="onMouseEnter"
   >
-    <a @click="handleClick" href="javascript:;">
-      <i v-if="icon" :class="'layui-icon layui-icon-' + icon"></i>
+    <a
+      href="javascript:;"
+      @click="handleClick"
+    >
+      <i
+        v-if="icon"
+        :class="'layui-icon layui-icon-' + icon"
+      />
       {{ title }}
 
-      <slot v-if="!title" name="title"></slot>
-      <span class="layui-nav-more" v-if="$slots.default"></span>
+      <slot
+        v-if="!title"
+        name="title"
+      />
+      <span
+        v-if="$slots.default"
+        class="layui-nav-more"
+      />
     </a>
     <dl
-      class="layui-nav-child"
-      :class="this.rootMenu.mode"
       v-if="$slots.default"
+      class="layui-nav-child"
+      :class="rootMenu.mode"
     >
-      <slot></slot>
+      <slot />
     </dl>
   </li>
 </template>
 
 <script>
-import eventHub from "@/mixins/eventHub";
+import eventHub from '@/mixins/eventHub';
 export default {
-  name: "LayMenuItem",
+  name: 'LayMenuItem',
+  mixins: [eventHub],
   props: {
     index: {
       type: Number,
       required: true
     },
     title: {
-      type: String
+      type: String,
+      default: ''
     },
     icon: {
-      type: String
+      type: String,
+      default: ''
     }
   },
-  mixins: [eventHub],
-  inject: ["rootMenu"],
-  methods: {
-    handleClick() {
-      if (this.$slots.default && this.rootMenu.mode == "vertical") {
-        this.eventEmit("menu-item-click", this);
-      }
-    },
-    onMouseEnter() {
-      if (this.$slots.default && this.rootMenu.mode == "horizontal") {
-        this.eventEmit("menu-item-click", this);
-      }
-    },
-    onMouseLeave() {
-      if (this.$slots.default && this.rootMenu.mode == "horizontal") {
-        this.eventEmit("menu-item-click", this);
-      }
-    }
-  },
+  inject: ['rootMenu'],
   computed: {
-    isActive() {
+    isActive () {
       const isActive =
         this.rootMenu.openeds.findIndex(o => o == this.index) != -1;
       return isActive;
     },
-    isVertical() {
-      return this.rootMenu.mode == "vertical";
+    isVertical () {
+      return this.rootMenu.mode == 'vertical';
+    }
+  },
+  methods: {
+    handleClick () {
+      if (this.$slots.default && this.rootMenu.mode == 'vertical') {
+        this.eventEmit('menu-item-click', this);
+      }
+    },
+    onMouseEnter () {
+      if (this.$slots.default && this.rootMenu.mode == 'horizontal') {
+        this.eventEmit('menu-item-click', this);
+      }
+    },
+    onMouseLeave () {
+      if (this.$slots.default && this.rootMenu.mode == 'horizontal') {
+        this.eventEmit('menu-item-click', this);
+      }
     }
   }
 };

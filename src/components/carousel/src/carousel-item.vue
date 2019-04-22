@@ -8,14 +8,14 @@
       'layui-carousel-right': (isActive || isPrev) && isLefting
     }"
   >
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script>
 export default {
-  name: "LayCarouselItem",
-  data() {
+  name: 'LayCarouselItem',
+  data () {
     return {
       isNext: false,
       isActive: false,
@@ -24,10 +24,10 @@ export default {
       isLefting: false
     };
   },
-  created() {
+  created () {
     this.$parent && this.$parent.updateItems();
   },
-  destroyed() {
+  destroyed () {
     this.$parent && this.$parent.updateItems();
   }
 };

@@ -1,10 +1,10 @@
 <template>
   <div class="layui-header">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 <script>
 export default {
-  name: "LayHeader"
+  name: 'LayHeader'
 };
 </script>

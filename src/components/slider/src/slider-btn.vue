@@ -5,31 +5,22 @@
   >
     <div
       class="layui-slider-wrap-btn"
-      :class="['layui-bd-' + this.theme, { 'layui-disabled': disabled }]"
+      :class="['layui-bd-' + theme, { 'layui-disabled': disabled }]"
       style="border: 2px; border-style: solid"
       @mousedown="onDragStart"
       @mouseenter="handleMouseEnter"
       @mouseleave="handleMouseLeave"
-    ></div>
+    />
   </div>
 </template>
 
 <script>
 export default {
-  name: "LaySliderBtn",
-  data() {
-    return {
-      left: 0,
-      btnValue: 0,
-      isMouseDown: false,
-      startX: 0,
-      startLeft: 0
-    };
-  },
+  name: 'LaySliderBtn',
   props: {
     value: {
       type: Number,
-      requires: true
+      required: true
     },
     max: {
       type: Number,
@@ -44,22 +35,41 @@ export default {
       default: () => 1
     },
     sliderWidth: {
-      type: Number
+      type: Number,
+      default: 0
     },
     steps: {
-      type: Array
+      type: Array,
+      default: () => []
     },
     vertical: {
       type: Boolean
     },
-    theme: String,
+    theme: {
+      type: String,
+      default: ''
+    },
     disabled: Boolean
   },
-  mounted() {
+  data () {
+    return {
+      left: 0,
+      btnValue: 0,
+      isMouseDown: false,
+      startX: 0,
+      startLeft: 0
+    };
+  },
+  watch: {
+    value () {
+      this.setData();
+    }
+  },
+  mounted () {
     this.setData();
   },
   methods: {
-    setData() {
+    setData () {
       const { value, max, min } = this;
       this.btnValue = value;
 
@@ -69,30 +79,29 @@ export default {
       if (left < 0) left = 0;
       this.left = left;
     },
-    handleMouseEnter() {
-      this.$emit("tip", [true, this.left, this.btnValue]);
+    handleMouseEnter () {
+      this.$emit('tip', [true, this.left, this.btnValue]);
     },
-    handleMouseLeave() {
-      if (!this.isMouseDown)
-        this.$emit("tip", [false, this.left, parseInt(this.btnValue)]);
+    handleMouseLeave () {
+      if (!this.isMouseDown) { this.$emit('tip', [false, this.left, parseInt(this.btnValue)]); }
     },
-    handleChange() {
+    handleChange () {
       const { btnValue, max, min } = this;
       if (btnValue > max) this.btnValue = max;
       if (btnValue < min) this.btnValue = min;
-      this.$emit("tip", [true, this.left, this.btnValue]);
-      this.$emit("input", parseInt(this.btnValue));
+      this.$emit('tip', [true, this.left, this.btnValue]);
+      this.$emit('input', parseInt(this.btnValue));
     },
-    onDragStart(e) {
+    onDragStart (e) {
       e.preventDefault();
       this.isMouseDown = true;
       this.startX = this.vertical ? -e.screenY : e.screenX;
       this.startLeft = this.left;
 
-      window.addEventListener("mousemove", this.onDragging);
-      window.addEventListener("mouseup", this.onDragEnd);
+      window.addEventListener('mousemove', this.onDragging);
+      window.addEventListener('mouseup', this.onDragEnd);
     },
-    onDragging(e) {
+    onDragging (e) {
       if (this.disabled) {
         return false;
       }
@@ -119,18 +128,13 @@ export default {
       this.btnValue = Math.round(min + (left * (max - min)) / 100);
       this.handleChange();
     },
-    onDragEnd(e) {
+    onDragEnd (e) {
       e.returnValue = false;
 
       this.isMouseDown = false;
-      this.$emit("tip", [false, this.left, this.btnValue]);
-      window.removeEventListener("mousemove", this.onDragging);
-      window.removeEventListener("mouseup", this.onDragEnd);
-    }
-  },
-  watch: {
-    value() {
-      this.setData();
+      this.$emit('tip', [false, this.left, this.btnValue]);
+      window.removeEventListener('mousemove', this.onDragging);
+      window.removeEventListener('mouseup', this.onDragEnd);
     }
   }
 };

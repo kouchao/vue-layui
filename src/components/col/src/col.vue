@@ -1,31 +1,49 @@
 <template>
   <div :class="classList">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script>
 export default {
-  name: "LayCol",
+  name: 'LayCol',
   props: {
-    xs: Number,
-    sm: Number,
-    md: Number,
-    lg: Number,
-    xl: Number,
-    offset: Number
+    xs: {
+      type: Number,
+      default: 0
+    },
+    sm: {
+      type: Number,
+      default: 0
+    },
+    md: {
+      type: Number,
+      default: 0
+    },
+    lg: {
+      type: Number,
+      default: 0
+    },
+    xl: {
+      type: Number,
+      default: 0
+    },
+    offset: {
+      type: Number,
+      default: 0
+    }
   },
-  data: function() {
+  data: function () {
     return {
-      classList: ""
+      classList: ''
     };
   },
-  mounted: function() {
-    ["xs", "sm", "md", "lg", "xl"].forEach(size => {
+  mounted: function () {
+    ['xs', 'sm', 'md', 'lg', 'xl'].forEach(size => {
       if (this[size] && this[size] <= 12) {
         if (this.offset) {
           this.classList += `layui-col-${size + this[size]} `;
-          this.classList += `layui-col-${size + "-offset" + this.offset} `;
+          this.classList += `layui-col-${size + '-offset' + this.offset} `;
         } else {
           this.classList += `layui-col-${size + this[size]} `;
         }

@@ -12,7 +12,7 @@
     @mouseleave="handleLeave"
   >
     <div carousel-item="">
-      <slot></slot>
+      <slot />
     </div>
     <div
       class="layui-carousel-ind"
@@ -20,49 +20,50 @@
     >
       <ul>
         <li
-          :key="index"
           v-for="(item, index) in items"
+          :key="index"
           :class="{ 'layui-this': item.isActive }"
-        ></li>
+        />
       </ul>
     </div>
     <button
       class="layui-icon layui-carousel-arrow"
-      @click="handleSub"
       lay-type="sub"
+      @click="handleSub"
     >
-      <i v-if="anim == 'updown'" class="layui-icon layui-icon-up"></i>
-      <i v-else class="layui-icon layui-icon-left"></i>
+      <i
+        v-if="anim == 'updown'"
+        class="layui-icon layui-icon-up"
+      />
+      <i
+        v-else
+        class="layui-icon layui-icon-left"
+      />
     </button>
     <button
       class="layui-icon layui-carousel-arrow"
-      @click="handleAdd"
       lay-type="add"
+      @click="handleAdd"
     >
-      <i v-if="anim == 'updown'" class="layui-icon layui-icon-down"></i>
-      <i v-else class="layui-icon layui-icon-right"></i>
+      <i
+        v-if="anim == 'updown'"
+        class="layui-icon layui-icon-down"
+      />
+      <i
+        v-else
+        class="layui-icon layui-icon-right"
+      />
     </button>
   </div>
 </template>
 
 <script>
 export default {
-  name: "LayCarousel",
-  data() {
-    return {
-      activeItem: "",
-      nextItem: "",
-      prevItem: "",
-      items: [],
-      righting: false,
-      lefting: false,
-      timer: ""
-    };
-  },
+  name: 'LayCarousel',
   props: {
     arrow: {
       type: String,
-      default: () => "always"
+      default: () => 'always'
     },
     height: {
       type: Number,
@@ -74,11 +75,11 @@ export default {
     },
     anim: {
       type: String,
-      default: () => "default"
+      default: () => 'default'
     },
     indicator: {
       type: String,
-      default: () => "inside"
+      default: () => 'inside'
     },
     autoplay: {
       type: Boolean,
@@ -89,17 +90,38 @@ export default {
       default: () => 1500
     }
   },
-  mounted() {
+  data () {
+    return {
+      activeItem: '',
+      nextItem: '',
+      prevItem: '',
+      items: [],
+      righting: false,
+      lefting: false,
+      timer: ''
+    };
+  },
+  watch: {
+    autoplay () {
+      if (this.timer) clearInterval(this.timer);
+      this.play();
+    },
+    interval () {
+      if (this.timer) clearInterval(this.timer);
+      this.play();
+    }
+  },
+  mounted () {
     this.play();
   },
   methods: {
-    handleEnter() {
+    handleEnter () {
       this.stop();
     },
-    handleLeave() {
+    handleLeave () {
       this.play();
     },
-    handleSub() {
+    handleSub () {
       if (this.lefting) {
         return false;
       }
@@ -115,7 +137,7 @@ export default {
         this.setActiveItem(this.items[activeIndex - 1]);
       }, 300);
     },
-    handleAdd() {
+    handleAdd () {
       if (this.righting) {
         return false;
       }
@@ -131,13 +153,13 @@ export default {
         this.setActiveItem(this.items[activeIndex + 1]);
       }, 300);
     },
-    updateItems() {
+    updateItems () {
       this.items = this.$children.filter(
-        child => child.$options.name === "LayCarouselItem"
+        child => child.$options.name === 'LayCarouselItem'
       );
       this.setActiveItem(this.items[0]);
     },
-    updateItem() {
+    updateItem () {
       this.items.forEach(o => {
         o.isActive = o == this.activeItem;
         o.isPrev = o == this.prevItem;
@@ -146,7 +168,7 @@ export default {
         o.isLefting = this.lefting;
       });
     },
-    setActiveItem(item) {
+    setActiveItem (item) {
       this.activeItem = item;
       const activeIndex = this.items.findIndex(o => o === this.activeItem);
 
@@ -161,7 +183,7 @@ export default {
 
       this.updateItem();
     },
-    play() {
+    play () {
       if (this.autoplay) {
         if (this.timer) clearInterval(this.timer);
         this.timer = setInterval(() => {
@@ -171,20 +193,10 @@ export default {
         this.stop();
       }
     },
-    stop() {
+    stop () {
       if (this.autoplay) {
         if (this.timer) clearInterval(this.timer);
       }
-    }
-  },
-  watch: {
-    autoplay() {
-      if (this.timer) clearInterval(this.timer);
-      this.play();
-    },
-    interval() {
-      if (this.timer) clearInterval(this.timer);
-      this.play();
     }
   }
 };

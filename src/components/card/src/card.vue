@@ -1,15 +1,18 @@
 <template>
   <div class="layui-card">
-    <div class="layui-card-header" v-if="$slots.header">
-      <slot name="header"></slot>
+    <div
+      v-if="$slots.header"
+      class="layui-card-header"
+    >
+      <slot name="header" />
     </div>
     <div class="layui-card-body">
-      <slot></slot>
+      <slot />
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: "LayCard"
+  name: 'LayCard'
 };
 </script>

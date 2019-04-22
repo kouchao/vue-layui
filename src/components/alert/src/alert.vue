@@ -11,16 +11,18 @@
       :class="'layui-layer-' + skin"
       style="width: 300px; position: relative; margin: 15vh auto auto"
     >
-      <div class="layui-layer-title">{{ title }}</div>
+      <div class="layui-layer-title">
+        {{ title }}
+      </div>
       <div class="layui-layer-content">
-        <slot></slot>
+        <slot />
       </div>
       <span class="layui-layer-setwin">
         <a
-          @click="handleClose"
           class="layui-layer-ico layui-layer-close layui-layer-close1"
           href="javascript:;"
-        ></a>
+          @click="handleClose"
+        />
       </span>
       <div
         v-if="buttons.length"
@@ -34,10 +36,9 @@
         <a
           v-for="item in buttons"
           :key="item.title"
-          @click="item.handler"
           :class="item.isImportant ? 'layui-layer-btn0' : 'layui-layer-btn1'"
-          >{{ item.title }}</a
-        >
+          @click="item.handler"
+        >{{ item.title }}</a>
       </div>
     </div>
   </div>
@@ -45,38 +46,38 @@
 
 <script>
 export default {
-  name: "LayAlert",
+  name: 'LayAlert',
   props: {
     title: {
       type: String,
-      default() {
-        return "提示";
+      default () {
+        return '提示';
       }
     },
     visible: Boolean,
     buttons: {
       type: Array,
-      default() {
+      default () {
         return [];
       }
     },
     modal: Boolean,
     btnDirection: {
       type: String,
-      default() {
-        return "right";
+      default () {
+        return 'right';
       }
     },
     skin: {
       type: String,
-      default() {
-        return "page";
+      default () {
+        return 'page';
       }
     }
   },
   methods: {
-    handleClose() {
-      this.$emit("update:visible", false);
+    handleClose () {
+      this.$emit('update:visible', false);
     }
   }
 };

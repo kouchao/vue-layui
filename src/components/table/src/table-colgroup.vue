@@ -1,17 +1,24 @@
 <template>
   <colgroup>
-    <col v-for="item in children" :width="item" :key="item" />
+    <col
+      v-for="item in children"
+      :key="item"
+      :width="item"
+    >
     <div style="display: none">
-      <slot></slot>
+      <slot />
     </div>
   </colgroup>
 </template>
 
 <script>
 export default {
-  name: "LayTableColgroup",
+  name: 'LayTableColgroup',
   props: {
-    children: Array
+    children: {
+      type: Array,
+      default: () => []
+    }
   }
 };
 </script>

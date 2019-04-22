@@ -1,17 +1,23 @@
 <template>
-  <div></div>
+  <div />
 </template>
 
 <script>
 export default {
-  name: "LayTableColumn",
+  name: 'LayTableColumn',
   props: {
     prop: {
       type: String,
       required: true
     },
-    width: Number,
-    label: String
+    width: {
+      type: Number,
+      default: 0
+    },
+    label: {
+      type: String,
+      default: ''
+    }
   }
 };
 </script>

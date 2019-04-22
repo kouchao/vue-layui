@@ -1,35 +1,28 @@
 <template>
-  <ul class="layui-nav" :class="classList" :style="styleList">
-    <slot></slot>
+  <ul
+    class="layui-nav"
+    :class="classList"
+    :style="styleList"
+  >
+    <slot />
   </ul>
 </template>
 
 <script>
-import eventHub from "@/mixins/eventHub";
+import eventHub from '@/mixins/eventHub';
 
 export default {
-  name: "LayMenu",
-  data() {
-    return {
-      openeds: this.defaultOpeneds,
-      classList: [
-        {
-          "layui-nav-tree": this.mode == "vertical"
-        },
-        "layui-bg-" + this.theme
-      ],
-      styleList: this.color ? "background-color: " + this.color : ""
-    };
-  },
+  name: 'LayMenu',
+  mixins: [eventHub],
   props: {
     // horizontal / vertical
     mode: {
       type: String,
-      default: "vertical"
+      default: 'vertical'
     },
     defaultOpeneds: {
       type: Array,
-      default() {
+      default () {
         return [];
       }
     },
@@ -37,17 +30,37 @@ export default {
       type: Boolean,
       default: false
     },
-    theme: String,
-    color: String
+    theme: {
+      type: String,
+      default: ''
+    },
+    color: {
+      type: String,
+      default: ''
+    }
   },
-  mixins: [eventHub],
-  provide() {
+  data () {
+    return {
+      openeds: this.defaultOpeneds,
+      classList: [
+        {
+          'layui-nav-tree': this.mode == 'vertical'
+        },
+        'layui-bg-' + this.theme
+      ],
+      styleList: this.color ? 'background-color: ' + this.color : ''
+    };
+  },
+  provide () {
     return {
       rootMenu: this
     };
   },
+  mounted () {
+    this.eventOn('menu-item-click', this.handleItemClick);
+  },
   methods: {
-    handleItemClick(item) {
+    handleItemClick (item) {
       const { index } = item;
       const activeIndex = this.openeds.findIndex(o => o == index);
       if (activeIndex == -1) {
@@ -56,9 +69,6 @@ export default {
         this.openeds.splice(activeIndex, 1);
       }
     }
-  },
-  mounted() {
-    this.eventOn("menu-item-click", this.handleItemClick);
   }
 };
 </script>

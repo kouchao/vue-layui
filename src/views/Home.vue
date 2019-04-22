@@ -1,7 +1,16 @@
 <template>
-  <div class="site-anim" style="text-align: center;padding-top: 50px;">
-    <img width="300" src="https://cos.jskou.com/vue-layui-logo.png" alt="" />
-    <div style="font-size: 50px; line-height: 50px">vue-layui</div>
+  <div
+    class="site-anim"
+    style="text-align: center;padding-top: 50px;"
+  >
+    <img
+      width="300"
+      src="https://cos.jskou.com/vue-layui-logo.png"
+      alt=""
+    >
+    <div style="font-size: 50px; line-height: 50px">
+      vue-layui
+    </div>
     <div
       style="font-size: 30px; line-height: 30px; padding: 10px 10px 30px; color: #666"
     >
@@ -21,14 +30,16 @@
         class="demo-github"
         target="_blank"
       >
-        <i class="layui-icon layui-icon-rate-solid"></i>
+        <i class="layui-icon layui-icon-rate-solid" />
         <span>star {{ star }}</span>
       </a>
     </div>
 
     <div class="demo-introduce">
       <div class="demo-box">
-        <div class="demo-box-title">还不是很完美</div>
+        <div class="demo-box-title">
+          还不是很完美
+        </div>
         <div>
           <p>他还是一个demo级别的组件库</p>
           <p>正在一步步的走向健壮</p>
@@ -37,7 +48,9 @@
         </div>
       </div>
       <div class="demo-box">
-        <div class="demo-box-title">关注的人也很少</div>
+        <div class="demo-box-title">
+          关注的人也很少
+        </div>
         <div>
           <p>可能关注的人其实并没有</p>
           <p>可以看到只有{{ star }}Star</p>
@@ -46,7 +59,9 @@
         </div>
       </div>
       <div class="demo-box">
-        <div class="demo-box-title">一个人的开发</div>
+        <div class="demo-box-title">
+          一个人的开发
+        </div>
         <div>
           <p>需要更多地人来帮助</p>
           <p>只有短暂的下班时间</p>
@@ -65,27 +80,27 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios';
 
 export default {
-  name: "app",
-  data: function() {
+  name: 'App',
+  data: function () {
     return {
       star: 0
     };
   },
-  created: function() {
+  created: function () {
     this.testLayui();
     this.getStar();
   },
   methods: {
-    async getStar() {
+    async getStar () {
       const { data } = await axios(
-        "https://api.github.com/repos/kouchao/vue-layui"
+        'https://api.github.com/repos/kouchao/vue-layui'
       );
       this.star = data.stargazers_count;
     },
-    selectChange: function(val) {
+    selectChange: function (val) {
       console.log(`change: val=${val}`);
     }
   }

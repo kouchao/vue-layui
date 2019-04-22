@@ -1,40 +1,43 @@
 <template>
   <div class="layui-collapse">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script>
-import eventHub from "@/mixins/eventHub";
+import eventHub from '@/mixins/eventHub';
 export default {
-  name: "LayCollapse",
+  name: 'LayCollapse',
+  mixins: [eventHub],
   props: {
     defaultOpeneds: {
       type: Array,
-      default() {
+      default () {
         return [];
       }
     },
     accordion: {
       type: Boolean,
-      default() {
+      default () {
         return false;
       }
     }
   },
-  data() {
+  data () {
     return {
       openeds: this.defaultOpeneds
     };
   },
-  provide() {
+  provide () {
     return {
       rootCollapse: this
     };
   },
-  mixins: [eventHub],
+  mounted () {
+    this.eventOn('collapse-item-click', this.handleItemClick);
+  },
   methods: {
-    handleItemClick(item) {
+    handleItemClick (item) {
       const { index } = item;
       const activeIndex = this.openeds.findIndex(o => o == index);
       if (activeIndex == -1) {
@@ -43,9 +46,6 @@ export default {
         this.openeds.splice(activeIndex, 1);
       }
     }
-  },
-  mounted() {
-    this.eventOn("collapse-item-click", this.handleItemClick);
   }
 };
 </script>

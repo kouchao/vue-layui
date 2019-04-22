@@ -1,12 +1,12 @@
 <template>
   <ul class="layui-timeline">
-    <slot></slot>
+    <slot />
   </ul>
 </template>
 
 <script>
 export default {
-  name: "LayTimeline"
+  name: 'LayTimeline'
 };
 </script>
 

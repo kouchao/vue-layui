@@ -19,7 +19,7 @@
             'layui-icon-close': !color,
             'layui-icon-down': color
           }"
-        ></i>
+        />
       </span>
     </span>
   </div>
@@ -27,22 +27,26 @@
 
 <script>
 export default {
-  name: "ColorBox",
+  name: 'ColorBox',
   props: {
     color: {
-      type: String
+      type: String,
+      default: ''
     },
-    size: String
+    size: {
+      type: String,
+      default: ''
+    }
   },
-  data() {
+  data () {
     return {
-      format: "hex", //颜色显示/输入格式，可选 rgb,hex
-      alpha: false //是否开启透明度
+      format: 'hex', // 颜色显示/输入格式，可选 rgb,hex
+      alpha: false // 是否开启透明度
     };
   },
   methods: {
-    handleClick(evt) {
-      this.$emit("click", evt);
+    handleClick (evt) {
+      this.$emit('click', evt);
     }
   }
 };

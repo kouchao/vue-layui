@@ -2,10 +2,10 @@
  * kouchao 创建于 2018/9/4
  */
 
-import LayAlert from "./src/alert";
+import LayAlert from './src/alert';
 
 /* istanbul ignore next */
-LayAlert.install = function(Vue) {
+LayAlert.install = function (Vue) {
   Vue.component(LayAlert.name, LayAlert);
 };
 

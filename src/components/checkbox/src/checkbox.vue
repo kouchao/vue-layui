@@ -1,6 +1,11 @@
 <template>
   <span @click="handleClick">
-    <input type="checkbox" :name="name" title="写作" :value="label" />
+    <input
+      type="checkbox"
+      :name="name"
+      title="写作"
+      :value="label"
+    >
     <div
       class="layui-unselect"
       :class="[
@@ -12,32 +17,57 @@
       ]"
       :lay-skin="skin"
     >
-      <span><slot></slot></span>
+      <span><slot /></span>
 
-      <i v-if="skin == 'primary'" class="layui-icon layui-icon-ok"></i>
-      <i v-if="!skin" class="layui-icon layui-icon-ok"></i>
+      <i
+        v-if="skin == 'primary'"
+        class="layui-icon layui-icon-ok"
+      />
+      <i
+        v-if="!skin"
+        class="layui-icon layui-icon-ok"
+      />
     </div>
   </span>
 </template>
 
 <script>
 export default {
-  name: "LayCheckbox",
-  data: function() {
+  name: 'LayCheckbox',
+  props: {
+    value: {
+      type: Array,
+      default: () => []
+    },
+    label: {
+      type: [String, Number],
+      default: ''
+    },
+    disabled: Boolean,
+    name: {
+      type: String,
+      default: ''
+    },
+    skin: {
+      type: String,
+      default: ''
+    }
+  },
+  data: function () {
     return {
       hasValue: false,
-      text: ""
+      text: ''
     };
   },
-  props: {
-    value: Array,
-    label: [String, Number],
-    disabled: Boolean,
-    name: String,
-    skin: [String]
+  created: function () {
+    if (this.value.includes(this.label)) {
+      this.hasValue = true;
+    } else {
+      this.hasValue = false;
+    }
   },
   methods: {
-    handleClick: function() {
+    handleClick: function () {
       if (!this.disabled) {
         if (!this.value.includes(this.label)) {
           this.value.push(this.label);
@@ -53,15 +83,8 @@ export default {
         } else {
           this.hasValue = false;
         }
-        this.$emit("input", this.value);
+        this.$emit('input', this.value);
       }
-    }
-  },
-  created: function() {
-    if (this.value.includes(this.label)) {
-      this.hasValue = true;
-    } else {
-      this.hasValue = false;
     }
   }
 };

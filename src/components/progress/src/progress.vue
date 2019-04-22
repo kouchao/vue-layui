@@ -1,31 +1,52 @@
 <template>
-  <div class="layui-progress" :class="'layui-progress-' + size">
+  <div
+    class="layui-progress"
+    :class="'layui-progress-' + size"
+  >
     <div
       class="layui-progress-bar"
-      :class="'layui-bg-' + this.theme"
+      :class="'layui-bg-' + theme"
       :style="[
-        this.color ? 'background-color: ' + this.color : '',
+        color ? 'background-color: ' + color : '',
         {
-          width: this.percentage + '%'
+          width: percentage + '%'
         }
       ]"
     >
-      <span v-if="showText" class="layui-progress-text">
-        {{ text ? text : this.percentage + "%" }}
+      <span
+        v-if="showText"
+        class="layui-progress-text"
+      >
+        {{ text ? text : percentage + "%" }}
       </span>
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: "LayProgress",
+  name: 'LayProgress',
   props: {
-    percentage: Number,
-    theme: String,
-    color: String,
-    size: String,
+    percentage: {
+      type: Number,
+      default: 0
+    },
+    theme: {
+      type: String,
+      default: ''
+    },
+    color: {
+      type: String,
+      default: ''
+    },
+    size: {
+      type: String,
+      default: ''
+    },
     showText: Boolean,
-    text: String
+    text: {
+      type: String,
+      default: ''
+    }
   }
 };
 </script>

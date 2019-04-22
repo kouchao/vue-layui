@@ -5,36 +5,42 @@
       'layui-form-pane': border
     }"
   >
-    <slot></slot>
+    <slot />
   </form>
 </template>
 
 <script>
-import asyncValidator from "async-validator";
+// import asyncValidator from 'async-validator';
 
 export default {
-  name: "LayForm",
+  name: 'LayForm',
   props: {
     border: Boolean,
-    model: Object,
-    rules: Object
+    model: {
+      type: Object,
+      default: () => {}
+    },
+    rules: {
+      type: Object,
+      default: () => {}
+    }
   },
-  provide() {
+  provide () {
     return {
       rootForm: this
     };
   },
   methods: {
-    validate(cb) {
-      let validator = new asyncValidator(this.rules);
-      validator.validate(this.model, errors => {
-        if (errors) {
-          cb(false);
-        } else {
-          cb(true);
-        }
-      });
-    }
+    // validate (cb) {
+    //   let validator = new asyncValidator(this.rules);
+    //   validator.validate(this.model, errors => {
+    //     if (errors) {
+    //       cb(false);
+    //     } else {
+    //       cb(true);
+    //     }
+    //   });
+    // }
   }
 };
 </script>

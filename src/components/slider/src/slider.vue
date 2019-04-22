@@ -1,33 +1,35 @@
 <template>
   <div style="position: relative;">
     <div
+      ref="slider"
       class="layui-slider"
       :class="{ 'layui-slider-vertical': vertical, 'layui-disabled': disabled }"
       :style="vertical ? 'height: ' + height + 'px' : ''"
-      ref="slider"
     >
       <div
+        v-if="isShowTip && showTip"
         class="layui-slider-tips"
         :class="{
           'is-vertical': vertical
         }"
         style="display: inline-block"
-        v-if="isShowTip && showTip"
         :style="
           vertical ? 'bottom: ' + tipLeft + '%' : 'left: ' + tipLeft + '%'
         "
       >
-        <slot :value="tipVal">{{ tipVal }}</slot>
+        <slot :value="tipVal">
+          {{ tipVal }}
+        </slot>
       </div>
       <div
         class="layui-slider-bar"
-        :class="'layui-bg-' + this.theme"
+        :class="'layui-bg-' + theme"
         :style="
           (vertical ? 'bottom: ' + left + '%' : 'left: ' + left + '%') +
             '; ' +
             (vertical ? 'height: ' + width + '%' : 'width: ' + width + '%')
         "
-      ></div>
+      />
       <lay-slider-btn
         v-if="isArray"
         v-model="startValue"
@@ -36,12 +38,11 @@
         :step="step"
         :steps="steps"
         :slider-width="sliderWidth"
-        @tip="showOrHideTip"
         :vertical="vertical"
         :theme="theme"
         :disabled="disabled"
-      >
-      </lay-slider-btn>
+        @tip="showOrHideTip"
+      />
       <lay-slider-btn
         v-model="endValue"
         :max="max"
@@ -49,19 +50,18 @@
         :step="step"
         :steps="steps"
         :slider-width="sliderWidth"
-        @tip="showOrHideTip"
         :vertical="vertical"
         :theme="theme"
         :disabled="disabled"
-      >
-      </lay-slider-btn>
+        @tip="showOrHideTip"
+      />
       <template v-if="showStops">
         <div
-          :key="item"
           v-for="item in steps"
+          :key="item"
           class="layui-slider-step"
           :style="(vertical ? 'bottom' : 'left') + ': ' + item + '%'"
-        ></div>
+        />
       </template>
     </div>
     <div
@@ -75,29 +75,38 @@
         <input
           v-model="endValue"
           type="text"
-          @change="handleChange"
           class="layui-input"
-        />
+          @change="handleChange"
+        >
       </div>
-      <div class="layui-slider-input-btn" v-if="showInputBtn">
-        <i class="layui-icon layui-icon-up" @click="handleUp"></i>
-        <i class="layui-icon layui-icon-down" @click="handleDown"></i>
+      <div
+        v-if="showInputBtn"
+        class="layui-slider-input-btn"
+      >
+        <i
+          class="layui-icon layui-icon-up"
+          @click="handleUp"
+        />
+        <i
+          class="layui-icon layui-icon-down"
+          @click="handleDown"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import LaySliderBtn from "./slider-btn";
+import LaySliderBtn from './slider-btn';
 export default {
-  name: "LaySlider",
+  name: 'LaySlider',
   components: {
     LaySliderBtn
   },
   props: {
     value: {
       type: [Number, Array],
-      requires: true
+      required: true
     },
     max: {
       type: Number,
@@ -126,7 +135,7 @@ export default {
     },
     theme: {
       type: String,
-      default: () => "green"
+      default: () => 'green'
     },
     height: {
       type: Number,
@@ -134,7 +143,7 @@ export default {
     },
     disabled: Boolean
   },
-  data() {
+  data () {
     return {
       isMouseDown: false,
       showInputBtn: false,
@@ -150,14 +159,25 @@ export default {
       isArray: false
     };
   },
-  mounted() {
+  watch: {
+    value () {
+      this.setData();
+    },
+    startValue () {
+      this.handleChange();
+    },
+    endValue () {
+      this.handleChange();
+    }
+  },
+  mounted () {
     this.setData();
     this.sliderWidth = this.vertical
       ? this.$refs.slider.offsetHeight
       : this.$refs.slider.offsetWidth;
   },
   methods: {
-    setData() {
+    setData () {
       this.isArray = Array.isArray(this.value);
       const { value, min, isArray, max, step } = this;
       const steps = [];
@@ -175,7 +195,7 @@ export default {
       }
     },
 
-    handleUp() {
+    handleUp () {
       if (this.disabled) {
         return false;
       }
@@ -187,7 +207,7 @@ export default {
       }
       this.handleChange();
     },
-    handleDown() {
+    handleDown () {
       if (this.disabled) {
         return false;
       }
@@ -200,7 +220,7 @@ export default {
 
       this.handleChange();
     },
-    handleChange() {
+    handleChange () {
       const { endValue, max, min, startValue, isArray } = this;
       if (endValue > max) this.endValue = max;
       if (endValue < min) this.endValue = min;
@@ -211,27 +231,16 @@ export default {
         ((Math.max(...array) - Math.min(...array)) / (max - min) || 0) * 100;
 
       if (isArray) {
-        this.$emit("input", array);
-        this.$emit("change", array);
+        this.$emit('input', array);
+        this.$emit('change', array);
       } else {
-        this.$emit("input", endValue);
-        this.$emit("change", endValue);
+        this.$emit('input', endValue);
+        this.$emit('change', endValue);
       }
     },
-    showOrHideTip(val) {
+    showOrHideTip (val) {
       [this.isShowTip, this.tipLeft, this.tipVal] = val;
       this.tipVal = parseInt(this.tipVal);
-    }
-  },
-  watch: {
-    value() {
-      this.setData();
-    },
-    startValue() {
-      this.handleChange();
-    },
-    endValue() {
-      this.handleChange();
     }
   }
 };

@@ -1,44 +1,55 @@
 <template>
   <span>
-    <input type="radio" :value="label" :name="name" />
+    <input
+      type="radio"
+      :value="label"
+      :name="name"
+    >
     <div
       class="layui-unselect layui-form-radio"
-      @click="handleClick"
       :class="{
         'layui-form-radioed': value == label,
         'layui-radio-disbaled layui-disabled': disabled
       }"
+      @click="handleClick"
     >
       <i
         v-if="value != label"
         class="layui-anim layui-icon layui-anim-scaleSpring"
         :class="{ 'layui-form-radioed': value != label }"
-        >&#xe63f;</i
-      >
+      >&#xe63f;</i>
       <i
         v-if="value == label"
         class="layui-anim layui-icon layui-anim-scaleSpring"
         :class="{ 'layui-form-radioed': value == label }"
-        >&#xe643;</i
-      >
-      <span><slot></slot></span>
+      >&#xe643;</i>
+      <span><slot /></span>
     </div>
   </span>
 </template>
 
 <script>
 export default {
-  name: "LayRadio",
+  name: 'LayRadio',
   props: {
-    value: [String, Number],
-    label: [String, Number],
+    value: {
+      type: [String, Number],
+      default: ''
+    },
+    label: {
+      type: [String, Number],
+      default: ''
+    },
     disabled: Boolean,
-    name: String
+    name: {
+      type: String,
+      default: ''
+    }
   },
   methods: {
-    handleClick: function() {
+    handleClick: function () {
       if (!this.disabled) {
-        this.$emit("input", this.label);
+        this.$emit('input', this.label);
       }
     }
   }

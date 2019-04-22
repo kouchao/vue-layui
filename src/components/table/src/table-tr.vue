@@ -1,15 +1,26 @@
 <template>
   <tr>
-    <td v-for="item in children" :key="item.prop">{{ data[item.prop] }}</td>
+    <td
+      v-for="item in children"
+      :key="item.prop"
+    >
+      {{ data[item.prop] }}
+    </td>
   </tr>
 </template>
 
 <script>
 export default {
-  name: "LayTableHeader",
+  name: 'LayTableHeader',
   props: {
-    children: Array,
-    data: Object
+    children: {
+      type: Array,
+      default: () => []
+    },
+    data: {
+      type: Object,
+      default: () => {}
+    }
   }
 };
 </script>

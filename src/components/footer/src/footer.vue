@@ -1,10 +1,10 @@
 <template>
   <div class="layui-footer">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 <script>
 export default {
-  name: "LayFooter"
+  name: 'LayFooter'
 };
 </script>

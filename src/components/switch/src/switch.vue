@@ -8,52 +8,55 @@
       }"
     >
       <em>{{ value == activeValue ? activeText : inactiveText }}</em>
-      <i></i>
+      <i />
     </div>
   </span>
 </template>
 
 <script>
 export default {
-  name: "LaySwitch",
+  name: 'LaySwitch',
   props: {
-    value: [String, Array, Boolean],
+    value: {
+      type: [String, Array, Boolean],
+      default: ''
+    },
     activeValue: {
       type: [String, Array, Boolean],
-      default() {
+      default () {
         return true;
       }
     },
     inactiveValue: {
       type: [String, Array, Boolean],
-      default() {
+      default () {
         return false;
       }
     },
     activeText: {
       type: String,
-      default() {
-        return "ON";
+      default () {
+        return 'ON';
       }
     },
     inactiveText: {
       type: String,
-      default() {
-        return "OFF";
+      default () {
+        return 'OFF';
       }
     },
     disabled: Boolean
   },
   methods: {
-    handleClick: function() {
+    handleClick: function () {
       if (this.disabled) {
         return false;
       }
 
       const value =
         this.value == this.activeValue ? this.inactiveValue : this.activeValue;
-      this.$emit("input", value);
-      this.$emit("change", value);
+      this.$emit('input', value);
+      this.$emit('change', value);
     }
   }
 };

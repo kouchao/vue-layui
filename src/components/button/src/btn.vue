@@ -15,10 +15,17 @@
       }
     ]"
   >
-    <i v-if="icon && !right" class="left" :class="icon"></i>
-    <slot><span style="margin: -2px"></span></slot>
-    <i v-if="icon && right" class="right" :class="icon"></i
-  ></a>
+    <i
+      v-if="icon && !right"
+      class="left"
+      :class="icon"
+    />
+    <slot><span style="margin: -2px" /></slot>
+    <i
+      v-if="icon && right"
+      class="right"
+      :class="icon"
+    /></a>
 
   <button
     v-else
@@ -35,38 +42,56 @@
     ]"
     @click="handleClick"
   >
-    <i v-if="icon && !right" class="left" :class="icon"></i>
-    <slot><span style="margin: -2px"></span></slot>
-    <i v-if="icon && right" class="right" :class="icon"></i>
+    <i
+      v-if="icon && !right"
+      class="left"
+      :class="icon"
+    />
+    <slot><span style="margin: -2px" /></slot>
+    <i
+      v-if="icon && right"
+      class="right"
+      :class="icon"
+    />
   </button>
 </template>
 
 <script>
 export default {
-  name: "LayButton",
+  name: 'LayButton',
   props: {
     item: {
-      item: String,
-      default: "default"
+      type: String,
+      default: 'default'
     },
-    size: String,
+    size: {
+      type: String,
+      default: ''
+    },
     radius: Boolean,
     disabled: Boolean,
-    icon: String,
+    icon: {
+      type: String,
+      default: ''
+    },
     right: Boolean,
-    type: String,
+    type: {
+      type: String,
+      default: ''
+    },
     fluid: Boolean,
-    url: String,
+    url: {
+      type: String,
+      default: ''
+    },
     target: {
       type: String,
-      default() {
-        return "_blank";
-      }
+      default: '_blank'
     }
   },
   methods: {
-    handleClick(evt) {
-      this.$emit("click", evt);
+    handleClick (evt) {
+      this.$emit('click', evt);
     }
   }
 };

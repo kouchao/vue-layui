@@ -8,8 +8,11 @@
     :style="styleName"
   >
     <legend>{{ title }}</legend>
-    <div class="layui-field-box" v-if="$slots.default">
-      <slot></slot>
+    <div
+      v-if="$slots.default"
+      class="layui-field-box"
+    >
+      <slot />
     </div>
   </fieldset>
   <blockquote
@@ -18,22 +21,31 @@
     :class="'layui-quote-' + theme"
     :style="styleName"
   >
-    <slot></slot>
+    <slot />
   </blockquote>
 </template>
 
 <script>
 export default {
-  name: "LayBlock",
+  name: 'LayBlock',
   props: {
-    color: String,
-    title: String,
-    theme: String
+    color: {
+      type: String,
+      default: ''
+    },
+    title: {
+      type: String,
+      default: ''
+    },
+    theme: {
+      type: String,
+      default: ''
+    }
   },
-  data: function() {
+  data: function () {
     return {
       styleName: {
-        "border-color": this.color
+        'border-color': this.color
       }
     };
   }

@@ -1,10 +1,10 @@
 <template>
   <div class="layui-body">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 <script>
 export default {
-  name: "LayBody"
+  name: 'LayBody'
 };
 </script>

@@ -5,40 +5,48 @@
       :name="name"
       :placeholder="placeholder"
       class="layui-textarea"
-      @input="handleChange"
       :value="value"
       :disabled="disabled"
       :class="{
         'layui-radio-disbaled layui-disabled': disabled
       }"
-    >
-    </textarea>
+      @input="handleChange"
+    />
   </div>
 </template>
 
 <script>
 export default {
-  name: "LayTextarea",
-  data() {
-    return {
-      mName: "LayTextarea"
-    };
-  },
+  name: 'LayTextarea',
   props: {
-    value: [String, Number],
-    placeholder: String,
+    value: {
+      type: [String, Number],
+      default: ''
+    },
+    placeholder: {
+      type: String,
+      default: ''
+    },
     disabled: Boolean,
     type: {
       type: String,
-      default: "text"
+      default: 'text'
     },
-    name: String,
+    name: {
+      type: String,
+      default: ''
+    },
     required: Boolean
   },
+  data () {
+    return {
+      mName: 'LayTextarea'
+    };
+  },
   methods: {
-    handleChange: function() {
+    handleChange: function () {
       if (!this.disabled) {
-        this.$emit("input", event.target.value);
+        this.$emit('input', event.target.value);
       }
     }
   }

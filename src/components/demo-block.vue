@@ -1,10 +1,13 @@
 <template>
   <div class="docs-demo-wrapper">
-    <div :style="{ height: isExpand ? 'auto' : '0' }" class="demo-container">
+    <div
+      :style="{ height: isExpand ? 'auto' : '0' }"
+      class="demo-container"
+    >
       <div span="14">
         <div class="docs-demo docs-demo--expand">
           <div class="highlight-wrapper">
-            <slot name="highlight"></slot>
+            <slot name="highlight" />
           </div>
         </div>
       </div>
