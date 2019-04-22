@@ -25,7 +25,8 @@
       v-if="icon && right"
       class="right"
       :class="icon"
-    /></a>
+    />
+  </a>
 
   <button
     v-else

@@ -1,12 +1,8 @@
-/**
- * kouchao 创建于 2018/8/27
- */
-
-import LayBtn from './src/btn';
+import Button from './src/button';
 
 /* istanbul ignore next */
-LayBtn.install = function (Vue) {
-  Vue.component(LayBtn.name, LayBtn);
+Button.install = function (Vue) {
+  Vue.component(Button.name, Button);
 };
 
-export default LayBtn;
+export default Button;

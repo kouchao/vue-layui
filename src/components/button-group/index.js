@@ -1,12 +1,8 @@
-/**
- * kouchao 创建于 2018/8/27
- */
-
-import LayButtonGroup from '../button/src/btn-group';
+import ButtonGroup from '../button/src/button-group';
 
 /* istanbul ignore next */
-LayButtonGroup.install = function (Vue) {
-  Vue.component(LayButtonGroup.name, LayButtonGroup);
+ButtonGroup.install = function (Vue) {
+  Vue.component(ButtonGroup.name, ButtonGroup);
 };
 
-export default LayButtonGroup;
+export default ButtonGroup;

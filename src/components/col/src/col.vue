@@ -26,10 +26,6 @@ export default {
       type: Number,
       default: 0
     },
-    xl: {
-      type: Number,
-      default: 0
-    },
     offset: {
       type: Number,
       default: 0
@@ -55,5 +51,3 @@ export default {
   }
 };
 </script>
-
-<style></style>

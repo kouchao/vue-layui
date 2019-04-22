@@ -1,12 +1,8 @@
-/**
- * kouchao 创建于 2018/8/27
- */
-
-import LayButtonContainer from '../button/src/btn-container';
+import ButtonContainer from '../button/src/button-container';
 
 /* istanbul ignore next */
-LayButtonContainer.install = function (Vue) {
-  Vue.component(LayButtonContainer.name, LayButtonContainer);
+ButtonContainer.install = function (Vue) {
+  Vue.component(ButtonContainer.name, ButtonContainer);
 };
 
-export default LayButtonContainer;
+export default ButtonContainer;
