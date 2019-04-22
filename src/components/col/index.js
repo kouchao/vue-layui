@@ -1,12 +1,8 @@
-/**
- * kouchao 创建于 2018/8/27
- */
-
-import LayCol from './src/col';
+import Col from './src/col';
 
 /* istanbul ignore next */
-LayCol.install = function (Vue) {
-  Vue.component(LayCol.name, LayCol);
+Col.install = function (Vue) {
+  Vue.component(Col.name, Col);
 };
 
-export default LayCol;
+export default Col;

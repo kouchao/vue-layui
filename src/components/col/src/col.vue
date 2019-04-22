@@ -1,5 +1,7 @@
 <template>
-  <div :class="classList">
+  <div
+    :class="classList"
+  >
     <slot />
   </div>
 </template>
@@ -33,22 +35,23 @@ export default {
       default: 0
     }
   },
-  data: function () {
+  data () {
     return {
-      classList: ''
+      classList: []
     };
   },
-  mounted: function () {
-    ['xs', 'sm', 'md', 'lg', 'xl'].forEach(size => {
+  mounted () {
+    const sizeList = ['xs', 'sm', 'md', 'lg'];
+    const classList = [];
+    sizeList.forEach(size => {
       if (this[size] && this[size] <= 12) {
+        classList.push(`layui-col-${size + this[size]}`);
         if (this.offset) {
-          this.classList += `layui-col-${size + this[size]} `;
-          this.classList += `layui-col-${size + '-offset' + this.offset} `;
-        } else {
-          this.classList += `layui-col-${size + this[size]} `;
+          classList.push(`layui-col-${size + '-offset' + this.offset}`);
         }
       }
     });
+    this.classList = classList;
   }
 };
 </script>
