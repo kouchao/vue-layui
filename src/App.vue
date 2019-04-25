@@ -97,6 +97,10 @@
               :to="{ name: 'layer' }"
             />
             <lay-menu-child-item
+              title="日期与时间选择"
+              :to="{ name: 'datePicker' }"
+            />
+            <lay-menu-child-item
               title="分页"
               :to="{ name: 'laypage' }"
             />

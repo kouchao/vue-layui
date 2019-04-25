@@ -6,6 +6,7 @@ import layui from './index';
 
 import '@/assets/layui.css';
 import '@/assets/layer.css';
+import '@/assets/lay-date/laydate.css';
 import '@/assets/vue-layui.css';
 import 'highlight.js/styles/atom-one-dark.css';
 

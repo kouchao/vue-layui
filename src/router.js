@@ -21,6 +21,7 @@ import Rate from './views/Rate.vue';
 import Slider from './views/Slider.vue';
 import Carousel from './views/Carousel.vue';
 import ColorPicker from './views/ColorPicker.vue';
+import DatePicker from './views/DatePicker.md';
 
 Vue.use(Router);
 
@@ -130,6 +131,11 @@ export default new Router({
       path: '/colorPicker',
       name: 'colorPicker',
       component: ColorPicker
+    },
+    {
+      path: '/datePicker',
+      name: 'datePicker',
+      component: DatePicker
     }
   ]
 });
