@@ -63,6 +63,9 @@ const vueMarkdown = {
 
 module.exports = {
   outputDir: 'dist',
+  publicPath: process.env.NODE_ENV === 'production'
+    ? 'http://cdn.jskou.com/'
+    : '/',
   css: {
     extract: true
   },
