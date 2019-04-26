@@ -1,5 +1,5 @@
 <template>
-  <div :class="$parent.block ? 'layui-input-block' : 'layui-input-inline'">
+  <div :class="['lay-date-picker', $parent.block ? 'layui-input-block' : 'layui-input-inline']">
     <input
       ref="input"
       :name="name"
@@ -10,8 +10,7 @@
       :class="{
         'layui-radio-disbaled layui-disabled': disabled
       }"
-      @focus="handeleFocus"
-      @blur="handeleBlur"
+      @click="handeleFocus"
       @change="handleChange"
     >
   </div>
@@ -46,11 +45,12 @@ export default {
     },
     number: Boolean
   },
-  data () {
-    return {};
+  destroyed () {
+    this.handleHide();
   },
   methods: {
     handeleFocus () {
+      document.addEventListener('click', this.handleHide);
       if (this.picker) {
         this.picker.showToast(() => {
           this.picker.$el.appendChild(this.main.$el);
@@ -63,15 +63,18 @@ export default {
       this.main.$mount();
       this.main.$on('change', this.emitChange);
       this.main.$on('close', () => {
-        this.picker.show = false;
+        this.handleHide();
       });
 
       this.picker.showToast(() => {
         this.picker.$el.appendChild(this.main.$el);
       });
     },
-    handeleBlur () {
-      // this.picker.show = false;
+    handleHide (e) {
+      if (!e || !e.path.find(o => o.className && o.className.includes('lay-date-picker'))) {
+        document.removeEventListener('click', this.handleHide);
+        this.picker.show = false;
+      }
     },
     handleChange () {
       if (!this.disabled) {

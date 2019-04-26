@@ -58,4 +58,10 @@ li {
     list-style: none
 }
 
+/* 日期选择器 月份内容覆盖 */
+.layui-laydate-list {
+    position: unset !important;
+    padding: 0 !important;
+}
+
 

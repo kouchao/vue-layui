@@ -25,7 +25,7 @@
               'laydate-day-next': date.month > month,
               'layui-this': isday(date)
             }"
-            @click="emitChange(date)"
+            @click="emitChange(date.day, date.month)"
           >
             {{ date.day }}
           </td>
@@ -133,12 +133,11 @@ export default {
     isPrev (date) {
       return date.month < this.month || date.year < this.year;
     },
-    emitChange (date) {
-      this.$emit('change', {
-        year: date.year,
-        month: date.month,
-        day: date.day
-      });
+    emitChange (day, month) {
+      if (month != this.month) {
+        return false;
+      }
+      this.$emit('change', day);
     }
   }
 };

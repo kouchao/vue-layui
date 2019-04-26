@@ -1,21 +1,33 @@
 <template>
-  <div class="layui-laydate-main laydate-main-list-0">
-    <picker-header
-      :year="yearText"
-      :month="monthText"
-      @prevYear="handlePrevYear"
-      @prevMonth="handlePrevMonth"
-      @selectYear="handleSelectYear"
-      @selectMonth="handleSelectMonth"
-      @nextYear="handleNextYear"
-      @nextMonth="handleNextMonth"
-    />
-    <day-content
-      :year="selectedYear"
-      :month="selectedMonth"
-      :day="selectedDay"
-      @change="handerDayChange"
-    />
+  <div>
+    <div class="layui-laydate-main laydate-main-list-0">
+      <picker-header
+        v-model="selectedType"
+        :year="selectedYear"
+        :month="selectedMonth"
+        @prevYear="handlePrevYear"
+        @prevMonth="handlePrevMonth"
+        @nextYear="handleNextYear"
+        @nextMonth="handleNextMonth"
+      />
+      <date-table
+        v-if="selectedType == 'date'"
+        :year="selectedYear"
+        :month="selectedMonth"
+        :day="selectedDay"
+        @change="handerDateTableChange"
+      />
+      <month-table
+        v-else-if="selectedType == 'month'"
+        :month="selectedMonth"
+        @change="handerMonthTableChange"
+      />
+      <year-table
+        v-else-if="selectedType == 'year'"
+        :year="selectedYear"
+        @change="handerYearTableChange"
+      />
+    </div>
     <!-- TODO: footer Components -->
     <div class="layui-laydate-footer">
       <div class="laydate-footer-btns">
@@ -45,13 +57,18 @@
 <script>
 import { getDaysInMonth } from '../utils';
 
-import DayContent from '../content';
+import DateTable from '../content/date-table';
+import MonthTable from '../content/month-table';
+import YearTable from '../content/year-table';
+
 import PickerHeader from '../header';
 
 export default {
   name: 'Main',
   components: {
-    DayContent,
+    DateTable,
+    MonthTable,
+    YearTable,
     PickerHeader
   },
   data () {
@@ -59,52 +76,53 @@ export default {
       selectedYear: 0,
       selectedMonth: 0,
       selectedDay: 0,
-      // day year month
-      type: 'day',
-      yearText: '',
-      monthText: ''
+      // date year month
+      selectedType: 'date'
     };
   },
   created () {
     // // 测试当前时间
-    this.updateDay(new Date());
-
-    // 测试2月
-    // this.updateDay(new Date('2019/02/02'));
-
-    // // 测试闰年二月
-    // this.updateDay(new Date('2020/02/02'));
-
-    // // 测试1月
-    // this.updateDay(new Date('2019/01/02'));
-
-    // // 测试12月
-
+    const date = new Date();
+    this.handerYearTableChange(date.getFullYear());
+    this.handerMonthTableChange(date.getMonth());
+    this.handerDateTableChange(date.getDate());
   },
   methods: {
-    updateDay (date) {
-      this.selectedYear = date.getFullYear();
-      this.selectedMonth = date.getMonth();
-      this.selectedDay = date.getDate();
-
-      this.yearText = `${this.selectedYear}年`;
-      this.monthText = `${this.selectedMonth + 1}月`;
+    handerDateTableChange (day) {
+      this.selectedDay = day;
     },
-    handerDayChange (date) {
-      this.selectedYear = date.year;
-      this.selectedMonth = date.month;
-      this.selectedDay = date.day;
+    handerMonthTableChange (month, isHeaderChange) {
+      this.selectedMonth = month;
+      if (!isHeaderChange) {
+        this.selectedType = 'date';
+      }
 
-      this.yearText = `${this.selectedYear}年`;
-      this.monthText = `${this.selectedMonth + 1}月`;
+      let _day = this.checkDay();
+      this.handerDateTableChange(_day);
+    },
+    handerYearTableChange (year, isHeaderChange) {
+      this.selectedYear = year;
+      if (!isHeaderChange) {
+        this.selectedType = 'date';
+      }
+
+      let _day = this.checkDay();
+      this.handerDateTableChange(_day);
+
     },
     emitChange (isClear) {
       const val = isClear ? '' : `${this.selectedYear}/${this.selectedMonth + 1}/${this.selectedDay}`;
       this.$emit('change', val);
       this.$emit('close');
     },
+    checkDay (year = this.selectedYear, month = this.selectedMonth, day = this.selectedDay) {
+      const daysInMonth = getDaysInMonth(year, month);
+      if (day > daysInMonth) {
+        day = daysInMonth;
+      }
+      return day;
+    },
     handlePrevMonth () {
-
       let _year = this.selectedYear;
       let _month = this.selectedMonth - 1;
 
@@ -113,13 +131,8 @@ export default {
         _year = _year - 1;
       }
 
-      const daysInMonth = getDaysInMonth(_year, _month);
-
-      let _day = this.selectedDay;
-      if (_day > daysInMonth) {
-        _day = daysInMonth;
-      }
-      this.updateDay(new Date(`${_year}/${_month + 1}/${_day}`));
+      this.handerYearTableChange(_year, true);
+      this.handerMonthTableChange(_month, true);
     },
     handleNextMonth () {
 
@@ -131,52 +144,29 @@ export default {
         _year = _year + 1;
       }
 
-      const daysInMonth = getDaysInMonth(_year, _month);
-
-      let _day = this.selectedDay;
-      if (_day > daysInMonth) {
-        _day = daysInMonth;
-      }
-      this.updateDay(new Date(`${_year}/${_month + 1}/${_day}`));
+      this.handerYearTableChange(_year, true);
+      this.handerMonthTableChange(_month, true);
     },
     handlePrevYear () {
-      let _year = this.selectedYear - 1;
-      let _month = this.selectedMonth;
-
-      const daysInMonth = getDaysInMonth(_year, _month);
-
-      let _day = this.selectedDay;
-      if (_day > daysInMonth) {
-        _day = daysInMonth;
-      }
-      this.updateDay(new Date(`${_year}/${_month + 1}/${_day}`));
+      let _year = this.selectedType == 'year' ? this.selectedYear - 15 : this.selectedYear - 1;
+      this.handerYearTableChange(_year, true);
     },
     handleNextYear () {
-      let _year = this.selectedYear + 1;
-      let _month = this.selectedMonth;
-
-      const daysInMonth = getDaysInMonth(_year, _month);
-
-      let _day = this.selectedDay;
-      if (_day > daysInMonth) {
-        _day = daysInMonth;
-      }
-      this.updateDay(new Date(`${_year}/${_month + 1}/${_day}`));
-    },
-    handleSelectYear () {
-      console.log('handleSelectedYear');
-    },
-    handleSelectMonth () {
-      console.log('handleSelectMonth');
+      let _year = this.selectedType == 'year' ? this.selectedYear + 15 : this.selectedYear + 1;
+      this.handerYearTableChange(_year, true);
     },
     handelClear () {
       this.emitChange(true);
     },
     handelNow () {
-      this.updateDay(new Date());
+      const date = new Date();
+      this.handerYearTableChange(date.getFullYear());
+      this.handerMonthTableChange(date.getMonth());
+      this.handerDateTableChange(date.getDate());
       this.emitChange();
     },
     handelConfirm () {
+      this.selectedType = 'date';
       this.emitChange();
     }
   }

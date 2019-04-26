@@ -5,20 +5,21 @@
       @click="emitPrevYear"
     ></i>
     <i
+      v-if="type == 'date'"
       class="layui-icon laydate-icon laydate-prev-m"
       @click="emitPrevMonth"
     ></i>
     <div class="laydate-set-ym">
       <span
-        v-if="year"
         @click="emitSelectYear"
-      >{{ year }}</span>
+      >{{ type == 'year' ? `${year - 7}年 - ${year + 7}年` : `${year}年` }}</span>
       <span
-        v-if="month"
+        v-if="type == 'date'"
         @click="emitSelectMonth"
-      >{{ month }}</span>
+      >{{ month }}月</span>
     </div>
     <i
+      v-if="type == 'date'"
       class="layui-icon laydate-icon laydate-next-m"
       @click="emitNextMonth"
     ></i>
@@ -29,16 +30,29 @@
   </div>
 </template>
 <script>
+import { oneOf } from '@/utils/validatorProps';
+
 export default {
   name: 'PickerHeader',
+  model: {
+    prop: 'type',
+    event: 'change'
+  },
   props: {
     year: {
-      type: String,
-      default: ''
+      type: Number,
+      default: 0
     },
     month: {
+      type: Number,
+      default: 0
+    },
+    type: {
       type: String,
-      default: ''
+      required: true,
+      validator (value) {
+        return oneOf('type', ['year', 'month', 'date'], value);
+      }
     }
   },
   methods: {
@@ -55,10 +69,10 @@ export default {
       this.$emit('nextYear');
     },
     emitSelectMonth () {
-      this.$emit('selectMonth');
+      this.$emit('change', 'month');
     },
     emitSelectYear () {
-      this.$emit('selectYear');
+      this.$emit('change', 'year');
     }
   }
 };

@@ -2,7 +2,7 @@
   <div
     v-if="show"
     ref="box"
-    class="layui-laydate"
+    class="layui-laydate lay-date-picker"
     :style="`left: ${left}px; top: ${top}px;`"
   />
 </template>
