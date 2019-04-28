@@ -16,7 +16,7 @@
       <span
         v-if="type == 'date'"
         @click="emitSelectMonth"
-      >{{ month }}月</span>
+      >{{ month + 1 }}月</span>
     </div>
     <i
       v-if="type == 'date'"
