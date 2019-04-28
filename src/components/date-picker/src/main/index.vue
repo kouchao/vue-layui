@@ -47,7 +47,7 @@
           class="laydate-btns-confirm"
           @click="handelConfirm"
         >
-          确定
+          确定{{ type }} {{ selectedType }}
         </span>
       </div>
     </div>
@@ -60,8 +60,8 @@ import { getDaysInMonth } from '../utils';
 import DateTable from '../content/date-table';
 import MonthTable from '../content/month-table';
 import YearTable from '../content/year-table';
-
 import PickerHeader from '../header';
+import { oneOf } from '@/utils/validatorProps';
 
 export default {
   name: 'Main',
@@ -71,16 +71,30 @@ export default {
     YearTable,
     PickerHeader
   },
+  props: {
+    type: {
+      type: String,
+      default: 'date',
+      validator (value) {
+        return oneOf('type', ['year', 'month', 'date'], value);
+      }
+    }
+  },
   data () {
     return {
       selectedYear: 0,
       selectedMonth: 0,
       selectedDay: 0,
-      // date year month
-      selectedType: 'date'
+      selectedType: this.type
     };
   },
+  watch: {
+    type: function () {
+      this.selectedType = this.type;
+    }
+  },
   created () {
+    this.selectedType = this.type;
     // // 测试当前时间
     const date = new Date();
     this.handerYearTableChange(date.getFullYear());
@@ -94,7 +108,7 @@ export default {
     handerMonthTableChange (month, isHeaderChange) {
       this.selectedMonth = month;
       if (!isHeaderChange) {
-        this.selectedType = 'date';
+        this.selectedType = this.type;
       }
 
       let _day = this.checkDay();
@@ -103,7 +117,7 @@ export default {
     handerYearTableChange (year, isHeaderChange) {
       this.selectedYear = year;
       if (!isHeaderChange) {
-        this.selectedType = 'date';
+        this.selectedType = this.type;
       }
 
       let _day = this.checkDay();
@@ -111,8 +125,19 @@ export default {
 
     },
     emitChange (isClear) {
-      const val = isClear ? '' : `${this.selectedYear}/${this.selectedMonth + 1}/${this.selectedDay}`;
-      this.$emit('change', val);
+      let val;
+      switch (this.type) {
+      case 'year':
+        val = `${this.selectedYear}`;
+        break;
+      case 'month':
+        val = `${this.selectedYear}/${this.selectedMonth + 1}`;
+        break;
+      case 'date':
+        val = `${this.selectedYear}/${this.selectedMonth + 1}/${this.selectedDay}`;
+        break;
+      }
+      this.$emit('change', isClear ? '' : val);
       this.$emit('close');
     },
     checkDay (year = this.selectedYear, month = this.selectedMonth, day = this.selectedDay) {
@@ -166,7 +191,7 @@ export default {
       this.emitChange();
     },
     handelConfirm () {
-      this.selectedType = 'date';
+      this.selectedType = this.type;
       this.emitChange();
     }
   }

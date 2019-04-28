@@ -21,6 +21,7 @@
 import Toast from './toast';
 import Main from './main';
 import Vue from 'vue';
+import { oneOf } from '@/utils/validatorProps';
 
 export default {
   name: 'LayDatePicker',
@@ -28,6 +29,13 @@ export default {
     value: {
       type: [String, Number],
       default: ''
+    },
+    type: {
+      type: String,
+      default: 'date',
+      validator (value) {
+        return oneOf('type', ['year', 'month', 'date'], value);
+      }
     },
     placeholder: {
       type: String,
@@ -60,6 +68,7 @@ export default {
       this.picker = Toast();
       this.picker.elem = this.$refs.input;
       this.main = new Vue(Main);
+      this.main.$props.type = this.type;
       this.main.$mount();
       this.main.$on('change', this.emitChange);
       this.main.$on('close', () => {
