@@ -36,6 +36,14 @@
 </lay-date-picker>
 
 
+<lay-date-picker
+    v-model="value7"
+    format="YYYY年MM月DD日"
+    min="2019-3-10"
+    max="2019-8-10"
+    placeholder="限制时间">
+</lay-date-picker>
+
 
 <script>
 export default {
@@ -48,6 +56,7 @@ export default {
          value4: '',
          value5: '',
          value6: '',
+         value7: '',
          importantDays: {
              '1-10': '测试',
              '2-11': '测试',

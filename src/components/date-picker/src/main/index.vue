@@ -17,16 +17,22 @@
         :day="selectedDay"
         :festival="festival"
         :important-days="importantDays"
+        :min="min"
+        :max="max"
         @change="handerDateTableChange"
       />
       <month-table
         v-else-if="selectedType == 'month'"
         :month="selectedMonth"
+        :min="min"
+        :max="max"
         @change="handerMonthTableChange"
       />
       <year-table
         v-else-if="selectedType == 'year'"
         :year="selectedYear"
+        :min="min"
+        :max="max"
         @change="handerYearTableChange"
       />
     </div>
@@ -91,6 +97,14 @@ export default {
     importantDays: {
       type: Object,
       default: () => {}
+    },
+    min: {
+      type: [String, Number],
+      default: ''
+    },
+    max: {
+      type: [String, Number],
+      default: ''
     }
   },
   data () {
@@ -193,6 +207,15 @@ export default {
     },
     emitChange (isClear) {
       let date = dayjs(`${this.selectedYear}-${this.selectedMonth + 1}-${this.selectedDay}`);
+
+      if (this.min && date.isBefore(dayjs(this.min))) {
+        date = dayjs(this.min);
+      }
+
+      if (this.max && dayjs(this.max).isBefore(date)) {
+        date = dayjs(this.max);
+      }
+
       let val;
       if (!this.format) {
         switch (this.type) {

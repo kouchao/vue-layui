@@ -21,11 +21,12 @@
             v-for="date in week"
             :key="`td/${date.key}`"
             :class="{
+              'laydate-disabled': isPrev(date) || isNext(date),
               'laydate-day-prev': isPrev(date),
-              'laydate-day-next': date.month > month,
+              'laydate-day-next': isNext(date),
               'layui-this': isday(date)
             }"
-            @click="emitChange(date.day, date.month)"
+            @click="emitChange(date.day, isPrev(date) || isNext(date))"
           >
             <span
               :class="{
@@ -39,6 +40,7 @@
   </div>
 </template>
 <script>
+import dayjs from 'dayjs';
 import { getDay, getDaysInMonth, getPrevDaysInMonth, getFestival } from '../utils';
 
 export default {
@@ -60,6 +62,14 @@ export default {
     importantDays: {
       type: Object,
       default: () => {}
+    },
+    min: {
+      type: [String, Number],
+      default: ''
+    },
+    max: {
+      type: [String, Number],
+      default: ''
     }
   },
   data () {
@@ -140,10 +150,23 @@ export default {
     },
     // 判断是不是前一个月
     isPrev (date) {
-      return date.month < this.month || date.year < this.year;
+      let isMin = false;
+      if (this.min) {
+        isMin = dayjs(date.key).isBefore(dayjs(this.min));
+      }
+      const isPrev = date.year < this.year || date.month < this.month || date.year < this.year;
+      return isMin || isPrev;
     },
-    emitChange (day, month) {
-      if (month != this.month) {
+    isNext (date) {
+      let isMax = false;
+      if (this.max) {
+        isMax = dayjs(this.max).isBefore(dayjs(date.key));
+      }
+      const isNext = date.year > this.year || date.month > this.month || date.year > this.year;
+      return isMax || isNext;
+    },
+    emitChange (day, isDisabled) {
+      if (isDisabled) {
         return false;
       }
       this.$emit('change', day);

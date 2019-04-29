@@ -60,6 +60,14 @@ export default {
     importantDays: {
       type: Object,
       default: () => {}
+    },
+    min: {
+      type: [String, Number],
+      default: ''
+    },
+    max: {
+      type: [String, Number],
+      default: ''
     }
   },
   destroyed () {
@@ -81,6 +89,8 @@ export default {
       this.main.$props.format = this.format;
       this.main.$props.festival = this.festival;
       this.main.$props.importantDays = this.importantDays;
+      this.main.$props.min = this.min;
+      this.main.$props.max = this.max;
       this.main.$mount();
       this.main.$on('change', this.emitChange);
       this.main.$on('close', () => {
