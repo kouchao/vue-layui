@@ -47,7 +47,7 @@
           class="laydate-btns-confirm"
           @click="handelConfirm"
         >
-          确定{{ type }} {{ selectedType }}
+          确定
         </span>
       </div>
     </div>
@@ -55,6 +55,8 @@
 </template>
 
 <script>
+
+import dayjs from 'dayjs';
 import { getDaysInMonth } from '../utils';
 
 import DateTable from '../content/date-table';
@@ -78,6 +80,10 @@ export default {
       validator (value) {
         return oneOf('type', ['year', 'month', 'date'], value);
       }
+    },
+    format: {
+      type: String,
+      default: ''
     }
   },
   data () {
@@ -123,22 +129,6 @@ export default {
       let _day = this.checkDay();
       this.handerDateTableChange(_day);
 
-    },
-    emitChange (isClear) {
-      let val;
-      switch (this.type) {
-      case 'year':
-        val = `${this.selectedYear}`;
-        break;
-      case 'month':
-        val = `${this.selectedYear}/${this.selectedMonth + 1}`;
-        break;
-      case 'date':
-        val = `${this.selectedYear}/${this.selectedMonth + 1}/${this.selectedDay}`;
-        break;
-      }
-      this.$emit('change', isClear ? '' : val);
-      this.$emit('close');
     },
     checkDay (year = this.selectedYear, month = this.selectedMonth, day = this.selectedDay) {
       const daysInMonth = getDaysInMonth(year, month);
@@ -193,6 +183,28 @@ export default {
     handelConfirm () {
       this.selectedType = this.type;
       this.emitChange();
+    },
+    emitChange (isClear) {
+      let date = dayjs(`${this.selectedYear}-${this.selectedMonth + 1}-${this.selectedDay}`);
+      let val;
+      if (!this.format) {
+        switch (this.type) {
+        case 'year':
+          val = date.format('YYYY');
+          break;
+        case 'month':
+          val = date.format('YYYY-MM');
+          break;
+        case 'date':
+          val = date.format('YYYY-MM-DD');
+          break;
+        }
+      } else {
+        val = date.format(this.format);
+      }
+
+      this.$emit('change', isClear ? '' : val);
+      this.$emit('close');
     }
   }
 

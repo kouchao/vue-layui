@@ -16,6 +16,13 @@
     placeholder="选择年">
 </lay-date-picker>
 
+<lay-date-picker
+    v-model="value4"
+    format="YYYY年MM月DD日"
+    placeholder="选择格式化">
+</lay-date-picker>
+
+
 <script>
 export default {
   name: "DataPicker",
@@ -23,7 +30,8 @@ export default {
       return {
          value1: '',
          value2: '',
-         value3: ''
+         value3: '',
+         value4: ''
       }
   }
 };

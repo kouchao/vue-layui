@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "async-validator": "^1.11.0",
+    "dayjs": "^1.8.13",
     "vue": "^2.6.10"
   },
   "devDependencies": {

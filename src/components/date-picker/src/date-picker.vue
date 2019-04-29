@@ -37,6 +37,10 @@ export default {
         return oneOf('type', ['year', 'month', 'date'], value);
       }
     },
+    format: {
+      type: String,
+      default: ''
+    },
     placeholder: {
       type: String,
       default: ''
@@ -69,6 +73,7 @@ export default {
       this.picker.elem = this.$refs.input;
       this.main = new Vue(Main);
       this.main.$props.type = this.type;
+      this.main.$props.format = this.format;
       this.main.$mount();
       this.main.$on('change', this.emitChange);
       this.main.$on('close', () => {
