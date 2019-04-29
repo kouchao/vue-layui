@@ -28,6 +28,14 @@
     format="YYYY年MM月DD日"
     placeholder="节日">
 </lay-date-picker>
+<lay-date-picker
+    v-model="value6"
+    format="YYYY年MM月DD日"
+    :important-days="importantDays"
+    placeholder="自定义重要日子">
+</lay-date-picker>
+
+
 
 <script>
 export default {
@@ -38,7 +46,22 @@ export default {
          value2: '',
          value3: '',
          value4: '',
-         value5: ''
+         value5: '',
+         value6: '',
+         importantDays: {
+             '1-10': '测试',
+             '2-11': '测试',
+             '3-12': '测试',
+             '4-13': '测试',
+             '5-14': '测试',
+             '6-15': '测试',
+             '7-16': '测试',
+             '8-17': '测试',
+             '9-18': '测试',
+             '10-19': '测试',
+             '11-9': '测试',
+             '12-8': '测试'
+         }
       }
   }
 };

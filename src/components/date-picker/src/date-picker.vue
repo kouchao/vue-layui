@@ -56,7 +56,11 @@ export default {
       default: 0
     },
     number: Boolean,
-    festival: Boolean
+    festival: Boolean,
+    importantDays: {
+      type: Object,
+      default: () => {}
+    }
   },
   destroyed () {
     this.handleHide();
@@ -76,6 +80,7 @@ export default {
       this.main.$props.type = this.type;
       this.main.$props.format = this.format;
       this.main.$props.festival = this.festival;
+      this.main.$props.importantDays = this.importantDays;
       this.main.$mount();
       this.main.$on('change', this.emitChange);
       this.main.$on('close', () => {

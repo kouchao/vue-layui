@@ -29,9 +29,9 @@
           >
             <span
               :class="{
-                'laydate-day-mark': festival && date.festival
+                'laydate-day-mark': (festival || importantDays) && date.festival
               }"
-            >{{ festival && date.festival || date.day }}</span>
+            >{{ (festival || importantDays) && date.festival || date.day }}</span>
           </td>
         </tr>
       </tbody>
@@ -56,7 +56,11 @@ export default {
       type: Number,
       required: true
     },
-    festival: Boolean
+    festival: Boolean,
+    importantDays: {
+      type: Object,
+      default: () => {}
+    }
   },
   data () {
     return {
@@ -125,9 +129,8 @@ export default {
           month: _month,
           day: _day,
           key: `${_year}/${_month + 1}/${_day}`,
-          festival: this.festival ? getFestival(_month, _day) : ''
+          festival: this.festival || this.importantDays ? getFestival(_month, _day, this.importantDays) : ''
         });
-
       }
       this.days = _days;
     },
