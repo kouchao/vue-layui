@@ -55,7 +55,8 @@ export default {
       type: Number,
       default: 0
     },
-    number: Boolean
+    number: Boolean,
+    festival: Boolean
   },
   destroyed () {
     this.handleHide();
@@ -74,6 +75,7 @@ export default {
       this.main = new Vue(Main);
       this.main.$props.type = this.type;
       this.main.$props.format = this.format;
+      this.main.$props.festival = this.festival;
       this.main.$mount();
       this.main.$on('change', this.emitChange);
       this.main.$on('close', () => {

@@ -42,9 +42,7 @@ export default {
       type: Array,
       default: () => []
     },
-    vertical: {
-      type: Boolean
-    },
+    vertical: Boolean,
     theme: {
       type: String,
       default: ''

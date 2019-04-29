@@ -22,6 +22,12 @@
     placeholder="选择格式化">
 </lay-date-picker>
 
+<lay-date-picker
+    festival
+    v-model="value5"
+    format="YYYY年MM月DD日"
+    placeholder="节日">
+</lay-date-picker>
 
 <script>
 export default {
@@ -31,7 +37,8 @@ export default {
          value1: '',
          value2: '',
          value3: '',
-         value4: ''
+         value4: '',
+         value5: ''
       }
   }
 };

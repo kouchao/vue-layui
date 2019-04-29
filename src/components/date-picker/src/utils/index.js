@@ -1,8 +1,18 @@
+const DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+const FESTIVAL = {
+  '1-1': '元旦',
+  '2-14': '情人节',
+  '3-8': '妇女',
+  '3-12': '植树',
+  '9-18': '国耻',
+  '10-1': '国庆',
+  '12-25': '圣诞'
+};
+
 // 是否闰年
 export const isLeapYear = (year) => {
   return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
 };
-const DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 // 获得某月的第一天是周几
 export const getDay = (year, month) => {
@@ -17,6 +27,7 @@ export const getDaysInMonth = (year, month) => {
 
   return DAYS_IN_MONTH[month];
 };
+
 // 获得上个月总天数
 export const getPrevDaysInMonth = (year, month) => {
   if (month == 0) {
@@ -27,4 +38,9 @@ export const getPrevDaysInMonth = (year, month) => {
   }
 
   return getDaysInMonth(year, month);
+};
+
+// 获得公历节日
+export const getFestival = (month, day, festival = FESTIVAL) => {
+  return festival[`${month + 1}-${day}`];
 };

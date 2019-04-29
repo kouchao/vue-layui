@@ -27,7 +27,11 @@
             }"
             @click="emitChange(date.day, date.month)"
           >
-            {{ date.day }}
+            <span
+              :class="{
+                'laydate-day-mark': festival && date.festival
+              }"
+            >{{ festival && date.festival || date.day }}</span>
           </td>
         </tr>
       </tbody>
@@ -35,7 +39,7 @@
   </div>
 </template>
 <script>
-import { getDay, getDaysInMonth, getPrevDaysInMonth } from '../utils';
+import { getDay, getDaysInMonth, getPrevDaysInMonth, getFestival } from '../utils';
 
 export default {
   name: 'DateContent',
@@ -51,7 +55,8 @@ export default {
     day: {
       type: Number,
       required: true
-    }
+    },
+    festival: Boolean
   },
   data () {
     return {
@@ -119,7 +124,8 @@ export default {
           year: _year,
           month: _month,
           day: _day,
-          key: `${_year}/${_month + 1}/${_day}`
+          key: `${_year}/${_month + 1}/${_day}`,
+          festival: this.festival ? getFestival(_month, _day) : ''
         });
 
       }

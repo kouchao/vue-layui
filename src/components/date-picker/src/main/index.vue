@@ -15,6 +15,7 @@
         :year="selectedYear"
         :month="selectedMonth"
         :day="selectedDay"
+        :festival="festival"
         @change="handerDateTableChange"
       />
       <month-table
@@ -84,7 +85,8 @@ export default {
     format: {
       type: String,
       default: ''
-    }
+    },
+    festival: Boolean
   },
   data () {
     return {
