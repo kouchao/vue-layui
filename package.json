@@ -1,6 +1,6 @@
 {
-  "name": "vue-lay",
-  "version": "0.1.2",
+  "name": "vue-layui",
+  "version": "0.0.1-alpha.0",
   "private": false,
   "author": "kouchao",
   "scripts": {
