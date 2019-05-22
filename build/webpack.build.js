@@ -9,7 +9,7 @@ module.exports = {
   output: {
     filename: 'vue-lay.common.js',
     path: path.resolve(__dirname, '../lib'),
-    chunkFilename: 'vue-lay.common.js',
+    chunkFilename: 'vue-layui.common.js',
     publicPath: '/'
   },
   devServer: {

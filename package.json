@@ -1,6 +1,6 @@
 {
   "name": "vue-layui",
-  "version": "0.0.1-alpha.0",
+  "version": "1.0.0",
   "private": false,
   "author": "kouchao",
   "scripts": {
@@ -61,7 +61,7 @@
     "vue layui"
   ],
   "license": "MIT",
-  "main": "lib/vue-lay.common.js",
+  "main": "lib/vue-layui.common.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kouchao/vue-layui.git"
