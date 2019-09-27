@@ -759,7 +759,6 @@ export default {
       textarea: '1231223'
     };
   },
-  created () {},
   methods: {
     submit () {
       this.$refs.form.validate(res => {
