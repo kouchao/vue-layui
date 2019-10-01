@@ -2,6 +2,13 @@
   <div>
     <lay-block>表格是一个大工程，bug肯定会有，欢迎提交bug。。</lay-block>
     <lay-block
+      title="动态列表格"
+      style="margin-top: 20px;"
+    />
+
+    <lay-table :data="tableData" :columns="columns"/>
+
+    <lay-block
       title="默认表格"
       style="margin-top: 20px;"
     />
@@ -205,6 +212,36 @@ export default {
           nation: '华夏族（汉族）',
           date: '公元前-372年',
           motto: '猿强，则国强。国强，则猿更强！'
+        }
+      ],
+      columns:[
+        {
+            label:'基本信息1',
+            headerStyle:{
+              'text-align':'center'
+            },
+            children:[
+              {
+                label:'人物',
+                prop:'name',
+                width:300
+              },
+              {
+                  label:'民族',
+                  prop:'nation',
+                  width:150
+              }
+            ],
+            
+        },
+        {
+            label:'出场时间',
+            prop:'date',
+            width:200
+        },
+        {
+            label:'格言',
+            prop:'motto'
         }
       ]
     };
