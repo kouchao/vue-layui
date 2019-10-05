@@ -58,7 +58,7 @@ const layui = {
     Vue.prototype.testLayui = function () {
       console.log('ok');
     };
-    let components = [
+    const components = [
       LayRow,
       LayCol,
       LayContainer,
