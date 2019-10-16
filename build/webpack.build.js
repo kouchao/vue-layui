@@ -1,14 +1,14 @@
-const path = require('path');
+const { resolve } = require('./utils');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   mode: 'production',
   entry: {
-    main: path.resolve(__dirname, '../src/index.js')
+    main: resolve('../src/index.js')
   },
   output: {
     filename: 'vue-lay.common.js',
-    path: path.resolve(__dirname, '../lib'),
+    path: resolve('../lib'),
     chunkFilename: 'vue-layui.common.js',
     publicPath: '/'
   },
@@ -20,7 +20,7 @@ module.exports = {
   resolve: {
     alias: {
       vue$: 'vue/dist/vue.runtime.esm.js',
-      '@': path.resolve(__dirname, '../src')
+      '@': resolve('../src')
     },
     extensions: [
       '.mjs',
