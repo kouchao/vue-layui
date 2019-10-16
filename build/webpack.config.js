@@ -1,10 +1,11 @@
 const { resolve } = require('./utils');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const { DefinePlugin, NamedModulesPlugin, HotModuleReplacementPlugin } = require('webpack');
 const vueMarkdown = require('./markdown');
+const merge = require('webpack-merge');
+const base = require('./webpack.base');
 
-module.exports = {
+module.exports = merge(base, {
   mode: 'development',
   entry: {
     main: resolve('../src/main.js')
@@ -13,28 +14,12 @@ module.exports = {
     filename: 'js/[name].[hash:8].js',
     path: resolve('dist'),
     chunkFilename: 'js/[name].[hash:8].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? 'http://cdn.jskou.com/'
-      : '/'
+    publicPath: '/'
   },
   devServer: {
     hot: true,
     port: 3000,
     contentBase: './dist'
-  },
-  resolve: {
-    alias: {
-      vue$: 'vue/dist/vue.runtime.esm.js',
-      '@': resolve('../src')
-    },
-    extensions: [
-      '.mjs',
-      '.js',
-      '.jsx',
-      '.vue',
-      '.json',
-      '.wasm'
-    ]
   },
   module: {
     rules: [
@@ -54,85 +39,11 @@ module.exports = {
             options: vueMarkdown
           }
         ]
-      },
-      {
-        test: /\.vue$/,
-        use: [
-          {
-            loader: 'cache-loader'
-          },
-          {
-            loader: 'thread-loader'
-          },
-          {
-            loader: 'vue-loader',
-            options: {
-              compilerOptions: {
-                preserveWhitespace: false
-              }
-            }
-          }
-        ]
-      },
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader'
-          }
-        ]
-      },
-      {
-        test: /\.css$/,
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader'
-          }
-        ]
-      },
-      {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 4096,
-              fallback: {
-                loader: 'file-loader',
-                options: {
-                  name: 'img/[name].[hash:8].[ext]'
-                }
-              }
-            }
-          }
-        ]
-      },
-      {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 4096,
-              fallback: {
-                loader: 'file-loader',
-                options: {
-                  name: 'fonts/[name].[hash:8].[ext]'
-                }
-              }
-            }
-          }
-        ]
       }
     ]
   },
   plugins: [
-    new VueLoaderPlugin(),
-    new webpack.DefinePlugin({
+    new DefinePlugin({
       'process.env': {
         BASE_URL: JSON.stringify('/')
       }
@@ -140,8 +51,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: resolve('../public/index.html')
     }),
-    new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
-
+    new NamedModulesPlugin(),
+    new HotModuleReplacementPlugin()
   ]
-};
+});
