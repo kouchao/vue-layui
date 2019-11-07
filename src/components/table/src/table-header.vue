@@ -1,11 +1,14 @@
 <template>
   <thead>
-    <tr>
+    <tr v-for="item in children" :key="item.index">
       <th
-        v-for="item in children"
-        :key="item"
+        v-for="(item1,index) in item.data"
+        :key="index"
+        :colspan="item1.colspan"
+        :rowspan="item1.rowspan"
+        :style="item1.style"
       >
-        {{ item }}
+        {{ item1.name }}
       </th>
     </tr>
   </thead>
