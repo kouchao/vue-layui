@@ -54,10 +54,7 @@ import LayDatePicker from '@/components/date-picker';
 
 const layui = {
   config: {},
-  install: function (Vue) {
-    Vue.prototype.testLayui = function () {
-      console.log('ok');
-    };
+  install (Vue) {
     const components = [
       LayRow,
       LayCol,

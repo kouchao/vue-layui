@@ -4,11 +4,11 @@
   "private": false,
   "author": "kouchao",
   "scripts": {
-    "serve": "webpack-dev-server --config ./build/webpack.config.js",
+    "dev": "webpack-dev-server --config ./build/webpack.config.js",
+    "build": "webpack --config ./build/webpack.build.js",
     "build:demo": "webpack --config ./build/webpack.demo.js",
     "lint": "eslint src/**/*.vue src/**/*.js build/**/* --quiet",
-    "fix": "eslint src/**/*.vue src/**/*.js build/**/* --fix",
-    "build": "webpack --config ./build/webpack.build.js"
+    "fix": "eslint src/**/*.vue src/**/*.js build/**/* --fix"
   },
   "dependencies": {
     "@babel/runtime": "^7.6.3",

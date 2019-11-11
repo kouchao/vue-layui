@@ -1,8 +1,9 @@
 import Vue from 'vue';
+// import layui from '@';
+import layui from '../../lib/vue-lay.common';
+
 import App from './App.vue';
 import router from './router';
-
-import layui from './index';
 
 import '@/assets/layui.css';
 import '@/assets/layer.css';
@@ -11,6 +12,7 @@ import '@/assets/vue-layui.css';
 import 'highlight.js/styles/atom-one-dark.css';
 
 import demoBlock from './components/demo-block.vue';
+console.log(layui);
 Vue.use(layui);
 Vue.config.productionTip = false;
 Vue.component('demo-block', demoBlock);

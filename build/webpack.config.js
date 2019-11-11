@@ -8,7 +8,7 @@ const base = require('./webpack.base');
 module.exports = merge(base, {
   mode: 'development',
   entry: {
-    main: resolve('../src/main.js')
+    main: resolve('../examples/doc/main.js')
   },
   output: {
     filename: 'js/[name].[hash:8].js',
@@ -20,6 +20,12 @@ module.exports = merge(base, {
     hot: true,
     port: 3000,
     contentBase: './dist'
+  },
+  resolve: {
+    alias: {
+      vue$: 'vue/dist/vue.runtime.esm.js',
+      '@': resolve('../src')
+    }
   },
   module: {
     rules: [

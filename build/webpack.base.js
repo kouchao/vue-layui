@@ -10,7 +10,10 @@ module.exports = {
     filename: 'vue-lay.common.js',
     path: resolve('../lib'),
     chunkFilename: 'vue-layui.common.js',
-    publicPath: '/'
+    publicPath: '/',
+    library: 'VUE_LAYUI',
+    libraryExport: 'default',
+    libraryTarget: 'commonjs2'
   },
   resolve: {
     alias: {
