@@ -90,7 +90,6 @@ export default {
     };
   },
   created: function () {
-    this.testLayui();
     this.getStar();
   },
   methods: {

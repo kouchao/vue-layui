@@ -6,15 +6,6 @@ module.exports = {
   entry: {
     main: resolve('../src/index.js')
   },
-  output: {
-    filename: 'vue-lay.common.js',
-    path: resolve('../lib'),
-    chunkFilename: 'vue-layui.common.js',
-    publicPath: '/',
-    library: 'VUE_LAYUI',
-    libraryExport: 'default',
-    libraryTarget: 'commonjs2'
-  },
   resolve: {
     alias: {
       vue$: 'vue/dist/vue.runtime.esm.js',
@@ -53,22 +44,11 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader'
-          }
-        ]
+        loader: 'babel-loader'
       },
       {
         test: /\.css$/,
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader'
-          }
-        ]
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,

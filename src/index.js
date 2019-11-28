@@ -1,9 +1,9 @@
 /**
  * kouchao 创建于 2018/8/27
  */
-// import '@/assets/layui.css'
-// import '@/assets/layer.css'
-// import '@/assets/vue-layui.css'
+import '@/assets/layui.css';
+import '@/assets/layer.css';
+import '@/assets/vue-layui.css';
 
 import LayRow from '@/components/row';
 import LayCol from '@/components/col';
@@ -52,62 +52,61 @@ import LayCarouselItem from '@/components/carousel-item';
 import LayColorPicker from '@/components/color-picker';
 import LayDatePicker from '@/components/date-picker';
 
-const layui = {
-  config: {},
-  install (Vue) {
-    const components = [
-      LayRow,
-      LayCol,
-      LayContainer,
-      LayButton,
-      LayButtonContainer,
-      LayButtonGroup,
-      LayForm,
-      LayFormItem,
-      LayRadio,
-      LayInput,
-      LayCheckbox,
-      LaySelect,
-      LayTextarea,
-      LayTabs,
-      LayTabPane,
-      LayLine,
-      LayMenu,
-      LayMenuItem,
-      LayMenuChildItem,
-      LayAdmin,
-      LayHeader,
-      LayLogo,
-      LaySide,
-      LayBody,
-      LayFooter,
-      LayBlock,
-      LayBadge,
-      LayBreadcrumb,
-      LayBreadcrumbItem,
-      LayProgress,
-      LayCard,
-      LayCollapse,
-      LayCollapseItem,
-      LayTimeline,
-      LayTimelineItem,
-      LayTable,
-      LayTableColumn,
-      LayAlert,
-      LaySwitch,
-      LayPagination,
-      LayRate,
-      LaySlider,
-      LayCarousel,
-      LayCarouselItem,
-      LayColorPicker,
-      LayDatePicker
-    ];
-    components.forEach(function (component) {
-      Vue.component(component.name, component);
-    });
-    console.log('install layui ok');
-  }
+const install = (Vue) => {
+  const components = [
+    LayRow,
+    LayCol,
+    LayContainer,
+    LayButton,
+    LayButtonContainer,
+    LayButtonGroup,
+    LayForm,
+    LayFormItem,
+    LayRadio,
+    LayInput,
+    LayCheckbox,
+    LaySelect,
+    LayTextarea,
+    LayTabs,
+    LayTabPane,
+    LayLine,
+    LayMenu,
+    LayMenuItem,
+    LayMenuChildItem,
+    LayAdmin,
+    LayHeader,
+    LayLogo,
+    LaySide,
+    LayBody,
+    LayFooter,
+    LayBlock,
+    LayBadge,
+    LayBreadcrumb,
+    LayBreadcrumbItem,
+    LayProgress,
+    LayCard,
+    LayCollapse,
+    LayCollapseItem,
+    LayTimeline,
+    LayTimelineItem,
+    LayTable,
+    LayTableColumn,
+    LayAlert,
+    LaySwitch,
+    LayPagination,
+    LayRate,
+    LaySlider,
+    LayCarousel,
+    LayCarouselItem,
+    LayColorPicker,
+    LayDatePicker
+  ];
+  components.forEach(function (component) {
+    Vue.component(component.name, component);
+  });
+  console.log('install layui ok');
 };
 
-export default layui;
+export default {
+  install
+};
