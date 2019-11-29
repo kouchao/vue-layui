@@ -8,7 +8,7 @@ const base = require('./webpack.base');
 module.exports = merge(base, {
   mode: 'production',
   entry: {
-    main: resolve('../src/main.js')
+    main: resolve('../examples/doc/main.js')
   },
   output: {
     filename: 'js/[name].[hash:8].js',
@@ -34,6 +34,10 @@ module.exports = merge(base, {
             options: vueMarkdown
           }
         ]
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
