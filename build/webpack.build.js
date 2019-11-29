@@ -30,8 +30,7 @@ const config = merge(base, {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css',
+      filename: 'vue-layui.css',
       ignoreOrder: false
     })
   ]

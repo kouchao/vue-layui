@@ -8,16 +8,12 @@
 
 基于 [layui](https://github.com/sentsin/layui/) 2.4.0版本
 
-
-# 注意事项
-本版本不能运行  详情请见 [layui-lay](https://www.npmjs.com/package/vue-lay)
-
 ### Install
     npm i vue-layui -S
 
 ### Quick Start
     import layui from 'vue-layui'
-    import 'vue-lay/lib/vue-layui.css'
+    import 'vue-layui/lib/vue-layui.css'
 
     Vue.use(layui)
 
