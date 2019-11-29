@@ -17,7 +17,5 @@
 
     Vue.use(layui)
 
-## DingDing
-
-    钉钉群二维码
+## 钉钉群二维码
 <img src="https://cos.jskou.com/dingding.jpg" width="300">
