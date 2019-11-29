@@ -1,5 +1,6 @@
 const { resolve } = require('./utils');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -87,6 +88,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new ProgressBarPlugin()
   ]
 };

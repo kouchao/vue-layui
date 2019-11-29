@@ -36,6 +36,7 @@
     "markdown-it-container": "^2.0.0",
     "markdown-it-decorate": "^1.2.2",
     "markdown-it-task-checkbox": "^1.0.6",
+    "progress-bar-webpack-plugin": "^1.12.1",
     "standard": "^14.3.1",
     "style-loader": "^1.0.0",
     "thread-loader": "^2.1.3",
