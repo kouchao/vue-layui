@@ -45,6 +45,10 @@ module.exports = merge(base, {
             options: vueMarkdown
           }
         ]
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   },

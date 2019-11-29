@@ -1,9 +1,10 @@
 /**
  * kouchao 创建于 2018/8/27
  */
-// import '@/assets/layui.css';
-// import '@/assets/layer.css';
-// import '@/assets/vue-layui.css';
+import '@/assets/layui.css';
+import '@/assets/layer.css';
+import '@/assets/lay-date/laydate.css';
+import '@/assets/vue-layui.css';
 
 import LayRow from '@/components/row';
 import LayCol from '@/components/col';
