@@ -1,10 +1,5 @@
 <template>
-  <div
-    :class="[
-      'layui-row',
-      `layui-col-space${space}`
-    ]"
-  >
+  <div :class="[ 'layui-row', `layui-col-space${space}` ]">
     <slot />
   </div>
 </template>
