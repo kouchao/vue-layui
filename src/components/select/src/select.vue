@@ -74,6 +74,7 @@ export default {
     },
     group: Boolean
   },
+  inject: ['formItem'],
   data: function () {
     return {
       isOpen: false,
@@ -105,6 +106,7 @@ export default {
         this.selectText = item[this.prop.lable];
         this.$emit('input', item[this.prop.value]);
         this.$emit('change', this.value);
+        this.formItem && this.formItem.validate('change');
       }
       this.handleClick();
     }

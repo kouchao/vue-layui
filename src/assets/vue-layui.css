@@ -65,3 +65,8 @@ li {
 }
 
 
+
+/* 表单样式覆盖 */
+.is-error .layui-input {
+    border-color: #ff5722 !important;
+}

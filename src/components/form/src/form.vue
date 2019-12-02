@@ -56,21 +56,26 @@ export default {
         return;
       }
 
-      let valid = true;
       // 如果需要验证的fields为空，调用验证时立刻返回callback
       if (this.fields.length === 0 && callback) {
         // eslint-disable-next-line standard/no-callback-literal
         callback(true);
       }
-      this.fields.forEach(field => {
-        field.validate((message, field) => {
-          if (message) {
-            valid = false;
-          }
+      const validates = this.fields.map(field => {
+        return new Promise((resolve, reject) => {
+          field.validate('', (message, field) => {
+            if (message) {
+              console.log(message);
+              // eslint-disable-next-line prefer-promise-reject-errors
+              reject(false);
+            } else {
+              resolve(true);
+            }
+          });
         });
       });
-      callback(valid);
 
+      Promise.all(validates).then(callback).catch(callback);
     }
   }
 };

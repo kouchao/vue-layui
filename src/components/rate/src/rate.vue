@@ -89,6 +89,7 @@ export default {
       rate: 0
     };
   },
+  inject: ['formItem'],
   watch: {
     value () {
       this.rate = this.value;
@@ -133,6 +134,7 @@ export default {
       }
       this.$emit('input', this.rate);
       this.$emit('change', this.rate);
+      this.formItem && this.formItem.validate('change');
     }
   }
 };

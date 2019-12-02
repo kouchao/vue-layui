@@ -143,6 +143,7 @@ export default {
     },
     disabled: Boolean
   },
+  inject: ['formItem'],
   data () {
     return {
       isMouseDown: false,
@@ -237,6 +238,8 @@ export default {
         this.$emit('input', endValue);
         this.$emit('change', endValue);
       }
+
+      this.formItem && this.formItem.validate('change');
     },
     showOrHideTip (val) {
       [this.isShowTip, this.tipLeft, this.tipVal] = val;

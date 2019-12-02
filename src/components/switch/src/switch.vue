@@ -47,6 +47,7 @@ export default {
     },
     disabled: Boolean
   },
+  inject: ['formItem'],
   methods: {
     handleClick: function () {
       if (this.disabled) {
@@ -54,9 +55,10 @@ export default {
       }
 
       const value =
-        this.value == this.activeValue ? this.inactiveValue : this.activeValue;
+      this.value == this.activeValue ? this.inactiveValue : this.activeValue;
       this.$emit('input', value);
       this.$emit('change', value);
+      this.formItem && this.formItem.validate('change');
     }
   }
 };

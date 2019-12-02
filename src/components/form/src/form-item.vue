@@ -33,6 +33,8 @@
 <script>
 import AsyncValidator from 'async-validator';
 import emitter from '../../../mixins/emitter';
+import { noop } from '../../../utils/util';
+
 export default {
   name: 'LayFormItem',
   componentName: 'LayFormItem',
@@ -62,6 +64,11 @@ export default {
     };
   },
   inject: ['rootForm'],
+  provide () {
+    return {
+      formItem: this
+    };
+  },
   computed: {
     value () {
       if (
@@ -84,25 +91,25 @@ export default {
       this.prop &&
       this.rootForm.rules[this.prop]
     ) {
-      this.isRequired = !!this.rootForm.rules[this.prop].find(o => o.required);
+      this.isRequired = this.rootForm.rules[this.prop].some(o => o.required);
     }
   },
   mounted () {
-    this.isTextarea = !!this.$children.find(({ mName }) => mName == 'LayTextarea');
+    this.isTextarea = this.$children.some(({ mName }) => mName == 'LayTextarea');
     if (this.prop) {
       this.dispatch('LayForm', 'lay.form.addField', [this]);
     }
   },
   beforeDestroy () {
-    this.dispatch('ElForm', 'el.form.removeField', [this]);
+    this.dispatch('LayForm', 'lay.form.removeField', [this]);
   },
   methods: {
-    validate (callback) {
+    validate (trigger, callback = noop) {
       if (!this.rootForm) {
         console.warn('[Layui Warn][LayFormItem]使用Form包裹才可以使用验证!');
         return;
       }
-      const rules = this.rootForm.rules;
+      const rules = this.getFilteredRule(trigger);
       const model = this.rootForm.model;
 
       if ((!rules || rules.length === 0 || !model) && this.required === undefined) {
@@ -110,13 +117,35 @@ export default {
         return true;
       }
       const descriptor = {};
-      descriptor[this.prop] = rules[this.prop];
+      descriptor[this.prop] = rules;
+      console.error(descriptor);
+
       const validator = new AsyncValidator(descriptor);
       validator.validate(model, { firstFields: true }, (errors, invalidFields) => {
         this.isError = !!errors;
         this.message = errors ? errors[0].message : '';
+
+        if (this.isError) {
+          console.error(invalidFields);
+        }
         callback(this.message, invalidFields);
       });
+    },
+    getRules () {
+      const rules = this.rootForm.rules || {};
+      return rules[this.prop];
+    },
+    getFilteredRule (trigger) {
+      const rules = this.getRules();
+      console.log(rules);
+      return rules.filter(rule => {
+        if (!rule.trigger || trigger === '') return true;
+        if (Array.isArray(rule.trigger)) {
+          return rule.trigger.indexOf(trigger) > -1;
+        } else {
+          return rule.trigger === trigger;
+        }
+      }).map(rule => ({ ...rule }));
     }
   }
 };
@@ -142,10 +171,6 @@ export default {
 .layui-form-item {
   position: relative;
   margin-bottom: 22px;
-}
-
-.is-error .layui-input {
-  border-color: #ff5722 !important;
 }
 
 .is-textarea .layui-form-label {

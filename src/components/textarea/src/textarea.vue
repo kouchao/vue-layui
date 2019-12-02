@@ -10,7 +10,10 @@
       :class="{
         'layui-radio-disbaled layui-disabled': disabled
       }"
-      @input="handleChange"
+      @input="handleInput"
+      @change="handleChange"
+      @blur="handleBlur"
+      @focus="handleFocus"
     />
   </div>
 </template>
@@ -44,10 +47,24 @@ export default {
     };
   },
   methods: {
-    handleChange: function () {
+    emit (event, e) {
       if (!this.disabled) {
-        this.$emit('input', event.target.value);
+        const value = e.target.value;
+        this.$emit(event, value);
+        this.formItem && this.formItem.validate(event);
       }
+    },
+    handleChange (e) {
+      this.emit('change', e);
+    },
+    handleInput (e) {
+      this.emit('input', e);
+    },
+    handleBlur (e) {
+      this.emit('blur', e);
+    },
+    handleFocus (e) {
+      this.emit('focus', e);
     }
   }
 };

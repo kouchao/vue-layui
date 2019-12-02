@@ -658,25 +658,26 @@ export default {
         checkbox: ['1', '4', '8']
       },
       rules: {
-        first: [{ min: 5, message: '最少5个字符' }],
-        second: [{ type: 'string', required: true, message: '此为必填项' }],
-        mobile: [{ pattern: /^[1][0-9]{10}$/, message: '手机号格式不正确' }],
-        email: [{ type: 'email', message: '邮箱格式不正确' }],
+        first: [{ min: 5, message: '最少5个字符', trigger: 'change' }],
+        second: [{ type: 'string', required: true, message: '此为必填项', trigger: 'change' }],
+        mobile: [{ pattern: /^[1][0-9]{10}$/, message: '手机号格式不正确', trigger: 'change' }],
+        email: [{ type: 'email', message: '邮箱格式不正确', trigger: 'change' }],
         more: [
-          { min: 5, message: '最少5个字符' },
-          { max: 8, message: '最少8个字符' }
+          { min: 5, message: '最少5个字符', trigger: 'change' },
+          { max: 8, message: '最少8个字符', trigger: 'change' }
         ],
-        url: [{ type: 'url', message: '链接格式不正确' }],
+        url: [{ type: 'url', message: '链接格式不正确', trigger: 'change' }],
         idCode: [
           {
             pattern: /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/,
-            message: '身份证格式不正确'
+            message: '身份证格式不正确',
+            trigger: 'change'
           }
         ],
 
         password: [
-          { min: 6, message: '请填写6到12位密码' },
-          { max: 12, message: '请填写6到12位密码' }
+          { min: 6, message: '请填写6到12位密码', trigger: 'change' },
+          { max: 12, message: '请填写6到12位密码', trigger: 'change' }
         ]
       },
       radio: 1,

@@ -46,10 +46,13 @@ export default {
       default: ''
     }
   },
+  inject: ['formItem'],
   methods: {
-    handleClick: function () {
+    handleClick () {
       if (!this.disabled) {
+        this.$emit('change', this.label);
         this.$emit('input', this.label);
+        this.formItem && this.formItem.validate('change');
       }
     }
   }
