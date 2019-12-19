@@ -1,11 +1,14 @@
-const { resolve } = require('./utils');
+const {
+  DefinePlugin,
+  NamedModulesPlugin,
+  HotModuleReplacementPlugin
+} = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { DefinePlugin, NamedModulesPlugin, HotModuleReplacementPlugin } = require('webpack');
-const vueMarkdown = require('./markdown');
-const merge = require('webpack-merge');
-const base = require('./webpack.base');
 
-module.exports = merge(base, {
+const { resolve } = require('./utils');
+const vueMarkdown = require('./markdown');
+
+module.exports = {
   mode: 'development',
   entry: {
     main: resolve('../examples/doc/main.js')
@@ -20,12 +23,6 @@ module.exports = merge(base, {
     hot: true,
     port: 3000,
     contentBase: './dist'
-  },
-  resolve: {
-    alias: {
-      vue$: 'vue/dist/vue.runtime.esm.js',
-      '@': resolve('../src')
-    }
   },
   module: {
     rules: [
@@ -64,4 +61,4 @@ module.exports = merge(base, {
     new NamedModulesPlugin(),
     new HotModuleReplacementPlugin()
   ]
-});
+};

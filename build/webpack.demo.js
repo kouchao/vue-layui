@@ -1,11 +1,11 @@
-const { resolve } = require('./utils');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { DefinePlugin } = require('webpack');
 const vueMarkdown = require('./markdown');
-const merge = require('webpack-merge');
-const base = require('./webpack.base');
+const { resolve } = require('./utils');
 
-module.exports = merge(base, {
+module.exports = {
   mode: 'production',
   entry: {
     main: resolve('../examples/doc/main.js')
@@ -37,7 +37,15 @@ module.exports = merge(base, {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
+          }
+        ]
       }
     ]
   },
@@ -47,8 +55,24 @@ module.exports = merge(base, {
         BASE_URL: JSON.stringify('/')
       }
     }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[hash:8].css',
+      ignoreOrder: false
+    }),
     new HtmlWebpackPlugin({
-      template: resolve('../public/index.html')
+      template: resolve('../public/index.html'),
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        minifyCSS: true,
+        minifyJS: true
+      }
+    }),
+    new OptimizeCSSAssetsPlugin({
+      cssProcessor: require('cssnano'),
+      cssProcessorOptions: {
+        discardComments: { removeAll: true }
+      }
     })
   ]
-});
+};

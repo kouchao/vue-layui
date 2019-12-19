@@ -4,22 +4,15 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  mode: 'production',
-  entry: {
-    main: resolve('../src/index.js')
-  },
   resolve: {
     alias: {
       vue$: 'vue/dist/vue.runtime.esm.js',
       '@': resolve('../src')
     },
     extensions: [
-      '.mjs',
       '.js',
       '.jsx',
-      '.vue',
-      '.json',
-      '.wasm'
+      '.vue'
     ]
   },
   module: {
@@ -27,12 +20,8 @@ module.exports = {
       {
         test: /\.vue$/,
         use: [
-          {
-            loader: 'cache-loader'
-          },
-          {
-            loader: 'thread-loader'
-          },
+          'cache-loader',
+          'thread-loader',
           {
             loader: 'vue-loader',
             options: {
