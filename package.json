@@ -4,7 +4,7 @@
   "private": false,
   "author": "kouchao",
   "scripts": {
-    "dev": "cross-env NODE_ENV=dev webpack-dev-server",
+    "dev": "cross-env NODE_ENV=dev webpack-dev-server --open",
     "build": "cross-env NODE_ENV=pro webpack",
     "build:demo": "cross-env NODE_ENV=demo webpack",
     "lint": "eslint src/**/*.vue src/**/*.js build/**/* --quiet",
