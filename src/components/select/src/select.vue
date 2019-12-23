@@ -1,8 +1,11 @@
 <template>
-  <div :class="$parent.block ? 'layui-input-block' : 'layui-input-inline'">
+  <div
+    :class="$parent.block ? 'layui-input-block' : 'layui-input-inline'"
+  >
     <div
+      ref="reference"
       class="layui-unselect layui-form-select"
-      :class="{ 'layui-form-selected layui-form-selectup': isOpen }"
+      :class="{ 'layui-form-selected': isOpen }"
       @click="handleClick"
     >
       <div class="layui-select-title">
@@ -18,17 +21,15 @@
         >
         <i class="layui-edge" />
       </div>
+
       <dl
-        class="layui-anim layui-anim-upbit"
+        ref="popper"
+        class="layui-form-select-dl"
         :class="{
           'layui-select-group': group
         }"
-        style=""
       >
-        <dd
-          lay-value=""
-          class="layui-select-tips"
-        >
+        <dd class="layui-select-tips">
           {{ placeholder }}
         </dd>
         <span
@@ -52,8 +53,11 @@
 </template>
 
 <script>
+import Popper from '@/mixins/popper';
+
 export default {
   name: 'LaySelect',
+  mixins: [Popper],
   props: {
     disabled: Boolean,
     value: {
@@ -97,6 +101,7 @@ export default {
     handleClick: function () {
       if (!this.disabled) {
         this.isOpen = !this.isOpen;
+        this.createPopper();
       } else {
         this.isOpen = false;
       }
