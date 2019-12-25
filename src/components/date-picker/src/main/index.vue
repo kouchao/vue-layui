@@ -1,5 +1,14 @@
 <template>
-  <div>
+  <div
+    ref="popper"
+    class="layui-laydate lay-date-picker"
+    :class="[
+      'layui-laydate',
+      'lay-date-picker',
+      `laydate-theme-${theme}`
+    ]"
+    @mousedown="handelMousedown"
+  >
     <div class="layui-laydate-main laydate-main-list-0">
       <picker-header
         v-model="selectedType"
@@ -89,6 +98,10 @@ export default {
         return oneOf('type', ['year', 'month', 'date'], value);
       }
     },
+    value: {
+      type: String,
+      default: ''
+    },
     format: {
       type: String,
       default: ''
@@ -105,7 +118,15 @@ export default {
     max: {
       type: [String, Number],
       default: ''
+    },
+    theme: {
+      type: String,
+      default: 'default',
+      validator (value) {
+        return oneOf('theme', ['default', 'molv', 'grid'], value);
+      }
     }
+
   },
   data () {
     return {
@@ -122,15 +143,24 @@ export default {
   },
   created () {
     this.selectedType = this.type;
-    // // 测试当前时间
+
     const date = new Date();
+
     this.handerYearTableChange(date.getFullYear());
     this.handerMonthTableChange(date.getMonth());
     this.handerDateTableChange(date.getDate());
+    this._val = this.getVal();
+    this.$emit('init', this._val);
   },
   methods: {
     handerDateTableChange (day) {
       this.selectedDay = day;
+      this.$nextTick(() => {
+        if (this._val !== this.getVal()) {
+          this._val = this.getVal();
+          this.$emit('select', this._val);
+        }
+      });
     },
     handerMonthTableChange (month, isHeaderChange) {
       this.selectedMonth = month;
@@ -138,7 +168,7 @@ export default {
         this.selectedType = this.type;
       }
 
-      let _day = this.checkDay();
+      const _day = this.checkDay();
       this.handerDateTableChange(_day);
     },
     handerYearTableChange (year, isHeaderChange) {
@@ -147,9 +177,8 @@ export default {
         this.selectedType = this.type;
       }
 
-      let _day = this.checkDay();
+      const _day = this.checkDay();
       this.handerDateTableChange(_day);
-
     },
     checkDay (year = this.selectedYear, month = this.selectedMonth, day = this.selectedDay) {
       const daysInMonth = getDaysInMonth(year, month);
@@ -184,11 +213,11 @@ export default {
       this.handerMonthTableChange(_month, true);
     },
     handlePrevYear () {
-      let _year = this.selectedType == 'year' ? this.selectedYear - 15 : this.selectedYear - 1;
+      const _year = this.selectedType == 'year' ? this.selectedYear - 15 : this.selectedYear - 1;
       this.handerYearTableChange(_year, true);
     },
     handleNextYear () {
-      let _year = this.selectedType == 'year' ? this.selectedYear + 15 : this.selectedYear + 1;
+      const _year = this.selectedType == 'year' ? this.selectedYear + 15 : this.selectedYear + 1;
       this.handerYearTableChange(_year, true);
     },
     handelClear () {
@@ -205,7 +234,12 @@ export default {
       this.selectedType = this.type;
       this.emitChange();
     },
-    emitChange (isClear) {
+
+    handelMousedown () {
+      this.$emit('stop');
+    },
+
+    getVal () {
       let date = dayjs(`${this.selectedYear}-${this.selectedMonth + 1}-${this.selectedDay}`);
 
       if (this.min && date.isBefore(dayjs(this.min))) {
@@ -233,6 +267,12 @@ export default {
         val = date.format(this.format);
       }
 
+      return val;
+    },
+
+    emitChange (isClear) {
+
+      const val = this.getVal();
       this.$emit('change', isClear ? '' : val);
       this.$emit('close');
     }

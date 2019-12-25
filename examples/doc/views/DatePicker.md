@@ -44,6 +44,18 @@
     placeholder="限制时间">
 </lay-date-picker>
 
+<lay-date-picker
+    v-model="value7"
+    theme="molv"
+    placeholder="墨绿">
+</lay-date-picker>
+
+<lay-date-picker
+    v-model="value7"
+    theme="grid"
+    placeholder="墨绿">
+</lay-date-picker>
+
 
 <script>
 export default {

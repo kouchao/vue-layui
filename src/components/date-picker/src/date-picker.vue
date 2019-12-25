@@ -1,5 +1,8 @@
 <template>
-  <div :class="['lay-date-picker', $parent.block ? 'layui-input-block' : 'layui-input-inline']">
+  <div
+    ref="reference"
+    :class="['lay-date-picker', $parent.block ? 'layui-input-block' : 'layui-input-inline']"
+  >
     <input
       ref="input"
       :name="name"
@@ -10,21 +13,42 @@
       :class="{
         'layui-radio-disbaled layui-disabled': disabled
       }"
-      @click="handeleFocus"
+      @focus="handeleFocus"
       @change="handleChange"
+      @blur="handleHide"
+      @click="handleClick"
     >
+    <Main
+      v-if="isOpen"
+      ref="popper"
+      :theme="theme"
+      :type="type"
+      :format="format"
+      :festival="festival"
+      :important-days="importantDays"
+      :min="min"
+      :max="max"
+      @change="emitChange"
+      @init="handleInit"
+      @select="handleSelect"
+      @close="handleHide"
+      @stop="handleStop"
+    />
   </div>
 </template>
 
 <script>
 
-import Toast from './toast';
 import Main from './main';
-import Vue from 'vue';
 import { oneOf } from '@/utils/validatorProps';
+import Popper from '@/mixins/popper';
 
 export default {
   name: 'LayDatePicker',
+  components: {
+    Main
+  },
+  mixins: [Popper],
   props: {
     value: {
       type: [String, Number],
@@ -68,43 +92,42 @@ export default {
     max: {
       type: [String, Number],
       default: ''
+    },
+    theme: {
+      type: String,
+      default: 'default',
+      validator (value) {
+        return oneOf('theme', ['default', 'molv', 'grid'], value);
+      }
     }
+  },
+  data () {
+    return {
+      isOpen: false,
+      isFocus: false
+    };
   },
   destroyed () {
     this.handleHide();
   },
   methods: {
     handeleFocus () {
-      document.addEventListener('click', this.handleHide);
-      if (this.picker) {
-        this.picker.showToast(() => {
-          this.picker.$el.appendChild(this.main.$el);
-        });
-        return false;
-      }
-      this.picker = Toast();
-      this.picker.elem = this.$refs.input;
-      this.main = new Vue(Main);
-      this.main.$props.type = this.type;
-      this.main.$props.format = this.format;
-      this.main.$props.festival = this.festival;
-      this.main.$props.importantDays = this.importantDays;
-      this.main.$props.min = this.min;
-      this.main.$props.max = this.max;
-      this.main.$mount();
-      this.main.$on('change', this.emitChange);
-      this.main.$on('close', () => {
-        this.handleHide();
+      this.isOpen = true;
+      this.isFocus = true;
+      this.$nextTick(() => {
+        this.createPopper();
       });
 
-      this.picker.showToast(() => {
-        this.picker.$el.appendChild(this.main.$el);
-      });
     },
-    handleHide (e) {
-      if (!e || !e.path.find(o => o.className && o.className.includes('lay-date-picker'))) {
-        document.removeEventListener('click', this.handleHide);
-        this.picker.show = false;
+    handleHide () {
+
+      if (this.stop == true) {
+        const input = this.$refs.input;
+        input.focus();
+        this.stop = false;
+      } else {
+        this.destroyPopper();
+        this.isOpen = false;
       }
     },
     handleChange () {
@@ -114,8 +137,30 @@ export default {
         this.$emit('input', this.number ? parseInt(value) || 0 : value);
       }
     },
+
+    handleStop () {
+      this.stop = true;
+    },
+
+    handleClick () {
+      if (this.isFocus && !this.isOpen) {
+        this.isOpen = true;
+      }
+    },
+
     emitChange (val) {
       this.$emit('input', val);
+    },
+
+    handleInit (val) {
+      // 日期框打开的时候
+      this.$emit('open', val);
+    },
+
+    handleSelect (val) {
+      // 日期切换的时候
+      this.$emit('select', val);
+      console.log(val);
     }
   }
 };

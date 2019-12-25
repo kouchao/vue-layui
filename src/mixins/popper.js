@@ -2,9 +2,20 @@ import Popper from 'popper.js';
 
 export default {
   methods: {
+
+    getRef (key) {
+      const dom = this.$refs[key];
+
+      if (dom._isVue) {
+        return dom.$refs[key];
+      }
+
+      return dom;
+    },
     createPopper () {
-      const reference = this.$refs.reference;
-      const popper = this.$refs.popper;
+      const reference = this.getRef('reference');
+      const popper = this.getRef('popper');
+
       this.popper = new Popper(reference, popper, {
         placement: 'bottom'
       });

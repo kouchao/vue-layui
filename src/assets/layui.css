@@ -5023,4 +5023,7 @@ body .layui-util-face .layui-layer-content {
     animation-name: layui-fadeout
 }
 
-/* dl 重写 */
+/* 日期 */
+.layui-laydate.lay-date-picker {
+    animation-name: none;
+}
