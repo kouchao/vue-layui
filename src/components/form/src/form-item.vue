@@ -133,7 +133,7 @@ export default {
     },
     getRules () {
       const rules = this.rootForm.rules || {};
-      return rules[this.prop];
+      return rules[this.prop] || [];
     },
     getFilteredRule (trigger) {
       const rules = this.getRules();

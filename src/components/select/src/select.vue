@@ -6,10 +6,13 @@
       ref="reference"
       class="layui-unselect layui-form-select"
       :class="{ 'layui-form-selected': isOpen }"
-      @click="handleClick"
     >
-      <div class="layui-select-title">
+      <div
+        class="layui-select-title"
+        @click="handleClick"
+      >
         <input
+          ref="input"
           v-model="selectText"
           type="text"
           :placeholder="placeholder"
@@ -18,6 +21,8 @@
           :class="{
             'layui-disabled': disabled
           }"
+          @blur="handleBlur"
+          @focus="handleFocus"
         >
         <i class="layui-edge" />
       </div>
@@ -42,6 +47,7 @@
             :key="item.lable"
             :value="item[prop.value || 'value']"
             :class="item[prop.value || 'value'] == value ? 'layui-this' : ''"
+            @mousedown="blurStop = true"
             @click.stop="selectOption(item)"
           >
             {{ item[prop.lable || "lable"] }}
@@ -83,7 +89,10 @@ export default {
     return {
       isOpen: false,
       selected: false,
-      selectText: ''
+      selectText: '',
+      isFocus: false,
+      blurStop: false,
+      clickStop: false
     };
   },
   created: function () {
@@ -98,13 +107,30 @@ export default {
     }
   },
   methods: {
-    handleClick: function () {
-      if (!this.disabled) {
-        this.isOpen = !this.isOpen;
-        this.createPopper();
-      } else {
+    handleBlur () {
+      this.isFocus = false;
+      if (this.isOpen && !this.blurStop) {
         this.isOpen = false;
+        this.$emit('blur', event);
       }
+    },
+    handleFocus (event) {
+      if (!this.disabled) {
+        this.isOpen = true;
+        this.isFocus = true;
+        this.clickStop = true;
+        this.createPopper();
+        this.$emit('focus', event);
+      }
+
+    },
+    handleClick: function () {
+      if (this.clickStop) {
+        this.clickStop = false;
+        return;
+      }
+
+      this.isOpen = !this.isOpen;
     },
     selectOption: function (item) {
       if (!this.disabled) {
@@ -112,8 +138,17 @@ export default {
         this.$emit('input', item[this.prop.value]);
         this.$emit('change', this.value);
         this.formItem && this.formItem.validate('change');
+
+        const input = this.$refs.input;
+
+        if (this.blurStop) {
+          this.blurStop = false;
+          input.focus();
+          input.blur();
+        }
+
       }
-      this.handleClick();
+
     }
   }
 };
