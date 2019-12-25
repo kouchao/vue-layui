@@ -1,3 +1,5 @@
+<lay-block title="日期选择器"></lay-block>
+
 <lay-date-picker
     v-model="value1"
     type="date"
@@ -56,6 +58,13 @@
     placeholder="墨绿">
 </lay-date-picker>
 
+<lay-block title="时间选择器"></lay-block>
+
+<lay-time-picker
+    v-model="value11"
+    placeholder="选择时间">
+</lay-time-picker>
+
 
 <script>
 export default {
@@ -69,6 +78,13 @@ export default {
          value5: '',
          value6: '',
          value7: '',
+         value11: '',
+         value12: '',
+         value13: '',
+         value14: '',
+         value15: '',
+         value16: '',
+         value17: '',
          importantDays: {
              '1-10': '测试',
              '2-11': '测试',

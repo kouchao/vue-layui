@@ -52,6 +52,7 @@ import LayCarousel from '@/components/carousel';
 import LayCarouselItem from '@/components/carousel-item';
 import LayColorPicker from '@/components/color-picker';
 import LayDatePicker from '@/components/date-picker';
+import LayTimePicker from '@/components/time-picker';
 
 const install = (Vue) => {
   const components = [
@@ -100,7 +101,8 @@ const install = (Vue) => {
     LayCarousel,
     LayCarouselItem,
     LayColorPicker,
-    LayDatePicker
+    LayDatePicker,
+    LayTimePicker
   ];
   components.forEach(function (component) {
     Vue.component(component.name, component);

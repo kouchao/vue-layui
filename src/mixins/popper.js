@@ -16,6 +16,7 @@ export default {
       const reference = this.getRef('reference');
       const popper = this.getRef('popper');
 
+      console.log(reference, popper);
       this.popper = new Popper(reference, popper, {
         placement: 'bottom'
       });
