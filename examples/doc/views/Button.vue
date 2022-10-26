@@ -272,7 +272,7 @@
       >
         大型加圆角按钮
       </lay-button>
-      <lay-button url="https://www.jskou.com">
+      <lay-button url="https://kouchao.github.io/vue-layui">
         跳转的按钮
       </lay-button>
       <lay-button

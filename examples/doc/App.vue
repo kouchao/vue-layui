@@ -183,9 +183,9 @@
           <span>© 2018</span>
           <a
             class="deom-pl10"
-            href="http://jskou.com"
+            href="https://kouchao.github.io/vue-layui"
             target="_blank"
-          >jskou.com</a>
+          >https://kouchao.github.io/vue-layui</a>
           <span class="deom-pl10">MIT license</span>
           <a
             class="deom-pl10"
