@@ -13,8 +13,7 @@ module.exports = {
   output: {
     filename: 'js/[name].[hash:8].js',
     path: resolve('../dist'),
-    chunkFilename: 'js/[name].[hash:8].js',
-    publicPath: 'http://cdn.jskou.com/'
+    chunkFilename: 'js/[name].[hash:8].js'
   },
   module: {
     rules: [

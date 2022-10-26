@@ -12,10 +12,6 @@
               title="首页"
               :to="{ name: 'home' }"
             />
-            <lay-menu-child-item
-              title="关于vue-layui"
-              :to="{ name: 'about' }"
-            />
           </lay-menu-item>
           <lay-menu-item
             :index="1"
@@ -128,7 +124,7 @@
           <lay-logo>
             <img
               width="30"
-              src="https://cos.jskou.com/vue-layui-logo.png"
+              src="https://raw.githubusercontent.com/kouchao/vue-layui/dev/src/assets/logo.png"
             >
             <span style="margin-left: 5px">vue-layui</span>
           </lay-logo>

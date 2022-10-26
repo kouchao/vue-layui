@@ -5,7 +5,7 @@
   >
     <img
       width="300"
-      src="https://cos.jskou.com/vue-layui-logo.png"
+      src="https://raw.githubusercontent.com/kouchao/vue-layui/dev/src/assets/logo.png"
       alt=""
     >
     <div style="font-size: 50px; line-height: 50px">

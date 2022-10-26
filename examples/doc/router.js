@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
-import About from './views/About.vue';
 import Grid from './views/Grid.md';
 import Button from './views/Button.vue';
 import Form from './views/Form.vue';
@@ -32,11 +31,6 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
-    },
-    {
-      path: '/about',
-      name: 'about',
-      component: About
     },
     {
       path: '/grid',
